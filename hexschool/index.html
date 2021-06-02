@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hexschool Case List</title>
+</head>
+
+<body style="display: flex;justify-content: center;flex-direction:column;">
+    <div style="margin:20vh auto;">
+        <a href="https://rpg.hexschool.com/user/dashboard">
+            <h1>【2021程式體驗營】勤奮在家學前端，戰勝疫情救台灣</h1>
+        </a>
+        <ol>
+            <a href="week1/index.html">
+                <li>新手切版</li>
+                <!-- https://xd.adobe.com/view/0f1c0abb-4063-4ed0-96b1-452f520f878b-5a4f/ -->
+            </a>
+            <ul>
+                <li>
+                    <details>
+                        <summary>批改建議</summary>
+                        <code>
+<h2>HTML</h2>
+<p>1. 在 class 的命名上會建議同學採用慣例上的小駝峰命名法 (lower camel case) ，讓第一個單字以小寫字母開始，而第二個單字的首字母大寫來提升程式碼的可讀性</p>
+<p>2. 建議不要使用行內樣式 style 標籤以及 style= "..." 屬性來指定樣式，由於 inline style 的權重較高，樣式較難覆蓋，會提高日後在維護上的難度。建議可新建一個 .css 檔案將整份作業的樣式放置至此並於 HTML 以 link:src 來引入</p>
+<p>3. h1 的部分不需要固定寬度，可在文字內容中需要斷行的部分插入 br 斷行標籤。結構如下所示：h1 Joanne br Chen /h1</p>
+<p>4. 區塊標題的部分建議改為如下所示，能使結構更精簡。h2 class="...">...p class="...">.../p>/h2></p>
+<p>5. 個人資料的部分 span 標籤可以改為 ul > li 結構，並於需要推出距離的 li 標籤上命名 class，依照設計稿所標示的數值設定 margin-bottom，不需要使用 br> 斷行標籤。像是這樣：</p>
+
+ul class="..."> <br>
+     li>陳久安 Joanne Chen/li><br>
+     li>.../li><br>
+     li class="...">.../li><br>
+     li>UI 設計修行中／立志當斜槓青年/li><br>
+     li>.../li><br>
+     li>.../li><br>
+/ul><br>
+
+<p>6. 學歷和技能的部分同第 5 點，結構則會像是這樣：</p>
+
+ul class="..."><br>
+  li>國立六角師範大學 視覺設計學系 學士學位 | 2016-2020/li><br>
+  li>國立六腳高級中學 美術班 | 2013-2016/li><br>
+/ul><br>
+<br>
+和這樣：<br>
+
+div class="BlueBackGround"><br>
+  h3 class="...">...p class="...">.../p>/h3><br>
+  ul class="..."><br>
+    li>Adobe Photoshop/li><br>
+     li>Adobe Illustrator/li><br>
+     li>Adobe XD/li><br>
+     li>Adobe Indesign/li><br>
+     li>C4D/li><br>
+     li>Adobe Premiere/li><br>
+     li>語言：中文、英文/li><br>
+  /ul><br>
+/div><br>
+
+<p>7. 工作經驗的部分同樣可以做縮減，讓結構更精簡。可參考老師提供的參考圖：li 內包 h3 img p</p>
+
+<p>8. 聯絡方式的結構同第 5 及 6 點，另建議可在 Mail 和 Phone 內包上 a 連結，當使用者點擊該區塊時，就會自動開啟相對功能；並可搭配 :hover 效果增加使用者體驗。而三個 icon 的部分也建議改為 ul > li 結構，並於 img 標籤外包上一層 a 連結以及搭配 :hover 效果增加使用者體驗，如下所示：</p>
+
+footer class="BlueBackGround"><br>
+  h3 class="...">...p class="...">.../p>/h3><br>
+  ul><br>
+    li>Mail：a href="mailto:xxxd@hexschool.com">xxxd@hexschool.com/a>/li><br>
+    li>Phone：a href="tel:+0910123456">0910123456/a>/li><br>
+    li>Kaohsiung, Taiwan/li><br>
+    li>作品連結：a href="https://www.behance.net/xxxdddddd">https://www.behance.net/xxxdddddd/a>/li><br>
+  /ul><br>
+ul><br>
+    li>a href="#">.../a>/li><br>
+    li>a href="#">.../a>/li><br>
+    li>a href="#">.../a>/li><br>
+  /ul><br>
+/footer><br>
+
+<h2>CSS</h2>
+<p>1. 同學於 HTML 第 141 行使用的是 width: 1200px; 和 margin:47px auto auto auto;，這邊會建議同學將 margin 的設定改為 margin: 0 auto 來達到水平置中，上方需要推出距離的部分可使用 padding-top 來達成</p>
+
+<p>2. 請盡量使用 class 選擇器來指定樣式，由於一個網站內可能會有數個不同用途的 h2, h3, p 標籤等等，可避免單純使用類別選擇器時可能產生樣式之間彼此衝突，造成程式碼可讀性降低的狀況</p>
+
+<p>3. h1 的部分不需要固定高度，可依據設計稿標示來設定行高 line-height 以撐出高度</p>
+
+<p>4. 字型 font-family 的部分建議在 body {…} 內統一設定，中英文需要分別設定不同字體的部分可以將其改寫為 font-family: 'Roboto', 'Noto Sans';，讓英文字體不支援的中文字可以套用到下一個順位的字體上</p>
+
+<p>5. 線條的部分不需要使用 hr> 水平分隔線標籤，可在需要添加分隔線的元素上使用 border-bottom 來調整樣式</p>
+
+<p>6. 請不要使用 p style="height: ...;">/p> 來撐出高度，可在元素上設定 margin-bottom 來推出距離</p>
+
+<p>7. .BlueBackGround 區塊的部分不需要設置 min-height，技能內容的部分也請不要設置 margin: 0 840px;，建議以固定外層容器寬度和搭配 margin: 0 auto 的方式來調整文字內容</p>
+
+<p>8. text-align 的設定請根據當下需要調整的元素更改即可，同學目前所使用的 .BlueBackGround>div>*, 標題標籤以及行內樣式分別設定的方式會使覆蓋樣式的權重難以判讀</p>
+                        </code>
+                    </details>
+                </li>
+                <a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">
+                    <li>盒模型-邊界重疊</li>
+                </a>
+            </ul>
+
+            <a href="student-week1/index.html">
+                <li>Flexbox切版</li>
+                <!-- https://xd.adobe.com/spec/934efdb7-a7e4-47d5-572e-efece0914f62-e57f/screen/9ba8ec87-c41b-474f-b92b-d2bb2fc7f922/specs/?fbclid=IwAR15fy4gQca7ZDUNrLwshygmfRsPpVtKRXW-ogWntmWT5WHXRzZ10ZG3Heg -->
+            </a>
+            <ul>
+                看影片太慢了看文章比較快
+                <a href="https://wcc723.github.io/css/2017/07/21/css-flex/">
+                    <li>圖解：CSS Flex 屬性一點也不難</li>
+                </a>
+                <li>
+                    <details>
+                        <summary>切版</summary>
+                        <img src="flexlayout.png">
+                    </details>
+                </li>
+                <a href="https://stackoverflow.com/questions/16280040/css3-flexbox-display-box-vs-flexbox-vs-flex">
+                    <li>CSS3 Flexbox: display: box vs. flexbox vs. flex</li>
+                </a>
+                <a href="http://www.flycan.com/article/css/css-margin-top-520.html">
+                    <li>什麼時候要使用 margin (會跟別的 box 相容) / padding ?</li>
+                </a>
+                <li>
+                    <details>
+                        <summary>批改建議</summary>
+                    </details>
+                </li>
+            </ul>
+            <a href="rwd/index.html">
+                <li>RWD切版</li>
+            </a>
+            <ul>
+                <a href="rwd/no8.website/index.html">
+                    <li>Demo</li>
+                </a>
+            </ul>
+            <a href="perfume-week6/index.html">
+                <li>SCSS版型管理</li>
+            </a>
+            <ul>
+                <li>LV1：至少做兩頁，其中一頁必須為首頁</li>
+                <li>LV2：全部頁面都做，不需做 jQ 與 BS4 JS 效果</li>
+                <li>LV3：全部效果都做</li>
+            </ul>
+            <a href="todolist/index.html">
+                <li>JStodolist</li>
+            </a>
+            <ul>
+                <a href="todolist/vue-demo/index.html">
+                    <li>Demo</li>
+                </a>
+            </ul>
+            <a href="https://app.slack.com/client/TH78FC3JL/C022ZQCUXFT/thread/C022ZQCUXFT-1622034321.449400">
+                <li>Slack</li>
+            </a>
+            <a href="https://zoom.us/w/95921718699?tk=XYL3S8-qjBqVkQXaNSbXEEcgo6Osq4uK430gj5wLHbA.DQIAAAAWVWFFqxZrSFF1VmMtN1RtS18xQm1VTERhZTdRAAAAAAAAAAAAAAAAAAAAAAAAAAAA&uuid=WN_PYCoKlAWSOi9mRGW8SzYGg#success">
+                <li>Zoom</li>
+            </a>
+            <ul>
+                <li>授課堂數：6/2(三)、6/9(三)、6/16(三)、6/23(三)、6/30(三)</li>
+                <li>授課時段：各授課堂數的 20:00~21:30</li>
+            </ul>
+        </ol>
+    </div>
+</body>
+
+</html>

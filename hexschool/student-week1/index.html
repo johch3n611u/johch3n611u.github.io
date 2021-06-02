@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .NavigationItem {
+            margin-right: 60px;
+            line-height: 40px;
+            color: #3F5D45;
+            font-weight: 900;
+        }
+        
+        .MenuItem {
+            text-align: center;
+            font: normal normal 600 24px/40px PingFang TC;
+            letter-spacing: 0px;
+            color: #3F5D45;
+            border: 1px solid #EAF0ED;
+            padding: 16px 66px;
+        }
+        
+        .MenuItem-Title {
+            background: #3F5D45 0% 0% no-repeat padding-box;
+            text-align: center;
+            font: normal normal 600 24px/40px PingFang TC;
+            letter-spacing: 0px;
+            color: #EAF0ED;
+            padding: 16px 66px;
+        }
+        
+        .DessertName {
+            text-align: left;
+            font: normal normal 300 20px/20px PingFang TC;
+            letter-spacing: 0px;
+            color: #3F5D45;
+            opacity: 1;
+            padding: 14px 33px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #EAF0ED;
+        }
+        
+        .DessertPrice {
+            text-align: center;
+            font: normal normal 600 20px/24px PingFang TC;
+            letter-spacing: 0px;
+            color: #3F5D45;
+            opacity: 1;
+            padding: 14px 32px 14px 25px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #EAF0ED;
+        }
+        
+        .CardImg {
+            width: 300px;
+            height: 315px;
+            margin-bottom: -3px;
+        }
+        
+        .AddShoppingCart {
+            text-align: center;
+            font: normal normal 600 24px/20px PingFang TC;
+            letter-spacing: 0px;
+            color: #3F5D45;
+            background: #EAF0ED 0% 0% no-repeat padding-box;
+            width: 300px;
+            height: 65px;
+            line-height: 70px;
+            margin-bottom: 20px;
+        }
+        
+        .DessertCard {
+            width: 300px;
+            margin-left: 20px;
+        }
+        
+        .PageChangeButton {
+            width: 24px;
+            height: auto;
+            padding: 18px;
+            border: 1px solid #EAF0ED;
+        }
+        
+        .PageButton {
+            width: 24px;
+            height: auto;
+            padding: 24px 18px;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #EAF0ED;
+        }
+        
+        .SendMailBox {
+            height: 116px;
+            justify-content: space-between;
+            background-color: #3F5D45;
+            align-items: center;
+            display: flex;
+        }
+        
+        .SendMailTitle {
+            margin-left: 122px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .MailTitle {
+            text-align: left;
+            font: normal normal normal 24px/29px Helvetica Neue;
+            letter-spacing: 0px;
+            color: #EAF0ED;
+            margin-left: 20px;
+        }
+        
+        .SendMailInput {
+            height: 56px;
+            width: 380px;
+            display: flex;
+            margin-right: 122px;
+        }
+        
+        .MailInputBox {
+            width: 316px;
+            height: 56px;
+            background: #EAF0ED 0% 0% no-repeat padding-box;
+            display: flex;
+            align-items: center;
+        }
+        
+        .MailInput {
+            background: #FFE180 0% 0% no-repeat padding-box;
+            width: 64px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .FooterLeft {
+            margin-top: 38.9px;
+            margin-left: 122.07px;
+            display: inline-block;
+        }
+        
+        .FooterLeftText {
+            text-align: left;
+            font: normal normal normal 16px/24px Helvetica Neue;
+            letter-spacing: 0px;
+            color: #3F5D45;
+            margin-top: 115.5px;
+        }
+        
+        .FooterLeftIcon {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .FooterRight {
+            margin-right: 122px;
+            flex-direction: column;
+            display: flex;
+        }
+        
+        .AllRightsReserved {
+            text-align: center;
+            font: normal normal normal 16px/19px Times;
+            letter-spacing: 0px;
+            color: #3F5D45;
+        }
+        
+        .Slogan {
+            margin-bottom: 46.31px;
+            writing-mode: vertical-rl;
+            font-size: 24px;
+            line-height: 1.2;
+            letter-spacing: 5px;
+            margin: 30px 0px 0px 0px;
+            float: right;
+            font-weight: 700;
+            color: #3F5D45;
+            margin-bottom: 42px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 1024px;margin: auto;">
+        <div style="display:flex;width: 940px;justify-content: space-between;margin:30px auto;">
+            <img src="logo-all-dark.svg" style="height: 40px;width: auto;">
+            <div style="display: flex;">
+                <ul style="display: flex;">
+                    <li class="NavigationItem">首頁</li>
+                    <li class="NavigationItem">甜點</li>
+                    <li class="NavigationItem">登入</li>
+                </ul>
+                <img src="shopping_cart.png" style="margin:7px 0 0 19px;height: 24px;width: auto;">
+            </div>
+        </div>
+        <img src="banner.png" style="margin:0 42px 60px 42px;">
+        <div style="display: flex;width: 940px;margin: auto;">
+            <div>
+                <ul style="width: 300px;">
+                    <li class="MenuItem-Title">甜點類別</li>
+                    <li class="MenuItem" style="background: #EAF0ED 0% 0% no-repeat padding-box;">所有甜點 (48)</li>
+                    <li class="MenuItem">本日精選 (10)</li>
+                    <li class="MenuItem">人氣推薦 (26)</li>
+                    <li class="MenuItem">新品上市 (12)</li>
+                </ul>
+            </div>
+            <div>
+                <div style="display: flex;flex-wrap: wrap;">
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-1.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-2.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-2.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-2.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-2.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+                    <div class="DessertCard">
+                        <div class="CardTag"></div>
+                        <div class="LoveIcon"></div>
+                        <img src="p-2.png" class="CardImg">
+                        <div style="display: flex;">
+                            <div class="DessertName">焦糖瑪卡龍</div>
+                            <div class="DessertPrice">NT$ 450</div>
+                        </div>
+                        <div class="AddShoppingCart">加入購物車</div>
+                    </div>
+
+                </div>
+                <ul style="display: flex;justify-content:flex-end;align-items: center;margin-bottom: 60px;">
+                    <li><img class="PageChangeButton" src="arrow_left.png"></li>
+                    <li class="PageButton" style="color: white;background: #3F5D45 0% 0% no-repeat padding-box;
+border: 1px solid #3F5D45;">1</li>
+                    <li class="PageButton">2</li>
+                    <li class="PageButton">3</li>
+                    <li><img class="PageChangeButton" src="arrow_right.png"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="SendMailBox">
+            <div class="SendMailTitle">
+                <img src="logo-light.svg" style="height: 40px;width: 40px;">
+                <p class="MailTitle">訂閱你我的甜蜜郵件</p>
+            </div>
+            <label class="SendMailInput">
+                <div class="MailInputBox">
+                    <img src="mail-24px.png" style="width: 24px;height: 24px;margin-left: 20px;">
+                </div>
+                <div class="MailInput">
+                    <img src="arrow_forward-24px.png" style="width: 24px;height: 24px;">
+                </div>
+            </label>
+        </div>
+        <div style="height: 341px;background: #EAF0ED 0% 0% no-repeat padding-box;  justify-content: space-between;display: flex;">
+            <div class="FooterLeft">
+                <img src="logotype-lg-dark.svg" style="height: 26px;">
+                <p class="FooterLeftText">07-1234-5678<br>sweetaste@email.com<br>800 高雄市新興區幸福路 520 號</p>
+                <div style="margin-top: 30px;">
+                    <img class="FooterLeftIcon" src="ic-line@.svg">
+                    <img class="FooterLeftIcon" src="ic-facebook.svg">
+                </div>
+            </div>
+            <div class="FooterRight">
+                <div class="Slogan">今天是個―<br>吃甜點的好日子。</div>
+                <div class="AllRightsReserved">© 2018 Sweetaste* All Rights Reserved</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

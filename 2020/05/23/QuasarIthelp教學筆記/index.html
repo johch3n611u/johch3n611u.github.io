@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"johch3n611u.github.io","root":"/","scheme":"Muse","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="參考 : https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;m&#x2F;users&#x2F;20111805&#x2F;ironman&#x2F;1731 [Day 1] Vue Quasar Framework介紹與安裝[Day 2] Vue Quasar Framework 環境佈署[Day 3] Vue Quasar Framework 淺述設定檔 quasar.conf.js[Day 4] Vue Quasar Fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QuasarIthelp教學筆記">
+<meta property="og:url" content="https://johch3n611u.github.io/2020/05/23/QuasarIthelp%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="johch3n611u">
+<meta property="og:description" content="參考 : https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;m&#x2F;users&#x2F;20111805&#x2F;ironman&#x2F;1731 [Day 1] Vue Quasar Framework介紹與安裝[Day 2] Vue Quasar Framework 環境佈署[Day 3] Vue Quasar Framework 淺述設定檔 quasar.conf.js[Day 4] Vue Quasar Fr">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-05-23T03:49:25.000Z">
+<meta property="article:modified_time" content="2020-06-06T02:24:32.493Z">
+<meta property="article:author" content="johch3n611u">
+<meta property="article:tag" content="StudyProject">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://johch3n611u.github.io/2020/05/23/QuasarIthelp%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>QuasarIthelp教學筆記 | johch3n611u</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">johch3n611u</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://johch3n611u.github.io/2020/05/23/QuasarIthelp%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="johch3n611u">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="johch3n611u">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QuasarIthelp教學筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-23 11:49:25" itemprop="dateCreated datePublished" datetime="2020-05-23T11:49:25+08:00">2020-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-06 10:24:32" itemprop="dateModified" datetime="2020-06-06T10:24:32+08:00">2020-06-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/StudyProject/" itemprop="url" rel="index"><span itemprop="name">StudyProject</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>參考 : <a href="https://ithelp.ithome.com.tw/m/users/20111805/ironman/1731" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/m/users/20111805/ironman/1731</a></p>
+<h2 id="Day-1-Vue-Quasar-Framework介紹與安裝"><a href="#Day-1-Vue-Quasar-Framework介紹與安裝" class="headerlink" title="[Day 1] Vue Quasar Framework介紹與安裝"></a>[Day 1] Vue Quasar Framework介紹與安裝</h2><h2 id="Day-2-Vue-Quasar-Framework-環境佈署"><a href="#Day-2-Vue-Quasar-Framework-環境佈署" class="headerlink" title="[Day 2] Vue Quasar Framework 環境佈署"></a>[Day 2] Vue Quasar Framework 環境佈署</h2><h2 id="Day-3-Vue-Quasar-Framework-淺述設定檔-quasar-conf-js"><a href="#Day-3-Vue-Quasar-Framework-淺述設定檔-quasar-conf-js" class="headerlink" title="[Day 3] Vue Quasar Framework 淺述設定檔 quasar.conf.js"></a>[Day 3] Vue Quasar Framework 淺述設定檔 quasar.conf.js</h2><h2 id="Day-4-Vue-Quasar-Framework-頁面Layout介紹"><a href="#Day-4-Vue-Quasar-Framework-頁面Layout介紹" class="headerlink" title="[Day 4] Vue Quasar Framework 頁面Layout介紹"></a>[Day 4] Vue Quasar Framework 頁面Layout介紹</h2><h2 id="Day-5-Vue-Quasar-打造-旅遊網站系列-1-Header"><a href="#Day-5-Vue-Quasar-打造-旅遊網站系列-1-Header" class="headerlink" title="[Day 5] Vue Quasar 打造 旅遊網站系列 1 - Header"></a>[Day 5] Vue Quasar 打造 旅遊網站系列 1 - Header</h2><h2 id="Day-6-Vue-Quasar-打造-旅遊網站系列-2-List-amp-ListItem"><a href="#Day-6-Vue-Quasar-打造-旅遊網站系列-2-List-amp-ListItem" class="headerlink" title="[Day 6] Vue Quasar 打造 旅遊網站系列 2 - List &amp; ListItem"></a>[Day 6] Vue Quasar 打造 旅遊網站系列 2 - List &amp; ListItem</h2><h2 id="Day-7-Vue-Quasar-打造-旅遊網站系列-3-Carousel-頁面輪播"><a href="#Day-7-Vue-Quasar-打造-旅遊網站系列-3-Carousel-頁面輪播" class="headerlink" title="[Day 7] Vue Quasar 打造 旅遊網站系列 3 - Carousel (頁面輪播)"></a>[Day 7] Vue Quasar 打造 旅遊網站系列 3 - Carousel (頁面輪播)</h2><h2 id="Day-8-Vue-Quasar-打造-旅遊網站系列-4-Input、Autocomplete"><a href="#Day-8-Vue-Quasar-打造-旅遊網站系列-4-Input、Autocomplete" class="headerlink" title="[Day 8] Vue Quasar 打造 旅遊網站系列 4 - Input、Autocomplete"></a>[Day 8] Vue Quasar 打造 旅遊網站系列 4 - Input、Autocomplete</h2><h2 id="Day-9-Vue-Quasar-打造-旅遊網站系列-5-Popover-彈出視窗"><a href="#Day-9-Vue-Quasar-打造-旅遊網站系列-5-Popover-彈出視窗" class="headerlink" title="[Day 9] Vue Quasar 打造 旅遊網站系列 5- Popover (彈出視窗)"></a>[Day 9] Vue Quasar 打造 旅遊網站系列 5- Popover (彈出視窗)</h2><h2 id="Day-10-Vue-Quasar-打造-旅遊網站系列-6-Cards-卡片"><a href="#Day-10-Vue-Quasar-打造-旅遊網站系列-6-Cards-卡片" class="headerlink" title="[Day 10] Vue Quasar 打造 旅遊網站系列 6 - Cards (卡片)"></a>[Day 10] Vue Quasar 打造 旅遊網站系列 6 - Cards (卡片)</h2><h2 id="Day-11-Vue-Quasar-打造-旅遊網站系列-7-Parallax、Breadcrumbs、Rating"><a href="#Day-11-Vue-Quasar-打造-旅遊網站系列-7-Parallax、Breadcrumbs、Rating" class="headerlink" title="[Day 11] Vue Quasar 打造 旅遊網站系列 7 - Parallax、Breadcrumbs、Rating"></a>[Day 11] Vue Quasar 打造 旅遊網站系列 7 - Parallax、Breadcrumbs、Rating</h2><h2 id="Day-12-Vue-Quasar-表單元件-1-Field"><a href="#Day-12-Vue-Quasar-表單元件-1-Field" class="headerlink" title="[Day 12] Vue Quasar 表單元件 1 - Field"></a>[Day 12] Vue Quasar 表單元件 1 - Field</h2><h2 id="Day-13-Vue-Quasar-表單元件-2-Chips-Input"><a href="#Day-13-Vue-Quasar-表單元件-2-Chips-Input" class="headerlink" title="[Day 13] Vue Quasar 表單元件 2 - Chips Input"></a>[Day 13] Vue Quasar 表單元件 2 - Chips Input</h2><h2 id="Day-14-Vue-Quasar-表單元件-3-Radio"><a href="#Day-14-Vue-Quasar-表單元件-3-Radio" class="headerlink" title="[Day 14] Vue Quasar 表單元件 3 - Radio"></a>[Day 14] Vue Quasar 表單元件 3 - Radio</h2><h2 id="Day-15-Vue-Quasar-表單元件-4-Checkbox"><a href="#Day-15-Vue-Quasar-表單元件-4-Checkbox" class="headerlink" title="[Day 15] Vue Quasar 表單元件 4 - Checkbox"></a>[Day 15] Vue Quasar 表單元件 4 - Checkbox</h2><h2 id="Day-16-Vue-Quasar-表單元件-5-Toggle"><a href="#Day-16-Vue-Quasar-表單元件-5-Toggle" class="headerlink" title="[Day 16] Vue Quasar 表單元件 5 - Toggle"></a>[Day 16] Vue Quasar 表單元件 5 - Toggle</h2><h2 id="Day-17-Vue-Quasar-表單元件-7-Option-Group"><a href="#Day-17-Vue-Quasar-表單元件-7-Option-Group" class="headerlink" title="[Day 17] Vue Quasar 表單元件 7 - Option Group"></a>[Day 17] Vue Quasar 表單元件 7 - Option Group</h2><h2 id="Day-18-Vue-Quasar-表單元件-7-Datetime"><a href="#Day-18-Vue-Quasar-表單元件-7-Datetime" class="headerlink" title="[Day 18] Vue Quasar 表單元件 7 - Datetime"></a>[Day 18] Vue Quasar 表單元件 7 - Datetime</h2><h2 id="Day-19-Vue-Quasar-表單元件-8-Editor-文章編輯"><a href="#Day-19-Vue-Quasar-表單元件-8-Editor-文章編輯" class="headerlink" title="[Day 19] Vue Quasar 表單元件 8 - Editor (文章編輯)"></a>[Day 19] Vue Quasar 表單元件 8 - Editor (文章編輯)</h2><h2 id="Day-20-Vue-Quasar-表單元件-9-Knob-旋轉鈕？"><a href="#Day-20-Vue-Quasar-表單元件-9-Knob-旋轉鈕？" class="headerlink" title="[Day 20] Vue Quasar 表單元件 9 - Knob (旋轉鈕？)"></a>[Day 20] Vue Quasar 表單元件 9 - Knob (旋轉鈕？)</h2><h2 id="Day-21-Vue-Quasar-彈跳視窗-1-Action-Sheet"><a href="#Day-21-Vue-Quasar-彈跳視窗-1-Action-Sheet" class="headerlink" title="[Day 21] Vue Quasar 彈跳視窗 1 - Action Sheet"></a>[Day 21] Vue Quasar 彈跳視窗 1 - Action Sheet</h2><h2 id="Day-22-Vue-Quasar-彈跳視窗-2-Dialog"><a href="#Day-22-Vue-Quasar-彈跳視窗-2-Dialog" class="headerlink" title="[Day 22] Vue Quasar 彈跳視窗 2 - Dialog"></a>[Day 22] Vue Quasar 彈跳視窗 2 - Dialog</h2><h2 id="Day-23-Vue-Quasar-彈跳視窗-3-Modal"><a href="#Day-23-Vue-Quasar-彈跳視窗-3-Modal" class="headerlink" title="[Day 23] Vue Quasar 彈跳視窗 3 - Modal"></a>[Day 23] Vue Quasar 彈跳視窗 3 - Modal</h2><h2 id="Day-24-Vue-Quasar-彈跳視窗-4-Notify"><a href="#Day-24-Vue-Quasar-彈跳視窗-4-Notify" class="headerlink" title="[Day 24] Vue Quasar 彈跳視窗 4 - Notify"></a>[Day 24] Vue Quasar 彈跳視窗 4 - Notify</h2><h2 id="Day-25-Vue-Quasar-進度條-1-Ajax-Bar-amp-Loading-Bar"><a href="#Day-25-Vue-Quasar-進度條-1-Ajax-Bar-amp-Loading-Bar" class="headerlink" title="[Day 25] Vue Quasar 進度條 1 - Ajax Bar &amp; Loading Bar"></a>[Day 25] Vue Quasar 進度條 1 - Ajax Bar &amp; Loading Bar</h2><h2 id="Day-26-Vue-Quasar-進度條-2-Inner-Loading-內容讀取"><a href="#Day-26-Vue-Quasar-進度條-2-Inner-Loading-內容讀取" class="headerlink" title="[Day 26] Vue Quasar 進度條 2 - Inner Loading (內容讀取)"></a>[Day 26] Vue Quasar 進度條 2 - Inner Loading (內容讀取)</h2><h2 id="Day-27-Vue-Quasar-來談談-CSS-Helpers"><a href="#Day-27-Vue-Quasar-來談談-CSS-Helpers" class="headerlink" title="[Day 27] Vue Quasar 來談談 CSS Helpers"></a>[Day 27] Vue Quasar 來談談 CSS Helpers</h2><h2 id="Day-28-Vue-Quasar-自訂顏色"><a href="#Day-28-Vue-Quasar-自訂顏色" class="headerlink" title="[Day 28] Vue Quasar 自訂顏色"></a>[Day 28] Vue Quasar 自訂顏色</h2><h2 id="Day-29-Vue-Quasar-多國語系-I18n"><a href="#Day-29-Vue-Quasar-多國語系-I18n" class="headerlink" title="[Day 29] Vue Quasar 多國語系 I18n"></a>[Day 29] Vue Quasar 多國語系 I18n</h2><h2 id="Day-30-Vue-Quasar-一些小心"><a href="#Day-30-Vue-Quasar-一些小心" class="headerlink" title="[Day 30] Vue Quasar 一些小心##"></a>[Day 30] Vue Quasar 一些小心##</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/StudyProject/" rel="tag"># StudyProject</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/23/VueBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/" rel="prev" title="VueBilibili教學筆記">
+      <i class="fa fa-chevron-left"></i> VueBilibili教學筆記
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/27/Goal2020%E4%B8%8B%E5%8D%8A%E5%B9%B4%E8%A8%88%E7%95%AB%E9%9B%9C%E8%A8%98/" rel="next" title="Goal2020下半年計畫雜記">
+      Goal2020下半年計畫雜記 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-1-Vue-Quasar-Framework介紹與安裝"><span class="nav-number">1.</span> <span class="nav-text">[Day 1] Vue Quasar Framework介紹與安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-2-Vue-Quasar-Framework-環境佈署"><span class="nav-number">2.</span> <span class="nav-text">[Day 2] Vue Quasar Framework 環境佈署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-3-Vue-Quasar-Framework-淺述設定檔-quasar-conf-js"><span class="nav-number">3.</span> <span class="nav-text">[Day 3] Vue Quasar Framework 淺述設定檔 quasar.conf.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-4-Vue-Quasar-Framework-頁面Layout介紹"><span class="nav-number">4.</span> <span class="nav-text">[Day 4] Vue Quasar Framework 頁面Layout介紹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-5-Vue-Quasar-打造-旅遊網站系列-1-Header"><span class="nav-number">5.</span> <span class="nav-text">[Day 5] Vue Quasar 打造 旅遊網站系列 1 - Header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-6-Vue-Quasar-打造-旅遊網站系列-2-List-amp-ListItem"><span class="nav-number">6.</span> <span class="nav-text">[Day 6] Vue Quasar 打造 旅遊網站系列 2 - List &amp; ListItem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-7-Vue-Quasar-打造-旅遊網站系列-3-Carousel-頁面輪播"><span class="nav-number">7.</span> <span class="nav-text">[Day 7] Vue Quasar 打造 旅遊網站系列 3 - Carousel (頁面輪播)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-8-Vue-Quasar-打造-旅遊網站系列-4-Input、Autocomplete"><span class="nav-number">8.</span> <span class="nav-text">[Day 8] Vue Quasar 打造 旅遊網站系列 4 - Input、Autocomplete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-9-Vue-Quasar-打造-旅遊網站系列-5-Popover-彈出視窗"><span class="nav-number">9.</span> <span class="nav-text">[Day 9] Vue Quasar 打造 旅遊網站系列 5- Popover (彈出視窗)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-10-Vue-Quasar-打造-旅遊網站系列-6-Cards-卡片"><span class="nav-number">10.</span> <span class="nav-text">[Day 10] Vue Quasar 打造 旅遊網站系列 6 - Cards (卡片)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-11-Vue-Quasar-打造-旅遊網站系列-7-Parallax、Breadcrumbs、Rating"><span class="nav-number">11.</span> <span class="nav-text">[Day 11] Vue Quasar 打造 旅遊網站系列 7 - Parallax、Breadcrumbs、Rating</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-12-Vue-Quasar-表單元件-1-Field"><span class="nav-number">12.</span> <span class="nav-text">[Day 12] Vue Quasar 表單元件 1 - Field</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-13-Vue-Quasar-表單元件-2-Chips-Input"><span class="nav-number">13.</span> <span class="nav-text">[Day 13] Vue Quasar 表單元件 2 - Chips Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-14-Vue-Quasar-表單元件-3-Radio"><span class="nav-number">14.</span> <span class="nav-text">[Day 14] Vue Quasar 表單元件 3 - Radio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-15-Vue-Quasar-表單元件-4-Checkbox"><span class="nav-number">15.</span> <span class="nav-text">[Day 15] Vue Quasar 表單元件 4 - Checkbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-16-Vue-Quasar-表單元件-5-Toggle"><span class="nav-number">16.</span> <span class="nav-text">[Day 16] Vue Quasar 表單元件 5 - Toggle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-17-Vue-Quasar-表單元件-7-Option-Group"><span class="nav-number">17.</span> <span class="nav-text">[Day 17] Vue Quasar 表單元件 7 - Option Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-18-Vue-Quasar-表單元件-7-Datetime"><span class="nav-number">18.</span> <span class="nav-text">[Day 18] Vue Quasar 表單元件 7 - Datetime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-19-Vue-Quasar-表單元件-8-Editor-文章編輯"><span class="nav-number">19.</span> <span class="nav-text">[Day 19] Vue Quasar 表單元件 8 - Editor (文章編輯)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-20-Vue-Quasar-表單元件-9-Knob-旋轉鈕？"><span class="nav-number">20.</span> <span class="nav-text">[Day 20] Vue Quasar 表單元件 9 - Knob (旋轉鈕？)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-21-Vue-Quasar-彈跳視窗-1-Action-Sheet"><span class="nav-number">21.</span> <span class="nav-text">[Day 21] Vue Quasar 彈跳視窗 1 - Action Sheet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-22-Vue-Quasar-彈跳視窗-2-Dialog"><span class="nav-number">22.</span> <span class="nav-text">[Day 22] Vue Quasar 彈跳視窗 2 - Dialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-23-Vue-Quasar-彈跳視窗-3-Modal"><span class="nav-number">23.</span> <span class="nav-text">[Day 23] Vue Quasar 彈跳視窗 3 - Modal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-24-Vue-Quasar-彈跳視窗-4-Notify"><span class="nav-number">24.</span> <span class="nav-text">[Day 24] Vue Quasar 彈跳視窗 4 - Notify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-25-Vue-Quasar-進度條-1-Ajax-Bar-amp-Loading-Bar"><span class="nav-number">25.</span> <span class="nav-text">[Day 25] Vue Quasar 進度條 1 - Ajax Bar &amp; Loading Bar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-26-Vue-Quasar-進度條-2-Inner-Loading-內容讀取"><span class="nav-number">26.</span> <span class="nav-text">[Day 26] Vue Quasar 進度條 2 - Inner Loading (內容讀取)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-27-Vue-Quasar-來談談-CSS-Helpers"><span class="nav-number">27.</span> <span class="nav-text">[Day 27] Vue Quasar 來談談 CSS Helpers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-28-Vue-Quasar-自訂顏色"><span class="nav-number">28.</span> <span class="nav-text">[Day 28] Vue Quasar 自訂顏色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-29-Vue-Quasar-多國語系-I18n"><span class="nav-number">29.</span> <span class="nav-text">[Day 29] Vue Quasar 多國語系 I18n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-30-Vue-Quasar-一些小心"><span class="nav-number">30.</span> <span class="nav-text">[Day 30] Vue Quasar 一些小心##</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">johch3n611u</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">johch3n611u</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">總字數：</span>
+    <span title="總字數">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">所需總閱讀時間 &asymp;</span>
+    <span title="所需總閱讀時間">NaN:aN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : '' || 'https://disqus.com/api/',
+      apikey    : '61a1M4GxNQpZifWvB4bzXMA9mPFM9ERdMRIdX2r5cXriFqqK1hPusSrqUs4qz527',
+      shortname : 'johch3n6-11u',
+      url       : "https://johch3n611u.github.io/2020/05/23/QuasarIthelp%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/",
+      identifier: "2020/05/23/QuasarIthelp教學筆記/",
+      title     : "QuasarIthelp教學筆記",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

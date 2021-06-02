@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"johch3n611u.github.io","root":"/","scheme":"Muse","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="參考 : https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av89760569 P101-(了解)Vuejs课程介绍XMind6、Cli 基於 Webpack…、前端路由與後端路由區別 Axios.js : 網路封裝 基於 Promise 的 HTTP 庫、 Promise : 一個 object 代表即將完成或失敗的非同步操作與他產生的值 Vue 知識量化MVVM、賦值 Musta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueBilibili教學筆記">
+<meta property="og:url" content="https://johch3n611u.github.io/2020/05/23/VueBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="johch3n611u">
+<meta property="og:description" content="參考 : https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av89760569 P101-(了解)Vuejs课程介绍XMind6、Cli 基於 Webpack…、前端路由與後端路由區別 Axios.js : 網路封裝 基於 Promise 的 HTTP 庫、 Promise : 一個 object 代表即將完成或失敗的非同步操作與他產生的值 Vue 知識量化MVVM、賦值 Musta">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-05-23T03:37:39.000Z">
+<meta property="article:modified_time" content="2020-06-06T02:24:26.048Z">
+<meta property="article:author" content="johch3n611u">
+<meta property="article:tag" content="StudyProject">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://johch3n611u.github.io/2020/05/23/VueBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>VueBilibili教學筆記 | johch3n611u</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">johch3n611u</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://johch3n611u.github.io/2020/05/23/VueBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="johch3n611u">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="johch3n611u">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VueBilibili教學筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-23 11:37:39" itemprop="dateCreated datePublished" datetime="2020-05-23T11:37:39+08:00">2020-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-06 10:24:26" itemprop="dateModified" datetime="2020-06-06T10:24:26+08:00">2020-06-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/StudyProject/" itemprop="url" rel="index"><span itemprop="name">StudyProject</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>6.8k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>6 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>參考 : <a href="https://www.bilibili.com/video/av89760569" target="_blank" rel="noopener">https://www.bilibili.com/video/av89760569</a></p>
+<h2 id="P101-了解-Vuejs课程介绍"><a href="#P101-了解-Vuejs课程介绍" class="headerlink" title="P101-(了解)Vuejs课程介绍"></a>P101-(了解)Vuejs课程介绍</h2><p>XMind6、Cli 基於 Webpack…、前端路由與後端路由區別</p>
+<p>Axios.js : 網路封裝 基於 Promise 的 HTTP 庫、</p>
+<p>Promise : 一個 object 代表即將完成或失敗的非同步操作與他產生的值</p>
+<h3 id="Vue-知識量化"><a href="#Vue-知識量化" class="headerlink" title="Vue 知識量化"></a>Vue 知識量化</h3><p>MVVM、賦值 Mustache 、V-once、V-html、V-text、V-pre、V-block、</p>
+<p>綁定屬性 V-bind、計算屬性、事件監聽 V-on、條件循環、</p>
+<p>V-show、V-if、V-for、表單綁定、V-model</p>
+<h3 id="組件化開發"><a href="#組件化開發" class="headerlink" title="組件化開發"></a>組件化開發</h3><p>slot</p>
+<p>Webpack 前端打包工具</p>
+<p>Gulp 自動化構件工具 task</p>
+<p>Vuex</p>
+<p>Windows、Linux 部屬 nginx</p>
+<p>Snipaste 教學軟件</p>
+<p>解偶視圖與數據，複用組件，前端路由，狀態管理，虛擬 DOM</p>
+<p>引入方式 CDN、下載、 NPM Cli 手腳架</p>
+<h2 id="P202-理解-Vuejs的认识和特点介绍"><a href="#P202-理解-Vuejs的认识和特点介绍" class="headerlink" title="P202-(理解)Vuejs的认识和特点介绍"></a>P202-(理解)Vuejs的认识和特点介绍</h2><h2 id="P303-掌握-vuejs安装方式"><a href="#P303-掌握-vuejs安装方式" class="headerlink" title="P303-(掌握)vuejs安装方式"></a>P303-(掌握)vuejs安装方式</h2><h2 id="P404-掌握-HelloVuejs的初体验"><a href="#P404-掌握-HelloVuejs的初体验" class="headerlink" title="P404-(掌握)HelloVuejs的初体验"></a>P404-(掌握)HelloVuejs的初体验</h2><h2 id="P505-掌握-Vue列表的展示"><a href="#P505-掌握-Vue列表的展示" class="headerlink" title="P505-(掌握)Vue列表的展示"></a>P505-(掌握)Vue列表的展示</h2><h2 id="P606-掌握-小案例-计数器"><a href="#P606-掌握-小案例-计数器" class="headerlink" title="P606-(掌握)小案例-计数器"></a>P606-(掌握)小案例-计数器</h2><h2 id="P707-理解-Vue的mvvm"><a href="#P707-理解-Vue的mvvm" class="headerlink" title="P707-(理解)Vue的mvvm"></a>P707-(理解)Vue的mvvm</h2><h2 id="P808-理解-Vue的options选项"><a href="#P808-理解-Vue的options选项" class="headerlink" title="P808-(理解)Vue的options选项"></a>P808-(理解)Vue的options选项</h2><h2 id="P909-理解-什么是Vue的生命周期"><a href="#P909-理解-什么是Vue的生命周期" class="headerlink" title="P909-(理解)什么是Vue的生命周期"></a>P909-(理解)什么是Vue的生命周期</h2><h2 id="P1010-理解-Vue的生命周期函数有哪些"><a href="#P1010-理解-Vue的生命周期函数有哪些" class="headerlink" title="P1010-(理解)Vue的生命周期函数有哪些"></a>P1010-(理解)Vue的生命周期函数有哪些</h2><h2 id="P1111-了解-定义vue的template"><a href="#P1111-了解-定义vue的template" class="headerlink" title="P1111-(了解)定义vue的template"></a>P1111-(了解)定义vue的template</h2><h2 id="P1212-掌握-插值操作-mustache语法"><a href="#P1212-掌握-插值操作-mustache语法" class="headerlink" title="P1212-(掌握)插值操作-mustache语法"></a>P1212-(掌握)插值操作-mustache语法</h2><h2 id="P1313-掌握-插值操作-其他指令使用"><a href="#P1313-掌握-插值操作-其他指令使用" class="headerlink" title="P1313-(掌握)插值操作-其他指令使用"></a>P1313-(掌握)插值操作-其他指令使用</h2><h2 id="P1414-掌握-v-bind的基本使用"><a href="#P1414-掌握-v-bind的基本使用" class="headerlink" title="P1414-(掌握)v-bind的基本使用"></a>P1414-(掌握)v-bind的基本使用</h2><h2 id="P1515-掌握-v-bind动态绑定class-对象语法"><a href="#P1515-掌握-v-bind动态绑定class-对象语法" class="headerlink" title="P1515-(掌握)v-bind动态绑定class(对象语法)"></a>P1515-(掌握)v-bind动态绑定class(对象语法)</h2><h2 id="P1616-了解-v-bind动态绑定class-数组语法"><a href="#P1616-了解-v-bind动态绑定class-数组语法" class="headerlink" title="P1616-(了解)v-bind动态绑定class(数组语法)"></a>P1616-(了解)v-bind动态绑定class(数组语法)</h2><h2 id="P1717-完成-v-bind和v-for结合的作业布置"><a href="#P1717-完成-v-bind和v-for结合的作业布置" class="headerlink" title="P1717-(完成)v-bind和v-for结合的作业布置"></a>P1717-(完成)v-bind和v-for结合的作业布置</h2><h2 id="P1818-掌握-v-bind动态绑定style-对象语法"><a href="#P1818-掌握-v-bind动态绑定style-对象语法" class="headerlink" title="P1818-(掌握)v-bind动态绑定style(对象语法)"></a>P1818-(掌握)v-bind动态绑定style(对象语法)</h2><h2 id="P1919-了解-v-bind动态绑定style-数组语法"><a href="#P1919-了解-v-bind动态绑定style-数组语法" class="headerlink" title="P1919-(了解)v-bind动态绑定style(数组语法)"></a>P1919-(了解)v-bind动态绑定style(数组语法)</h2><h2 id="P2020-掌握-计算属性的基本使用"><a href="#P2020-掌握-计算属性的基本使用" class="headerlink" title="P2020-(掌握)计算属性的基本使用"></a>P2020-(掌握)计算属性的基本使用</h2><h2 id="P2121-掌握-计算属性的复杂操作"><a href="#P2121-掌握-计算属性的复杂操作" class="headerlink" title="P2121-(掌握)计算属性的复杂操作"></a>P2121-(掌握)计算属性的复杂操作</h2><h2 id="P2222-了解-课堂回顾"><a href="#P2222-了解-课堂回顾" class="headerlink" title="P2222-(了解)课堂回顾"></a>P2222-(了解)课堂回顾</h2><h2 id="P2301-理解-计算属性setter和getter"><a href="#P2301-理解-计算属性setter和getter" class="headerlink" title="P2301-(理解)计算属性setter和getter"></a>P2301-(理解)计算属性setter和getter</h2><h2 id="P2402-掌握-计算属性和methods的对比"><a href="#P2402-掌握-计算属性和methods的对比" class="headerlink" title="P2402-(掌握)计算属性和methods的对比"></a>P2402-(掌握)计算属性和methods的对比</h2><h2 id="P2503-掌握-块级作用域-let和var"><a href="#P2503-掌握-块级作用域-let和var" class="headerlink" title="P2503-(掌握)块级作用域-let和var"></a>P2503-(掌握)块级作用域-let和var</h2><h2 id="P2604-理解-三种方案对比-ES5没有闭包-有闭包-ES6的let"><a href="#P2604-理解-三种方案对比-ES5没有闭包-有闭包-ES6的let" class="headerlink" title="P2604-(理解)三种方案对比-ES5没有闭包-有闭包-ES6的let"></a>P2604-(理解)三种方案对比-ES5没有闭包-有闭包-ES6的let</h2><h2 id="P2705-掌握-const的使用和注意点"><a href="#P2705-掌握-const的使用和注意点" class="headerlink" title="P2705-(掌握)const的使用和注意点"></a>P2705-(掌握)const的使用和注意点</h2><h2 id="P2806-掌握-ES6对象字面量增强写法"><a href="#P2806-掌握-ES6对象字面量增强写法" class="headerlink" title="P2806-(掌握)ES6对象字面量增强写法"></a>P2806-(掌握)ES6对象字面量增强写法</h2><h2 id="P2908-掌握-v-on的基本使用和语法糖"><a href="#P2908-掌握-v-on的基本使用和语法糖" class="headerlink" title="P2908-(掌握)v-on的基本使用和语法糖"></a>P2908-(掌握)v-on的基本使用和语法糖</h2><h2 id="P3009-掌握-v-on的参数传递问题"><a href="#P3009-掌握-v-on的参数传递问题" class="headerlink" title="P3009-(掌握)v-on的参数传递问题"></a>P3009-(掌握)v-on的参数传递问题</h2><h2 id="P3110-掌握-v-on的修饰符使用"><a href="#P3110-掌握-v-on的修饰符使用" class="headerlink" title="P3110-(掌握)v-on的修饰符使用"></a>P3110-(掌握)v-on的修饰符使用</h2><h2 id="P3211-掌握-v-if和v-else-if和v-else的使用"><a href="#P3211-掌握-v-if和v-else-if和v-else的使用" class="headerlink" title="P3211-(掌握)v-if和v-else-if和v-else的使用"></a>P3211-(掌握)v-if和v-else-if和v-else的使用</h2><h2 id="P3312-掌握-登录切换的小案例"><a href="#P3312-掌握-登录切换的小案例" class="headerlink" title="P3312-(掌握)登录切换的小案例"></a>P3312-(掌握)登录切换的小案例</h2><h2 id="P3413-理解-登录切换的input复用问题"><a href="#P3413-理解-登录切换的input复用问题" class="headerlink" title="P3413-(理解)登录切换的input复用问题"></a>P3413-(理解)登录切换的input复用问题</h2><h2 id="P3514-掌握-v-show的使用以及和v-if的区别"><a href="#P3514-掌握-v-show的使用以及和v-if的区别" class="headerlink" title="P3514-(掌握)v-show的使用以及和v-if的区别"></a>P3514-(掌握)v-show的使用以及和v-if的区别</h2><h2 id="P3615-掌握-v-for遍历数组和对象"><a href="#P3615-掌握-v-for遍历数组和对象" class="headerlink" title="P3615-(掌握)v-for遍历数组和对象"></a>P3615-(掌握)v-for遍历数组和对象</h2><h2 id="P3716-理解-v-for-绑定和非绑定key的区别"><a href="#P3716-理解-v-for-绑定和非绑定key的区别" class="headerlink" title="P3716-(理解)v-for-绑定和非绑定key的区别"></a>P3716-(理解)v-for-绑定和非绑定key的区别</h2><h2 id="P3817-掌握-数组中哪些方法是响应式的"><a href="#P3817-掌握-数组中哪些方法是响应式的" class="headerlink" title="P3817-(掌握)数组中哪些方法是响应式的"></a>P3817-(掌握)数组中哪些方法是响应式的</h2><h2 id="P3918-掌握-作业的回顾和实现"><a href="#P3918-掌握-作业的回顾和实现" class="headerlink" title="P3918-(掌握)作业的回顾和实现"></a>P3918-(掌握)作业的回顾和实现</h2><h2 id="P4019-掌握-购物车案例-界面搭建"><a href="#P4019-掌握-购物车案例-界面搭建" class="headerlink" title="P4019-(掌握)购物车案例-界面搭建"></a>P4019-(掌握)购物车案例-界面搭建</h2><h2 id="P4120-掌握-购物车案例-过滤器的使用"><a href="#P4120-掌握-购物车案例-过滤器的使用" class="headerlink" title="P4120-(掌握)购物车案例-过滤器的使用"></a>P4120-(掌握)购物车案例-过滤器的使用</h2><h2 id="P4221-掌握-购物车案例-改变购买数量"><a href="#P4221-掌握-购物车案例-改变购买数量" class="headerlink" title="P4221-(掌握)购物车案例-改变购买数量"></a>P4221-(掌握)购物车案例-改变购买数量</h2><h2 id="P4322-掌握-购物车案例-移除按钮-最终价格"><a href="#P4322-掌握-购物车案例-移除按钮-最终价格" class="headerlink" title="P4322-(掌握)购物车案例-移除按钮-最终价格"></a>P4322-(掌握)购物车案例-移除按钮-最终价格</h2><h2 id="P4401-掌握-JavaScript高阶函数的使用"><a href="#P4401-掌握-JavaScript高阶函数的使用" class="headerlink" title="P4401-(掌握)JavaScript高阶函数的使用"></a>P4401-(掌握)JavaScript高阶函数的使用</h2><h2 id="P4502-掌握-v-model的使用和原理"><a href="#P4502-掌握-v-model的使用和原理" class="headerlink" title="P4502-(掌握)v-model的使用和原理"></a>P4502-(掌握)v-model的使用和原理</h2><h2 id="P4603-掌握-v-model结合radio类型使用"><a href="#P4603-掌握-v-model结合radio类型使用" class="headerlink" title="P4603-(掌握)v-model结合radio类型使用"></a>P4603-(掌握)v-model结合radio类型使用</h2><h2 id="P4704-掌握-v-model结合checkbox类型使用"><a href="#P4704-掌握-v-model结合checkbox类型使用" class="headerlink" title="P4704-(掌握)v-model结合checkbox类型使用"></a>P4704-(掌握)v-model结合checkbox类型使用</h2><h2 id="P4805-掌握-v-model结合select类型使用"><a href="#P4805-掌握-v-model结合select类型使用" class="headerlink" title="P4805-(掌握)v-model结合select类型使用"></a>P4805-(掌握)v-model结合select类型使用</h2><h2 id="P4906-掌握-input中的值绑定"><a href="#P4906-掌握-input中的值绑定" class="headerlink" title="P4906-(掌握)input中的值绑定"></a>P4906-(掌握)input中的值绑定</h2><h2 id="P5007-掌握-v-model修饰符的使用"><a href="#P5007-掌握-v-model修饰符的使用" class="headerlink" title="P5007-(掌握)v-model修饰符的使用"></a>P5007-(掌握)v-model修饰符的使用</h2><h2 id="P5108-掌握-组件化的实现和使用步骤"><a href="#P5108-掌握-组件化的实现和使用步骤" class="headerlink" title="P5108-(掌握)组件化的实现和使用步骤"></a>P5108-(掌握)组件化的实现和使用步骤</h2><h2 id="P5209-掌握-组件化的基本使用过程"><a href="#P5209-掌握-组件化的基本使用过程" class="headerlink" title="P5209-(掌握)组件化的基本使用过程"></a>P5209-(掌握)组件化的基本使用过程</h2><h2 id="P5310-掌握-全局组件和局部组件"><a href="#P5310-掌握-全局组件和局部组件" class="headerlink" title="P5310-(掌握)全局组件和局部组件"></a>P5310-(掌握)全局组件和局部组件</h2><h2 id="P5411-掌握-父组件和子组件的区分"><a href="#P5411-掌握-父组件和子组件的区分" class="headerlink" title="P5411-(掌握)父组件和子组件的区分"></a>P5411-(掌握)父组件和子组件的区分</h2><h2 id="P5512-掌握-注册组件的语法糖写法"><a href="#P5512-掌握-注册组件的语法糖写法" class="headerlink" title="P5512-(掌握)注册组件的语法糖写法"></a>P5512-(掌握)注册组件的语法糖写法</h2><h2 id="P5613-掌握-组件模板抽离的写法"><a href="#P5613-掌握-组件模板抽离的写法" class="headerlink" title="P5613-(掌握)组件模板抽离的写法"></a>P5613-(掌握)组件模板抽离的写法</h2><h2 id="P5714-理解-为什么组件data必须是函数"><a href="#P5714-理解-为什么组件data必须是函数" class="headerlink" title="P5714-(理解)为什么组件data必须是函数"></a>P5714-(理解)为什么组件data必须是函数</h2><h2 id="P5815-掌握-父子组件通信-父传子props"><a href="#P5815-掌握-父子组件通信-父传子props" class="headerlink" title="P5815-(掌握)父子组件通信-父传子props"></a>P5815-(掌握)父子组件通信-父传子props</h2><h2 id="P5916-掌握-父子组件通信-props驼峰标识"><a href="#P5916-掌握-父子组件通信-props驼峰标识" class="headerlink" title="P5916-(掌握)父子组件通信-props驼峰标识"></a>P5916-(掌握)父子组件通信-props驼峰标识</h2><h2 id="P6017-掌握-父子组件通信-子传父-自定义事件"><a href="#P6017-掌握-父子组件通信-子传父-自定义事件" class="headerlink" title="P6017-(掌握)父子组件通信-子传父(自定义事件)"></a>P6017-(掌握)父子组件通信-子传父(自定义事件)</h2><h2 id="P6118-了解-项目演示"><a href="#P6118-了解-项目演示" class="headerlink" title="P6118-(了解)项目演示"></a>P6118-(了解)项目演示</h2><h2 id="P6219-了解-知识回顾"><a href="#P6219-了解-知识回顾" class="headerlink" title="P6219-(了解)知识回顾"></a>P6219-(了解)知识回顾</h2><h2 id="P6301-掌握-父子组件通信-结合双向绑定案例"><a href="#P6301-掌握-父子组件通信-结合双向绑定案例" class="headerlink" title="P6301-(掌握)父子组件通信-结合双向绑定案例"></a>P6301-(掌握)父子组件通信-结合双向绑定案例</h2><h2 id="P6402-掌握-结合双向绑定案例-画图分析"><a href="#P6402-掌握-结合双向绑定案例-画图分析" class="headerlink" title="P6402-(掌握)结合双向绑定案例-画图分析"></a>P6402-(掌握)结合双向绑定案例-画图分析</h2><h2 id="P6503-了解-结合双向绑定案例-watch实现"><a href="#P6503-了解-结合双向绑定案例-watch实现" class="headerlink" title="P6503-(了解)结合双向绑定案例-watch实现"></a>P6503-(了解)结合双向绑定案例-watch实现</h2><h2 id="P6604-掌握-父访问子-children-refs"><a href="#P6604-掌握-父访问子-children-refs" class="headerlink" title="P6604-(掌握)父访问子-children-refs"></a>P6604-(掌握)父访问子-children-refs</h2><h2 id="P6705-理解-子访问父-parent-root"><a href="#P6705-理解-子访问父-parent-root" class="headerlink" title="P6705-(理解)子访问父-parent-root"></a>P6705-(理解)子访问父-parent-root</h2><h2 id="P6806-掌握-slot-插槽的基本使用"><a href="#P6806-掌握-slot-插槽的基本使用" class="headerlink" title="P6806-(掌握)slot-插槽的基本使用"></a>P6806-(掌握)slot-插槽的基本使用</h2><h2 id="P6907-掌握-slot-具名插槽的使用"><a href="#P6907-掌握-slot-具名插槽的使用" class="headerlink" title="P6907-(掌握)slot-具名插槽的使用"></a>P6907-(掌握)slot-具名插槽的使用</h2><h2 id="P7008-理解-编译作用域的概念"><a href="#P7008-理解-编译作用域的概念" class="headerlink" title="P7008-(理解)编译作用域的概念"></a>P7008-(理解)编译作用域的概念</h2><h2 id="P7109-掌握-作用域插槽的使用"><a href="#P7109-掌握-作用域插槽的使用" class="headerlink" title="P7109-(掌握)作用域插槽的使用"></a>P7109-(掌握)作用域插槽的使用</h2><h2 id="P7210-理解-前端代码复杂带来的问题"><a href="#P7210-理解-前端代码复杂带来的问题" class="headerlink" title="P7210-(理解)前端代码复杂带来的问题"></a>P7210-(理解)前端代码复杂带来的问题</h2><h2 id="P7311-理解-前端模块化雏形和CommonJS"><a href="#P7311-理解-前端模块化雏形和CommonJS" class="headerlink" title="P7311-(理解)前端模块化雏形和CommonJS"></a>P7311-(理解)前端模块化雏形和CommonJS</h2><h2 id="P7412-掌握-ES模块化的导入和导出"><a href="#P7412-掌握-ES模块化的导入和导出" class="headerlink" title="P7412-(掌握)ES模块化的导入和导出"></a>P7412-(掌握)ES模块化的导入和导出</h2><h2 id="P7513-理解-webpack的介绍和安装"><a href="#P7513-理解-webpack的介绍和安装" class="headerlink" title="P7513-(理解)webpack的介绍和安装"></a>P7513-(理解)webpack的介绍和安装</h2><h2 id="P7614-掌握-webpack的基本使用过程"><a href="#P7614-掌握-webpack的基本使用过程" class="headerlink" title="P7614-(掌握)webpack的基本使用过程"></a>P7614-(掌握)webpack的基本使用过程</h2><h2 id="P7715-掌握-webpack-config-js配置和package-json配置"><a href="#P7715-掌握-webpack-config-js配置和package-json配置" class="headerlink" title="P7715-(掌握)webpack.config.js配置和package.json配置"></a>P7715-(掌握)webpack.config.js配置和package.json配置</h2><h2 id="P7816-掌握-webpack中使用css文件的配置"><a href="#P7816-掌握-webpack中使用css文件的配置" class="headerlink" title="P7816-(掌握)webpack中使用css文件的配置"></a>P7816-(掌握)webpack中使用css文件的配置</h2><h2 id="P7901-掌握-webpack-less文件的处理"><a href="#P7901-掌握-webpack-less文件的处理" class="headerlink" title="P7901-(掌握)webpack-less文件的处理"></a>P7901-(掌握)webpack-less文件的处理</h2><h2 id="P8002-掌握-webpack-图片文件的处理"><a href="#P8002-掌握-webpack-图片文件的处理" class="headerlink" title="P8002-(掌握)webpack-图片文件的处理"></a>P8002-(掌握)webpack-图片文件的处理</h2><h2 id="P8103-掌握-webpack-ES6转ES5的babel"><a href="#P8103-掌握-webpack-ES6转ES5的babel" class="headerlink" title="P8103-(掌握)webpack-ES6转ES5的babel"></a>P8103-(掌握)webpack-ES6转ES5的babel</h2><h2 id="P8204-掌握-webpack-使用Vue的配置过程"><a href="#P8204-掌握-webpack-使用Vue的配置过程" class="headerlink" title="P8204-(掌握)webpack-使用Vue的配置过程"></a>P8204-(掌握)webpack-使用Vue的配置过程</h2><h2 id="P8305-掌握-创建Vue时template和el关系"><a href="#P8305-掌握-创建Vue时template和el关系" class="headerlink" title="P8305-(掌握)创建Vue时template和el关系"></a>P8305-(掌握)创建Vue时template和el关系</h2><h2 id="P8406-掌握-Vue的终极使用方案"><a href="#P8406-掌握-Vue的终极使用方案" class="headerlink" title="P8406-(掌握)Vue的终极使用方案"></a>P8406-(掌握)Vue的终极使用方案</h2><h2 id="P8507-掌握-webpack-横幅Plugin的使用"><a href="#P8507-掌握-webpack-横幅Plugin的使用" class="headerlink" title="P8507-(掌握)webpack-横幅Plugin的使用"></a>P8507-(掌握)webpack-横幅Plugin的使用</h2><h2 id="P8608-掌握-webpack-HtmlWebpackPlugin的使用"><a href="#P8608-掌握-webpack-HtmlWebpackPlugin的使用" class="headerlink" title="P8608-(掌握)webpack-HtmlWebpackPlugin的使用"></a>P8608-(掌握)webpack-HtmlWebpackPlugin的使用</h2><h2 id="P8709-掌握-webpack-UglifyjsWebpackPlugin的使用"><a href="#P8709-掌握-webpack-UglifyjsWebpackPlugin的使用" class="headerlink" title="P8709-(掌握)webpack-UglifyjsWebpackPlugin的使用"></a>P8709-(掌握)webpack-UglifyjsWebpackPlugin的使用</h2><h2 id="P8810-掌握-webpack-dev-server搭建本地服务器"><a href="#P8810-掌握-webpack-dev-server搭建本地服务器" class="headerlink" title="P8810-(掌握)webpack-dev-server搭建本地服务器"></a>P8810-(掌握)webpack-dev-server搭建本地服务器</h2><h2 id="P8911-掌握-webpack-配置文件的分离"><a href="#P8911-掌握-webpack-配置文件的分离" class="headerlink" title="P8911-(掌握)webpack-配置文件的分离"></a>P8911-(掌握)webpack-配置文件的分离</h2><h2 id="P9012-理解-vuecli-脚手架的介绍和安装"><a href="#P9012-理解-vuecli-脚手架的介绍和安装" class="headerlink" title="P9012-(理解)vuecli-脚手架的介绍和安装"></a>P9012-(理解)vuecli-脚手架的介绍和安装</h2><h2 id="P9113-掌握-vuecli-CLI2初始化项目过程"><a href="#P9113-掌握-vuecli-CLI2初始化项目过程" class="headerlink" title="P9113-(掌握)vuecli-CLI2初始化项目过程"></a>P9113-(掌握)vuecli-CLI2初始化项目过程</h2><h2 id="P9214-理解-vuecli-CLI2的目录结构解析"><a href="#P9214-理解-vuecli-CLI2的目录结构解析" class="headerlink" title="P9214-(理解)vuecli-CLI2的目录结构解析"></a>P9214-(理解)vuecli-CLI2的目录结构解析</h2><h2 id="P9315-了解-知识回顾"><a href="#P9315-了解-知识回顾" class="headerlink" title="P9315-(了解)知识回顾"></a>P9315-(了解)知识回顾</h2><h2 id="P9401-掌握-安装CLI错误和ESLint规范"><a href="#P9401-掌握-安装CLI错误和ESLint规范" class="headerlink" title="P9401-(掌握)安装CLI错误和ESLint规范"></a>P9401-(掌握)安装CLI错误和ESLint规范</h2><h2 id="P9502-理解-runtime-compiler和runtime-only的区别"><a href="#P9502-理解-runtime-compiler和runtime-only的区别" class="headerlink" title="P9502-(理解)runtime-compiler和runtime-only的区别"></a>P9502-(理解)runtime-compiler和runtime-only的区别</h2><h2 id="P9603-掌握-VueCLI3创建项目和目录结构"><a href="#P9603-掌握-VueCLI3创建项目和目录结构" class="headerlink" title="P9603-(掌握)VueCLI3创建项目和目录结构"></a>P9603-(掌握)VueCLI3创建项目和目录结构</h2><h2 id="P9704-掌握-VueCLI3配置文件的查看和修改"><a href="#P9704-掌握-VueCLI3配置文件的查看和修改" class="headerlink" title="P9704-(掌握)VueCLI3配置文件的查看和修改"></a>P9704-(掌握)VueCLI3配置文件的查看和修改</h2><h2 id="P9805-掌握-箭头函数的使用和this指向"><a href="#P9805-掌握-箭头函数的使用和this指向" class="headerlink" title="P9805-(掌握)箭头函数的使用和this指向"></a>P9805-(掌握)箭头函数的使用和this指向</h2><h2 id="P9906-理解-什么是路由和其中映射关系"><a href="#P9906-理解-什么是路由和其中映射关系" class="headerlink" title="P9906-(理解)什么是路由和其中映射关系"></a>P9906-(理解)什么是路由和其中映射关系</h2><h2 id="P10007-理解-前端渲染后端渲染和前端路由后端路由"><a href="#P10007-理解-前端渲染后端渲染和前端路由后端路由" class="headerlink" title="P10007-(理解)前端渲染后端渲染和前端路由后端路由"></a>P10007-(理解)前端渲染后端渲染和前端路由后端路由</h2><h2 id="P10108-掌握-url的hash和HTML5的history"><a href="#P10108-掌握-url的hash和HTML5的history" class="headerlink" title="P10108-(掌握)url的hash和HTML5的history"></a>P10108-(掌握)url的hash和HTML5的history</h2><h2 id="P10209-掌握-vue-router-安装和配置方式"><a href="#P10209-掌握-vue-router-安装和配置方式" class="headerlink" title="P10209-(掌握)vue-router-安装和配置方式"></a>P10209-(掌握)vue-router-安装和配置方式</h2><h2 id="P10310-掌握-路由映射配置和呈现出来"><a href="#P10310-掌握-路由映射配置和呈现出来" class="headerlink" title="P10310-(掌握)路由映射配置和呈现出来"></a>P10310-(掌握)路由映射配置和呈现出来</h2><h2 id="P10411-掌握-路由的默认值和修改为history模式"><a href="#P10411-掌握-路由的默认值和修改为history模式" class="headerlink" title="P10411-(掌握)路由的默认值和修改为history模式"></a>P10411-(掌握)路由的默认值和修改为history模式</h2><h2 id="P10512-掌握-router-link的其他属性补充"><a href="#P10512-掌握-router-link的其他属性补充" class="headerlink" title="P10512-(掌握)router-link的其他属性补充"></a>P10512-(掌握)router-link的其他属性补充</h2><h2 id="P10613-掌握-通过代码跳转路由"><a href="#P10613-掌握-通过代码跳转路由" class="headerlink" title="P10613-(掌握)通过代码跳转路由"></a>P10613-(掌握)通过代码跳转路由</h2><h2 id="P10701-掌握-vue-router-动态路由的使用"><a href="#P10701-掌握-vue-router-动态路由的使用" class="headerlink" title="P10701-(掌握)vue-router-动态路由的使用"></a>P10701-(掌握)vue-router-动态路由的使用</h2><h2 id="P10802-掌握-vue-router-打包文件的解析"><a href="#P10802-掌握-vue-router-打包文件的解析" class="headerlink" title="P10802-(掌握)vue-router-打包文件的解析"></a>P10802-(掌握)vue-router-打包文件的解析</h2><h2 id="P10903-掌握-vue-router-路由懒加载的使用"><a href="#P10903-掌握-vue-router-路由懒加载的使用" class="headerlink" title="P10903-(掌握)vue-router-路由懒加载的使用"></a>P10903-(掌握)vue-router-路由懒加载的使用</h2><h2 id="P11004-掌握-vue-router-路由的嵌套使用"><a href="#P11004-掌握-vue-router-路由的嵌套使用" class="headerlink" title="P11004-(掌握)vue-router-路由的嵌套使用"></a>P11004-(掌握)vue-router-路由的嵌套使用</h2><h2 id="P11105-掌握-vue-router-参数传递-一"><a href="#P11105-掌握-vue-router-参数传递-一" class="headerlink" title="P11105-(掌握)vue-router-参数传递(一)"></a>P11105-(掌握)vue-router-参数传递(一)</h2><h2 id="P11206-掌握-vue-router-参数传递-二"><a href="#P11206-掌握-vue-router-参数传递-二" class="headerlink" title="P11206-(掌握)vue-router-参数传递(二)"></a>P11206-(掌握)vue-router-参数传递(二)</h2><h2 id="P11307-理解-vue-router-router和route的由来"><a href="#P11307-理解-vue-router-router和route的由来" class="headerlink" title="P11307-(理解)vue-router-router和route的由来"></a>P11307-(理解)vue-router-router和route的由来</h2><h2 id="P11408-掌握-vue-router-全局导航守卫"><a href="#P11408-掌握-vue-router-全局导航守卫" class="headerlink" title="P11408-(掌握)vue-router-全局导航守卫"></a>P11408-(掌握)vue-router-全局导航守卫</h2><h2 id="P11509-理解-vue-router-导航守卫的补充"><a href="#P11509-理解-vue-router-导航守卫的补充" class="headerlink" title="P11509-(理解)vue-router-导航守卫的补充"></a>P11509-(理解)vue-router-导航守卫的补充</h2><h2 id="P11610-掌握-vue-router-keep-alive及其他问题"><a href="#P11610-掌握-vue-router-keep-alive及其他问题" class="headerlink" title="P11610-(掌握)vue-router-keep-alive及其他问题"></a>P11610-(掌握)vue-router-keep-alive及其他问题</h2><h2 id="P11711-掌握-vue-router-keep-alive属性介绍"><a href="#P11711-掌握-vue-router-keep-alive属性介绍" class="headerlink" title="P11711-(掌握)vue-router-keep-alive属性介绍"></a>P11711-(掌握)vue-router-keep-alive属性介绍</h2><h2 id="P11812-掌握-tabbar-基本结构的搭建"><a href="#P11812-掌握-tabbar-基本结构的搭建" class="headerlink" title="P11812-(掌握)tabbar-基本结构的搭建"></a>P11812-(掌握)tabbar-基本结构的搭建</h2><h2 id="P11913-掌握-tabbar-TabBar和TabBarItem组件封装"><a href="#P11913-掌握-tabbar-TabBar和TabBarItem组件封装" class="headerlink" title="P11913-(掌握)tabbar-TabBar和TabBarItem组件封装"></a>P11913-(掌握)tabbar-TabBar和TabBarItem组件封装</h2><h2 id="P12014-掌握-tabbar-给TabBarItem传入active图片"><a href="#P12014-掌握-tabbar-给TabBarItem传入active图片" class="headerlink" title="P12014-(掌握)tabbar-给TabBarItem传入active图片"></a>P12014-(掌握)tabbar-给TabBarItem传入active图片</h2><h2 id="P12115-掌握-tabbar-TabBarItem和路由结合效果"><a href="#P12115-掌握-tabbar-TabBarItem和路由结合效果" class="headerlink" title="P12115-(掌握)tabbar-TabBarItem和路由结合效果"></a>P12115-(掌握)tabbar-TabBarItem和路由结合效果</h2><h2 id="P12216-掌握-tabbar-TabBarItem的颜色动态控制"><a href="#P12216-掌握-tabbar-TabBarItem的颜色动态控制" class="headerlink" title="P12216-(掌握)tabbar-TabBarItem的颜色动态控制"></a>P12216-(掌握)tabbar-TabBarItem的颜色动态控制</h2><h2 id="P12317-了解-知识回顾"><a href="#P12317-了解-知识回顾" class="headerlink" title="P12317-(了解)知识回顾"></a>P12317-(了解)知识回顾</h2><h2 id="P12401-掌握-tabbar-文件路径的引用问题"><a href="#P12401-掌握-tabbar-文件路径的引用问题" class="headerlink" title="P12401-(掌握)tabbar-文件路径的引用问题"></a>P12401-(掌握)tabbar-文件路径的引用问题</h2><h2 id="P12502-掌握-Promise-Promise的介绍和基本使用"><a href="#P12502-掌握-Promise-Promise的介绍和基本使用" class="headerlink" title="P12502-(掌握)Promise-Promise的介绍和基本使用"></a>P12502-(掌握)Promise-Promise的介绍和基本使用</h2><h2 id="P12603-掌握-Promise-Promise的三种状态和另外处理方式"><a href="#P12603-掌握-Promise-Promise的三种状态和另外处理方式" class="headerlink" title="P12603-(掌握)Promise-Promise的三种状态和另外处理方式"></a>P12603-(掌握)Promise-Promise的三种状态和另外处理方式</h2><h2 id="P12704-掌握-Promise-Promise的链式调用"><a href="#P12704-掌握-Promise-Promise的链式调用" class="headerlink" title="P12704-(掌握)Promise-Promise的链式调用"></a>P12704-(掌握)Promise-Promise的链式调用</h2><h2 id="P12805-掌握-Promise-Promise的all方法使用"><a href="#P12805-掌握-Promise-Promise的all方法使用" class="headerlink" title="P12805-(掌握)Promise-Promise的all方法使用"></a>P12805-(掌握)Promise-Promise的all方法使用</h2><h2 id="P12906-掌握-vuex-Vuex概念和作用解析"><a href="#P12906-掌握-vuex-Vuex概念和作用解析" class="headerlink" title="P12906-(掌握)vuex-Vuex概念和作用解析"></a>P12906-(掌握)vuex-Vuex概念和作用解析</h2><h2 id="P13007-掌握-vuex-单界面到多界面状态管理切换"><a href="#P13007-掌握-vuex-单界面到多界面状态管理切换" class="headerlink" title="P13007-(掌握)vuex-单界面到多界面状态管理切换"></a>P13007-(掌握)vuex-单界面到多界面状态管理切换</h2><h2 id="P13108-掌握-vuex-devtools和mutations"><a href="#P13108-掌握-vuex-devtools和mutations" class="headerlink" title="P13108-(掌握)vuex-devtools和mutations"></a>P13108-(掌握)vuex-devtools和mutations</h2><h2 id="P13209-掌握-vuex-state单一状态树的理解"><a href="#P13209-掌握-vuex-state单一状态树的理解" class="headerlink" title="P13209-(掌握)vuex-state单一状态树的理解"></a>P13209-(掌握)vuex-state单一状态树的理解</h2><h2 id="P13310-掌握-vuex-getters的使用详解"><a href="#P13310-掌握-vuex-getters的使用详解" class="headerlink" title="P13310-(掌握)vuex-getters的使用详解"></a>P13310-(掌握)vuex-getters的使用详解</h2><h2 id="P13411-掌握-vuex-mutations的携带参数"><a href="#P13411-掌握-vuex-mutations的携带参数" class="headerlink" title="P13411-(掌握)vuex-mutations的携带参数"></a>P13411-(掌握)vuex-mutations的携带参数</h2><h2 id="P13512-掌握-vuex-mutations的提交风格"><a href="#P13512-掌握-vuex-mutations的提交风格" class="headerlink" title="P13512-(掌握)vuex-mutations的提交风格"></a>P13512-(掌握)vuex-mutations的提交风格</h2><h2 id="P13613-掌握-vuex-数据的响应式原理"><a href="#P13613-掌握-vuex-数据的响应式原理" class="headerlink" title="P13613-(掌握)vuex-数据的响应式原理"></a>P13613-(掌握)vuex-数据的响应式原理</h2><h2 id="P13714-掌握-vuex-mutations的类型常量"><a href="#P13714-掌握-vuex-mutations的类型常量" class="headerlink" title="P13714-(掌握)vuex-mutations的类型常量"></a>P13714-(掌握)vuex-mutations的类型常量</h2><h2 id="P13815-掌握-vuex-actions的使用详解"><a href="#P13815-掌握-vuex-actions的使用详解" class="headerlink" title="P13815-(掌握)vuex-actions的使用详解"></a>P13815-(掌握)vuex-actions的使用详解</h2><h2 id="P13916-掌握-vuex-modules的使用详解"><a href="#P13916-掌握-vuex-modules的使用详解" class="headerlink" title="P13916-(掌握)vuex-modules的使用详解"></a>P13916-(掌握)vuex-modules的使用详解</h2><h2 id="P14017-掌握-vuex-store文件夹的目录组织"><a href="#P14017-掌握-vuex-store文件夹的目录组织" class="headerlink" title="P14017-(掌握)vuex-store文件夹的目录组织"></a>P14017-(掌握)vuex-store文件夹的目录组织</h2><h2 id="P14101-了解-网络请求模块的选择-axios"><a href="#P14101-了解-网络请求模块的选择-axios" class="headerlink" title="P14101-(了解)网络请求模块的选择-axios"></a>P14101-(了解)网络请求模块的选择-axios</h2><h2 id="P14202-掌握-axios框架的基本使用"><a href="#P14202-掌握-axios框架的基本使用" class="headerlink" title="P14202-(掌握)axios框架的基本使用"></a>P14202-(掌握)axios框架的基本使用</h2><h2 id="P14303-掌握-axios发送并发请求"><a href="#P14303-掌握-axios发送并发请求" class="headerlink" title="P14303-(掌握)axios发送并发请求"></a>P14303-(掌握)axios发送并发请求</h2><h2 id="P14404-掌握-axios的配置信息相关"><a href="#P14404-掌握-axios的配置信息相关" class="headerlink" title="P14404-(掌握)axios的配置信息相关"></a>P14404-(掌握)axios的配置信息相关</h2><h2 id="P14505-掌握-axios的实例和模块封装"><a href="#P14505-掌握-axios的实例和模块封装" class="headerlink" title="P14505-(掌握)axios的实例和模块封装"></a>P14505-(掌握)axios的实例和模块封装</h2><h2 id="P14606-掌握-axios的拦截器的使用"><a href="#P14606-掌握-axios的拦截器的使用" class="headerlink" title="P14606-(掌握)axios的拦截器的使用"></a>P14606-(掌握)axios的拦截器的使用</h2><h2 id="P14707-掌握-项目开发-项目创建和GitHub托管"><a href="#P14707-掌握-项目开发-项目创建和GitHub托管" class="headerlink" title="P14707-(掌握)项目开发-项目创建和GitHub托管"></a>P14707-(掌握)项目开发-项目创建和GitHub托管</h2><h2 id="P14808-掌握-项目开发-划分目录结构"><a href="#P14808-掌握-项目开发-划分目录结构" class="headerlink" title="P14808-(掌握)项目开发-划分目录结构"></a>P14808-(掌握)项目开发-划分目录结构</h2><h2 id="P14909-掌握-项目开发-css文件的引入"><a href="#P14909-掌握-项目开发-css文件的引入" class="headerlink" title="P14909-(掌握)项目开发-css文件的引入"></a>P14909-(掌握)项目开发-css文件的引入</h2><h2 id="P15010-掌握-项目开发-vue-config和editorconfig"><a href="#P15010-掌握-项目开发-vue-config和editorconfig" class="headerlink" title="P15010-(掌握)项目开发-vue.config和editorconfig"></a>P15010-(掌握)项目开发-vue.config和editorconfig</h2><h2 id="P15111-掌握-项目开发-tabbar引入和项目模块划分"><a href="#P15111-掌握-项目开发-tabbar引入和项目模块划分" class="headerlink" title="P15111-(掌握)项目开发-tabbar引入和项目模块划分"></a>P15111-(掌握)项目开发-tabbar引入和项目模块划分</h2><h2 id="P15212-理解-项目开发-小图标的修改以及路径问题"><a href="#P15212-理解-项目开发-小图标的修改以及路径问题" class="headerlink" title="P15212-(理解)项目开发-小图标的修改以及路径问题"></a>P15212-(理解)项目开发-小图标的修改以及路径问题</h2><h2 id="P15313-掌握-首页开发-首页导航栏的封装和使用"><a href="#P15313-掌握-首页开发-首页导航栏的封装和使用" class="headerlink" title="P15313-(掌握)首页开发-首页导航栏的封装和使用"></a>P15313-(掌握)首页开发-首页导航栏的封装和使用</h2><h2 id="P15414-掌握-首页开发-请求首页的多个数据"><a href="#P15414-掌握-首页开发-请求首页的多个数据" class="headerlink" title="P15414-(掌握)首页开发-请求首页的多个数据"></a>P15414-(掌握)首页开发-请求首页的多个数据</h2><h2 id="P15515-掌握-首页开发-轮播图的展示"><a href="#P15515-掌握-首页开发-轮播图的展示" class="headerlink" title="P15515-(掌握)首页开发-轮播图的展示"></a>P15515-(掌握)首页开发-轮播图的展示</h2><h2 id="P15616-掌握-首页开发-推荐信息的展示"><a href="#P15616-掌握-首页开发-推荐信息的展示" class="headerlink" title="P15616-(掌握)首页开发-推荐信息的展示"></a>P15616-(掌握)首页开发-推荐信息的展示</h2><h2 id="P15717-了解-知识回顾2"><a href="#P15717-了解-知识回顾2" class="headerlink" title="P15717-(了解)知识回顾2"></a>P15717-(了解)知识回顾2</h2><h2 id="P15801-掌握-首页开发-FeatureView的封装"><a href="#P15801-掌握-首页开发-FeatureView的封装" class="headerlink" title="P15801-(掌握)首页开发-FeatureView的封装"></a>P15801-(掌握)首页开发-FeatureView的封装</h2><h2 id="P15902-掌握-首页开发-TabControl的封装"><a href="#P15902-掌握-首页开发-TabControl的封装" class="headerlink" title="P15902-(掌握)首页开发-TabControl的封装"></a>P15902-(掌握)首页开发-TabControl的封装</h2><h2 id="P16003-掌握-首页开发-保存商品的数据结构设计"><a href="#P16003-掌握-首页开发-保存商品的数据结构设计" class="headerlink" title="P16003-(掌握)首页开发-保存商品的数据结构设计"></a>P16003-(掌握)首页开发-保存商品的数据结构设计</h2><h2 id="P16104-掌握-首页开发-首页数据的请求和保存"><a href="#P16104-掌握-首页开发-首页数据的请求和保存" class="headerlink" title="P16104-(掌握)首页开发-首页数据的请求和保存"></a>P16104-(掌握)首页开发-首页数据的请求和保存</h2><h2 id="P16205-掌握-首页开发-首页商品数据的展示"><a href="#P16205-掌握-首页开发-首页商品数据的展示" class="headerlink" title="P16205-(掌握)首页开发-首页商品数据的展示"></a>P16205-(掌握)首页开发-首页商品数据的展示</h2><h2 id="P16306-掌握-首页开发-TabControl点击切换商品"><a href="#P16306-掌握-首页开发-TabControl点击切换商品" class="headerlink" title="P16306-(掌握)首页开发-TabControl点击切换商品"></a>P16306-(掌握)首页开发-TabControl点击切换商品</h2><h2 id="P16407-掌握-Better-Scroll的安装和使用"><a href="#P16407-掌握-Better-Scroll的安装和使用" class="headerlink" title="P16407-(掌握)Better-Scroll的安装和使用"></a>P16407-(掌握)Better-Scroll的安装和使用</h2><h2 id="P16508-掌握-Better-scroll的基本使用解析"><a href="#P16508-掌握-Better-scroll的基本使用解析" class="headerlink" title="P16508-(掌握)Better-scroll的基本使用解析"></a>P16508-(掌握)Better-scroll的基本使用解析</h2><h2 id="P16609-掌握-Better-Scroll在Vue项目中使用过程"><a href="#P16609-掌握-Better-Scroll在Vue项目中使用过程" class="headerlink" title="P16609-(掌握)Better-Scroll在Vue项目中使用过程"></a>P16609-(掌握)Better-Scroll在Vue项目中使用过程</h2><h2 id="P16710-掌握-首页开发-BScroll的封装以及使用"><a href="#P16710-掌握-首页开发-BScroll的封装以及使用" class="headerlink" title="P16710-(掌握)首页开发-BScroll的封装以及使用"></a>P16710-(掌握)首页开发-BScroll的封装以及使用</h2><h2 id="P16811-掌握-首页开发-BackTop组件的封装和使用"><a href="#P16811-掌握-首页开发-BackTop组件的封装和使用" class="headerlink" title="P16811-(掌握)首页开发-BackTop组件的封装和使用"></a>P16811-(掌握)首页开发-BackTop组件的封装和使用</h2><h2 id="P16912-掌握-首页开发-BackTop的显示和隐藏"><a href="#P16912-掌握-首页开发-BackTop的显示和隐藏" class="headerlink" title="P16912-(掌握)首页开发-BackTop的显示和隐藏"></a>P16912-(掌握)首页开发-BackTop的显示和隐藏</h2><h2 id="P17013-掌握-首页开发-完成上拉加载更多"><a href="#P17013-掌握-首页开发-完成上拉加载更多" class="headerlink" title="P17013-(掌握)首页开发-完成上拉加载更多"></a>P17013-(掌握)首页开发-完成上拉加载更多</h2><h2 id="P17101-掌握-对昨天内容的回顾"><a href="#P17101-掌握-对昨天内容的回顾" class="headerlink" title="P17101-(掌握)对昨天内容的回顾"></a>P17101-(掌握)对昨天内容的回顾</h2><h2 id="P17202-掌握-首页开发-滚动区域的Bug分析和解决"><a href="#P17202-掌握-首页开发-滚动区域的Bug分析和解决" class="headerlink" title="P17202-(掌握)首页开发-滚动区域的Bug分析和解决"></a>P17202-(掌握)首页开发-滚动区域的Bug分析和解决</h2><h2 id="P17303-掌握-refresh函数找不到的bug处理"><a href="#P17303-掌握-refresh函数找不到的bug处理" class="headerlink" title="P17303-(掌握)refresh函数找不到的bug处理"></a>P17303-(掌握)refresh函数找不到的bug处理</h2><h2 id="P17404-掌握-刷新频繁的防抖函数处理"><a href="#P17404-掌握-刷新频繁的防抖函数处理" class="headerlink" title="P17404-(掌握)刷新频繁的防抖函数处理"></a>P17404-(掌握)刷新频繁的防抖函数处理</h2><h2 id="P17505-掌握-上拉加载更多的完成"><a href="#P17505-掌握-上拉加载更多的完成" class="headerlink" title="P17505-(掌握)上拉加载更多的完成"></a>P17505-(掌握)上拉加载更多的完成</h2><h2 id="P17606-掌握-tabControl的offsetTop获取分析"><a href="#P17606-掌握-tabControl的offsetTop获取分析" class="headerlink" title="P17606-(掌握)tabControl的offsetTop获取分析"></a>P17606-(掌握)tabControl的offsetTop获取分析</h2><h2 id="P17707-掌握-TabControl的吸顶效果完成"><a href="#P17707-掌握-TabControl的吸顶效果完成" class="headerlink" title="P17707-(掌握)TabControl的吸顶效果完成"></a>P17707-(掌握)TabControl的吸顶效果完成</h2><h2 id="P17808-掌握-Home离开时记录状态和位置"><a href="#P17808-掌握-Home离开时记录状态和位置" class="headerlink" title="P17808-(掌握)Home离开时记录状态和位置"></a>P17808-(掌握)Home离开时记录状态和位置</h2><h2 id="P17909-掌握-跳转到详情页并且携带iid"><a href="#P17909-掌握-跳转到详情页并且携带iid" class="headerlink" title="P17909-(掌握)跳转到详情页并且携带iid"></a>P17909-(掌握)跳转到详情页并且携带iid</h2><h2 id="P18010-掌握-详情页-导航栏的封装"><a href="#P18010-掌握-详情页-导航栏的封装" class="headerlink" title="P18010-(掌握)详情页-导航栏的封装"></a>P18010-(掌握)详情页-导航栏的封装</h2><h2 id="P18111-掌握-详情页-数据请求以及轮播图展示"><a href="#P18111-掌握-详情页-数据请求以及轮播图展示" class="headerlink" title="P18111-(掌握)详情页-数据请求以及轮播图展示"></a>P18111-(掌握)详情页-数据请求以及轮播图展示</h2><h2 id="P18213-掌握-详情页-店铺信息的解析和展示"><a href="#P18213-掌握-详情页-店铺信息的解析和展示" class="headerlink" title="P18213-(掌握)详情页-店铺信息的解析和展示"></a>P18213-(掌握)详情页-店铺信息的解析和展示</h2><h2 id="P18312-掌握-详情页-商品基本信息的展示"><a href="#P18312-掌握-详情页-商品基本信息的展示" class="headerlink" title="P18312-(掌握)详情页-商品基本信息的展示"></a>P18312-(掌握)详情页-商品基本信息的展示</h2><h2 id="P18414-掌握-详情页-加入滚动的效果Scroll"><a href="#P18414-掌握-详情页-加入滚动的效果Scroll" class="headerlink" title="P18414-(掌握)详情页-加入滚动的效果Scroll"></a>P18414-(掌握)详情页-加入滚动的效果Scroll</h2><h2 id="P18515-掌握-详情页-商品详情数据展示"><a href="#P18515-掌握-详情页-商品详情数据展示" class="headerlink" title="P18515-(掌握)详情页-商品详情数据展示"></a>P18515-(掌握)详情页-商品详情数据展示</h2><h2 id="P18616-掌握-详情页-商品参数信息的展示"><a href="#P18616-掌握-详情页-商品参数信息的展示" class="headerlink" title="P18616-(掌握)详情页-商品参数信息的展示"></a>P18616-(掌握)详情页-商品参数信息的展示</h2><h2 id="P18717-了解-内容的回顾3"><a href="#P18717-了解-内容的回顾3" class="headerlink" title="P18717-(了解)内容的回顾3"></a>P18717-(了解)内容的回顾3</h2><h2 id="P18801-掌握-详情页-从首页跳转详情页-iid"><a href="#P18801-掌握-详情页-从首页跳转详情页-iid" class="headerlink" title="P18801-(掌握)详情页-从首页跳转详情页-iid"></a>P18801-(掌握)详情页-从首页跳转详情页-iid</h2><h2 id="P18902-掌握-详情页-首页位置的保持"><a href="#P18902-掌握-详情页-首页位置的保持" class="headerlink" title="P18902-(掌握)详情页-首页位置的保持"></a>P18902-(掌握)详情页-首页位置的保持</h2><h2 id="P19003-掌握-详情页-详情页导航栏的实现"><a href="#P19003-掌握-详情页-详情页导航栏的实现" class="headerlink" title="P19003-(掌握)详情页-详情页导航栏的实现"></a>P19003-(掌握)详情页-详情页导航栏的实现</h2><h2 id="P19104-理解-Better-Scroll的scrollto函数的Bug"><a href="#P19104-理解-Better-Scroll的scrollto函数的Bug" class="headerlink" title="P19104-(理解)Better-Scroll的scrollto函数的Bug"></a>P19104-(理解)Better-Scroll的scrollto函数的Bug</h2><h2 id="P19205-掌握-详情页-根据iid详情页数据的请求"><a href="#P19205-掌握-详情页-根据iid详情页数据的请求" class="headerlink" title="P19205-(掌握)详情页-根据iid详情页数据的请求"></a>P19205-(掌握)详情页-根据iid详情页数据的请求</h2><h2 id="P19306-掌握-详情页-顶部轮播图的展示"><a href="#P19306-掌握-详情页-顶部轮播图的展示" class="headerlink" title="P19306-(掌握)详情页-顶部轮播图的展示"></a>P19306-(掌握)详情页-顶部轮播图的展示</h2><h2 id="P19407-掌握-详情页-商品的基本信息展示"><a href="#P19407-掌握-详情页-商品的基本信息展示" class="headerlink" title="P19407-(掌握)详情页-商品的基本信息展示"></a>P19407-(掌握)详情页-商品的基本信息展示</h2><h2 id="P19508-掌握-详情页-滚动问题处理和TabBar隐藏"><a href="#P19508-掌握-详情页-滚动问题处理和TabBar隐藏" class="headerlink" title="P19508-(掌握)详情页-滚动问题处理和TabBar隐藏"></a>P19508-(掌握)详情页-滚动问题处理和TabBar隐藏</h2><h2 id="P19609-掌握-详情页-详情页店铺信息展示"><a href="#P19609-掌握-详情页-详情页店铺信息展示" class="headerlink" title="P19609-(掌握)详情页-详情页店铺信息展示"></a>P19609-(掌握)详情页-详情页店铺信息展示</h2><h2 id="P19710-掌握-详情页-详情页商品图片信息展示"><a href="#P19710-掌握-详情页-详情页商品图片信息展示" class="headerlink" title="P19710-(掌握)详情页-详情页商品图片信息展示"></a>P19710-(掌握)详情页-详情页商品图片信息展示</h2><h2 id="P19811-掌握-详情页-商品参数信息的展示"><a href="#P19811-掌握-详情页-商品参数信息的展示" class="headerlink" title="P19811-(掌握)详情页-商品参数信息的展示"></a>P19811-(掌握)详情页-商品参数信息的展示</h2><h2 id="P19912-掌握-详情页-商品评论信息的展示"><a href="#P19912-掌握-详情页-商品评论信息的展示" class="headerlink" title="P19912-(掌握)详情页-商品评论信息的展示"></a>P19912-(掌握)详情页-商品评论信息的展示</h2><h2 id="P20013-掌握-详情页-商品推荐数据的展示"><a href="#P20013-掌握-详情页-商品推荐数据的展示" class="headerlink" title="P20013-(掌握)详情页-商品推荐数据的展示"></a>P20013-(掌握)详情页-商品推荐数据的展示</h2><h2 id="P20114-掌握-详情页-首页和详情页监听全局事件和mixin的使用"><a href="#P20114-掌握-详情页-首页和详情页监听全局事件和mixin的使用" class="headerlink" title="P20114-(掌握)详情页-首页和详情页监听全局事件和mixin的使用"></a>P20114-(掌握)详情页-首页和详情页监听全局事件和mixin的使用</h2><h2 id="P20215-了解-课堂内容回顾"><a href="#P20215-了解-课堂内容回顾" class="headerlink" title="P20215-(了解)课堂内容回顾"></a>P20215-(了解)课堂内容回顾</h2><h2 id="P20301-掌握-bug处理-首页TabControl不一致的问题"><a href="#P20301-掌握-bug处理-首页TabControl不一致的问题" class="headerlink" title="P20301-(掌握)bug处理-首页TabControl不一致的问题"></a>P20301-(掌握)bug处理-首页TabControl不一致的问题</h2><h2 id="P20402-掌握-bug处理-详情页不能滚动的bug处理"><a href="#P20402-掌握-bug处理-详情页不能滚动的bug处理" class="headerlink" title="P20402-(掌握)bug处理-详情页不能滚动的bug处理"></a>P20402-(掌握)bug处理-详情页不能滚动的bug处理</h2><h2 id="P20503-掌握-详情页-点击标题滚到对应内容"><a href="#P20503-掌握-详情页-点击标题滚到对应内容" class="headerlink" title="P20503-(掌握)详情页-点击标题滚到对应内容"></a>P20503-(掌握)详情页-点击标题滚到对应内容</h2><h2 id="P20604-掌握-详情页-滚动内容显示对应标题"><a href="#P20604-掌握-详情页-滚动内容显示对应标题" class="headerlink" title="P20604-(掌握)详情页-滚动内容显示对应标题"></a>P20604-(掌握)详情页-滚动内容显示对应标题</h2><h2 id="P20705-掌握-详情页-对复杂判断条件分析和优化"><a href="#P20705-掌握-详情页-对复杂判断条件分析和优化" class="headerlink" title="P20705-(掌握)详情页-对复杂判断条件分析和优化"></a>P20705-(掌握)详情页-对复杂判断条件分析和优化</h2><h2 id="P20806-掌握-详情页-底部工具栏的封装"><a href="#P20806-掌握-详情页-底部工具栏的封装" class="headerlink" title="P20806-(掌握)详情页-底部工具栏的封装"></a>P20806-(掌握)详情页-底部工具栏的封装</h2><h2 id="P20907-掌握-详情页-BackTop的混入封装"><a href="#P20907-掌握-详情页-BackTop的混入封装" class="headerlink" title="P20907-(掌握)详情页-BackTop的混入封装"></a>P20907-(掌握)详情页-BackTop的混入封装</h2><h2 id="P21008-掌握-详情页-将商品添加到购物车中"><a href="#P21008-掌握-详情页-将商品添加到购物车中" class="headerlink" title="P21008-(掌握)详情页-将商品添加到购物车中"></a>P21008-(掌握)详情页-将商品添加到购物车中</h2><h2 id="P21109-掌握-详情页-将商品添加到store中"><a href="#P21109-掌握-详情页-将商品添加到store中" class="headerlink" title="P21109-(掌握)详情页-将商品添加到store中"></a>P21109-(掌握)详情页-将商品添加到store中</h2><h2 id="P21210-掌握-详情页-Vuex中代码的重构"><a href="#P21210-掌握-详情页-Vuex中代码的重构" class="headerlink" title="P21210-(掌握)详情页-Vuex中代码的重构"></a>P21210-(掌握)详情页-Vuex中代码的重构</h2><h2 id="P21311-掌握-购物车-导航栏实现-Vuex知识点"><a href="#P21311-掌握-购物车-导航栏实现-Vuex知识点" class="headerlink" title="P21311-(掌握)购物车-导航栏实现-Vuex知识点"></a>P21311-(掌握)购物车-导航栏实现-Vuex知识点</h2><h2 id="P21412-掌握-购物车-购物车商品列表展示"><a href="#P21412-掌握-购物车-购物车商品列表展示" class="headerlink" title="P21412-(掌握)购物车-购物车商品列表展示"></a>P21412-(掌握)购物车-购物车商品列表展示</h2><h2 id="P21513-掌握-购物车-购物车列表的Item展示"><a href="#P21513-掌握-购物车-购物车列表的Item展示" class="headerlink" title="P21513-(掌握)购物车-购物车列表的Item展示"></a>P21513-(掌握)购物车-购物车列表的Item展示</h2><h2 id="P21614-掌握-购物车-Item选中和不选中的切换"><a href="#P21614-掌握-购物车-Item选中和不选中的切换" class="headerlink" title="P21614-(掌握)购物车-Item选中和不选中的切换"></a>P21614-(掌握)购物车-Item选中和不选中的切换</h2><h2 id="P21715-掌握-购物车-顶部工具的封装和应用"><a href="#P21715-掌握-购物车-顶部工具的封装和应用" class="headerlink" title="P21715-(掌握)购物车-顶部工具的封装和应用"></a>P21715-(掌握)购物车-顶部工具的封装和应用</h2><h2 id="P21816-了解-内容回顾"><a href="#P21816-了解-内容回顾" class="headerlink" title="P21816-(了解)内容回顾"></a>P21816-(了解)内容回顾</h2><h2 id="P21901-掌握-购物车-全选按钮的状态显示"><a href="#P21901-掌握-购物车-全选按钮的状态显示" class="headerlink" title="P21901-(掌握)购物车-全选按钮的状态显示"></a>P21901-(掌握)购物车-全选按钮的状态显示</h2><h2 id="P22002-掌握-购物车-全选按钮的点击效果"><a href="#P22002-掌握-购物车-全选按钮的点击效果" class="headerlink" title="P22002-(掌握)购物车-全选按钮的点击效果"></a>P22002-(掌握)购物车-全选按钮的点击效果</h2><h2 id="P22103-掌握-Vuex-actions返回Promise-mapActions"><a href="#P22103-掌握-Vuex-actions返回Promise-mapActions" class="headerlink" title="P22103-(掌握)Vuex-actions返回Promise-mapActions"></a>P22103-(掌握)Vuex-actions返回Promise-mapActions</h2><h2 id="P22204-掌握-Toast封装-普通方式的封装"><a href="#P22204-掌握-Toast封装-普通方式的封装" class="headerlink" title="P22204-(掌握)Toast封装-普通方式的封装"></a>P22204-(掌握)Toast封装-普通方式的封装</h2><h2 id="P22305-掌握-Toast封装-插件方式的封装"><a href="#P22305-掌握-Toast封装-插件方式的封装" class="headerlink" title="P22305-(掌握)Toast封装-插件方式的封装"></a>P22305-(掌握)Toast封装-插件方式的封装</h2><h2 id="P22406-掌握-fastclick-解决移动端300ms延迟"><a href="#P22406-掌握-fastclick-解决移动端300ms延迟" class="headerlink" title="P22406-(掌握)fastclick-解决移动端300ms延迟"></a>P22406-(掌握)fastclick-解决移动端300ms延迟</h2><h2 id="P22507-掌握-图片懒加载-vue-lazyload框架"><a href="#P22507-掌握-图片懒加载-vue-lazyload框架" class="headerlink" title="P22507-(掌握)图片懒加载-vue-lazyload框架"></a>P22507-(掌握)图片懒加载-vue-lazyload框架</h2><h2 id="P22608-掌握-px2vw-css单位转化插件"><a href="#P22608-掌握-px2vw-css单位转化插件" class="headerlink" title="P22608-(掌握)px2vw-css单位转化插件"></a>P22608-(掌握)px2vw-css单位转化插件</h2><h2 id="P22709-理解-nginx-项目在window下的部署"><a href="#P22709-理解-nginx-项目在window下的部署" class="headerlink" title="P22709-(理解)nginx-项目在window下的部署"></a>P22709-(理解)nginx-项目在window下的部署</h2><h2 id="P22810-理解-nginx-项目在远程linux下的部署"><a href="#P22810-理解-nginx-项目在远程linux下的部署" class="headerlink" title="P22810-(理解)nginx-项目在远程linux下的部署"></a>P22810-(理解)nginx-项目在远程linux下的部署</h2><h2 id="P22911-理解-响应式原理-依赖技术的分析和学习"><a href="#P22911-理解-响应式原理-依赖技术的分析和学习" class="headerlink" title="P22911-(理解)响应式原理-依赖技术的分析和学习"></a>P22911-(理解)响应式原理-依赖技术的分析和学习</h2><h2 id="P23012-理解-响应式原理-通过图解理解过程"><a href="#P23012-理解-响应式原理-通过图解理解过程" class="headerlink" title="P23012-(理解)响应式原理-通过图解理解过程"></a>P23012-(理解)响应式原理-通过图解理解过程</h2><h2 id="P23113-理解-响应式原理-对应的代码"><a href="#P23113-理解-响应式原理-对应的代码" class="headerlink" title="P23113-(理解)响应式原理-对应的代码"></a>P23113-(理解)响应式原理-对应的代码</h2><p>不好意思打擾，上次暑修課程專區頁面，在思考後修改一些內容，</p>
+<p><a href="https://codepen.io/johch3n611u/full/MWaReyR" target="_blank" rel="noopener">https://codepen.io/johch3n611u/full/MWaReyR</a></p>
+<p>以下為處理時考量的著重點:</p>
+<p>1.資料的權重<br>2.資料的種類</p>
+<p>資料藉由顏色或樣式能夠直覺的區分不同權重種類的資料</p>
+<p>3.即時的知道焦點位置<br>4.元件與使用者的互動</p>
+<p>資料內有外連其他功能，藉由按鈕樣式讓使用者直覺的知道這是功能，且添加一些hover讓使用者知道目前聚焦位置</p>
+<p>5.程式碼需要易於修改</p>
+<p>不確定是否有vue 組件化或 sass 程式化，所以部份樣式採取擷取bs樣式在重新安排在元素選擇器上，日後文本結構有變動也不用一個個元素做類別調整</p>
+<p>6.UI 調整</p>
+<p>發現第二個 table 第一個 tr 少合併一個 col ，調整為同第一個 table 提高整體畫面協調度與一致性</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/StudyProject/" rel="tag"># StudyProject</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/23/dotNetCoreBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/" rel="prev" title="dotNetCoreBilibili教學筆記">
+      <i class="fa fa-chevron-left"></i> dotNetCoreBilibili教學筆記
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/23/QuasarIthelp%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/" rel="next" title="QuasarIthelp教學筆記">
+      QuasarIthelp教學筆記 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P101-了解-Vuejs课程介绍"><span class="nav-number">1.</span> <span class="nav-text">P101-(了解)Vuejs课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-知識量化"><span class="nav-number">1.1.</span> <span class="nav-text">Vue 知識量化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#組件化開發"><span class="nav-number">1.2.</span> <span class="nav-text">組件化開發</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P202-理解-Vuejs的认识和特点介绍"><span class="nav-number">2.</span> <span class="nav-text">P202-(理解)Vuejs的认识和特点介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P303-掌握-vuejs安装方式"><span class="nav-number">3.</span> <span class="nav-text">P303-(掌握)vuejs安装方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P404-掌握-HelloVuejs的初体验"><span class="nav-number">4.</span> <span class="nav-text">P404-(掌握)HelloVuejs的初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P505-掌握-Vue列表的展示"><span class="nav-number">5.</span> <span class="nav-text">P505-(掌握)Vue列表的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P606-掌握-小案例-计数器"><span class="nav-number">6.</span> <span class="nav-text">P606-(掌握)小案例-计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P707-理解-Vue的mvvm"><span class="nav-number">7.</span> <span class="nav-text">P707-(理解)Vue的mvvm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P808-理解-Vue的options选项"><span class="nav-number">8.</span> <span class="nav-text">P808-(理解)Vue的options选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P909-理解-什么是Vue的生命周期"><span class="nav-number">9.</span> <span class="nav-text">P909-(理解)什么是Vue的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1010-理解-Vue的生命周期函数有哪些"><span class="nav-number">10.</span> <span class="nav-text">P1010-(理解)Vue的生命周期函数有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1111-了解-定义vue的template"><span class="nav-number">11.</span> <span class="nav-text">P1111-(了解)定义vue的template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1212-掌握-插值操作-mustache语法"><span class="nav-number">12.</span> <span class="nav-text">P1212-(掌握)插值操作-mustache语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1313-掌握-插值操作-其他指令使用"><span class="nav-number">13.</span> <span class="nav-text">P1313-(掌握)插值操作-其他指令使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1414-掌握-v-bind的基本使用"><span class="nav-number">14.</span> <span class="nav-text">P1414-(掌握)v-bind的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1515-掌握-v-bind动态绑定class-对象语法"><span class="nav-number">15.</span> <span class="nav-text">P1515-(掌握)v-bind动态绑定class(对象语法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1616-了解-v-bind动态绑定class-数组语法"><span class="nav-number">16.</span> <span class="nav-text">P1616-(了解)v-bind动态绑定class(数组语法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1717-完成-v-bind和v-for结合的作业布置"><span class="nav-number">17.</span> <span class="nav-text">P1717-(完成)v-bind和v-for结合的作业布置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1818-掌握-v-bind动态绑定style-对象语法"><span class="nav-number">18.</span> <span class="nav-text">P1818-(掌握)v-bind动态绑定style(对象语法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1919-了解-v-bind动态绑定style-数组语法"><span class="nav-number">19.</span> <span class="nav-text">P1919-(了解)v-bind动态绑定style(数组语法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2020-掌握-计算属性的基本使用"><span class="nav-number">20.</span> <span class="nav-text">P2020-(掌握)计算属性的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2121-掌握-计算属性的复杂操作"><span class="nav-number">21.</span> <span class="nav-text">P2121-(掌握)计算属性的复杂操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2222-了解-课堂回顾"><span class="nav-number">22.</span> <span class="nav-text">P2222-(了解)课堂回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2301-理解-计算属性setter和getter"><span class="nav-number">23.</span> <span class="nav-text">P2301-(理解)计算属性setter和getter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2402-掌握-计算属性和methods的对比"><span class="nav-number">24.</span> <span class="nav-text">P2402-(掌握)计算属性和methods的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2503-掌握-块级作用域-let和var"><span class="nav-number">25.</span> <span class="nav-text">P2503-(掌握)块级作用域-let和var</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2604-理解-三种方案对比-ES5没有闭包-有闭包-ES6的let"><span class="nav-number">26.</span> <span class="nav-text">P2604-(理解)三种方案对比-ES5没有闭包-有闭包-ES6的let</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2705-掌握-const的使用和注意点"><span class="nav-number">27.</span> <span class="nav-text">P2705-(掌握)const的使用和注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2806-掌握-ES6对象字面量增强写法"><span class="nav-number">28.</span> <span class="nav-text">P2806-(掌握)ES6对象字面量增强写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2908-掌握-v-on的基本使用和语法糖"><span class="nav-number">29.</span> <span class="nav-text">P2908-(掌握)v-on的基本使用和语法糖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3009-掌握-v-on的参数传递问题"><span class="nav-number">30.</span> <span class="nav-text">P3009-(掌握)v-on的参数传递问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3110-掌握-v-on的修饰符使用"><span class="nav-number">31.</span> <span class="nav-text">P3110-(掌握)v-on的修饰符使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3211-掌握-v-if和v-else-if和v-else的使用"><span class="nav-number">32.</span> <span class="nav-text">P3211-(掌握)v-if和v-else-if和v-else的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3312-掌握-登录切换的小案例"><span class="nav-number">33.</span> <span class="nav-text">P3312-(掌握)登录切换的小案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3413-理解-登录切换的input复用问题"><span class="nav-number">34.</span> <span class="nav-text">P3413-(理解)登录切换的input复用问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3514-掌握-v-show的使用以及和v-if的区别"><span class="nav-number">35.</span> <span class="nav-text">P3514-(掌握)v-show的使用以及和v-if的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3615-掌握-v-for遍历数组和对象"><span class="nav-number">36.</span> <span class="nav-text">P3615-(掌握)v-for遍历数组和对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3716-理解-v-for-绑定和非绑定key的区别"><span class="nav-number">37.</span> <span class="nav-text">P3716-(理解)v-for-绑定和非绑定key的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3817-掌握-数组中哪些方法是响应式的"><span class="nav-number">38.</span> <span class="nav-text">P3817-(掌握)数组中哪些方法是响应式的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3918-掌握-作业的回顾和实现"><span class="nav-number">39.</span> <span class="nav-text">P3918-(掌握)作业的回顾和实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4019-掌握-购物车案例-界面搭建"><span class="nav-number">40.</span> <span class="nav-text">P4019-(掌握)购物车案例-界面搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4120-掌握-购物车案例-过滤器的使用"><span class="nav-number">41.</span> <span class="nav-text">P4120-(掌握)购物车案例-过滤器的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4221-掌握-购物车案例-改变购买数量"><span class="nav-number">42.</span> <span class="nav-text">P4221-(掌握)购物车案例-改变购买数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4322-掌握-购物车案例-移除按钮-最终价格"><span class="nav-number">43.</span> <span class="nav-text">P4322-(掌握)购物车案例-移除按钮-最终价格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4401-掌握-JavaScript高阶函数的使用"><span class="nav-number">44.</span> <span class="nav-text">P4401-(掌握)JavaScript高阶函数的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4502-掌握-v-model的使用和原理"><span class="nav-number">45.</span> <span class="nav-text">P4502-(掌握)v-model的使用和原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4603-掌握-v-model结合radio类型使用"><span class="nav-number">46.</span> <span class="nav-text">P4603-(掌握)v-model结合radio类型使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4704-掌握-v-model结合checkbox类型使用"><span class="nav-number">47.</span> <span class="nav-text">P4704-(掌握)v-model结合checkbox类型使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4805-掌握-v-model结合select类型使用"><span class="nav-number">48.</span> <span class="nav-text">P4805-(掌握)v-model结合select类型使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4906-掌握-input中的值绑定"><span class="nav-number">49.</span> <span class="nav-text">P4906-(掌握)input中的值绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5007-掌握-v-model修饰符的使用"><span class="nav-number">50.</span> <span class="nav-text">P5007-(掌握)v-model修饰符的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5108-掌握-组件化的实现和使用步骤"><span class="nav-number">51.</span> <span class="nav-text">P5108-(掌握)组件化的实现和使用步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5209-掌握-组件化的基本使用过程"><span class="nav-number">52.</span> <span class="nav-text">P5209-(掌握)组件化的基本使用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5310-掌握-全局组件和局部组件"><span class="nav-number">53.</span> <span class="nav-text">P5310-(掌握)全局组件和局部组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5411-掌握-父组件和子组件的区分"><span class="nav-number">54.</span> <span class="nav-text">P5411-(掌握)父组件和子组件的区分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5512-掌握-注册组件的语法糖写法"><span class="nav-number">55.</span> <span class="nav-text">P5512-(掌握)注册组件的语法糖写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5613-掌握-组件模板抽离的写法"><span class="nav-number">56.</span> <span class="nav-text">P5613-(掌握)组件模板抽离的写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5714-理解-为什么组件data必须是函数"><span class="nav-number">57.</span> <span class="nav-text">P5714-(理解)为什么组件data必须是函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5815-掌握-父子组件通信-父传子props"><span class="nav-number">58.</span> <span class="nav-text">P5815-(掌握)父子组件通信-父传子props</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5916-掌握-父子组件通信-props驼峰标识"><span class="nav-number">59.</span> <span class="nav-text">P5916-(掌握)父子组件通信-props驼峰标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6017-掌握-父子组件通信-子传父-自定义事件"><span class="nav-number">60.</span> <span class="nav-text">P6017-(掌握)父子组件通信-子传父(自定义事件)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6118-了解-项目演示"><span class="nav-number">61.</span> <span class="nav-text">P6118-(了解)项目演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6219-了解-知识回顾"><span class="nav-number">62.</span> <span class="nav-text">P6219-(了解)知识回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6301-掌握-父子组件通信-结合双向绑定案例"><span class="nav-number">63.</span> <span class="nav-text">P6301-(掌握)父子组件通信-结合双向绑定案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6402-掌握-结合双向绑定案例-画图分析"><span class="nav-number">64.</span> <span class="nav-text">P6402-(掌握)结合双向绑定案例-画图分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6503-了解-结合双向绑定案例-watch实现"><span class="nav-number">65.</span> <span class="nav-text">P6503-(了解)结合双向绑定案例-watch实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6604-掌握-父访问子-children-refs"><span class="nav-number">66.</span> <span class="nav-text">P6604-(掌握)父访问子-children-refs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6705-理解-子访问父-parent-root"><span class="nav-number">67.</span> <span class="nav-text">P6705-(理解)子访问父-parent-root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6806-掌握-slot-插槽的基本使用"><span class="nav-number">68.</span> <span class="nav-text">P6806-(掌握)slot-插槽的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6907-掌握-slot-具名插槽的使用"><span class="nav-number">69.</span> <span class="nav-text">P6907-(掌握)slot-具名插槽的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7008-理解-编译作用域的概念"><span class="nav-number">70.</span> <span class="nav-text">P7008-(理解)编译作用域的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7109-掌握-作用域插槽的使用"><span class="nav-number">71.</span> <span class="nav-text">P7109-(掌握)作用域插槽的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7210-理解-前端代码复杂带来的问题"><span class="nav-number">72.</span> <span class="nav-text">P7210-(理解)前端代码复杂带来的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7311-理解-前端模块化雏形和CommonJS"><span class="nav-number">73.</span> <span class="nav-text">P7311-(理解)前端模块化雏形和CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7412-掌握-ES模块化的导入和导出"><span class="nav-number">74.</span> <span class="nav-text">P7412-(掌握)ES模块化的导入和导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7513-理解-webpack的介绍和安装"><span class="nav-number">75.</span> <span class="nav-text">P7513-(理解)webpack的介绍和安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7614-掌握-webpack的基本使用过程"><span class="nav-number">76.</span> <span class="nav-text">P7614-(掌握)webpack的基本使用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7715-掌握-webpack-config-js配置和package-json配置"><span class="nav-number">77.</span> <span class="nav-text">P7715-(掌握)webpack.config.js配置和package.json配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7816-掌握-webpack中使用css文件的配置"><span class="nav-number">78.</span> <span class="nav-text">P7816-(掌握)webpack中使用css文件的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7901-掌握-webpack-less文件的处理"><span class="nav-number">79.</span> <span class="nav-text">P7901-(掌握)webpack-less文件的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8002-掌握-webpack-图片文件的处理"><span class="nav-number">80.</span> <span class="nav-text">P8002-(掌握)webpack-图片文件的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8103-掌握-webpack-ES6转ES5的babel"><span class="nav-number">81.</span> <span class="nav-text">P8103-(掌握)webpack-ES6转ES5的babel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8204-掌握-webpack-使用Vue的配置过程"><span class="nav-number">82.</span> <span class="nav-text">P8204-(掌握)webpack-使用Vue的配置过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8305-掌握-创建Vue时template和el关系"><span class="nav-number">83.</span> <span class="nav-text">P8305-(掌握)创建Vue时template和el关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8406-掌握-Vue的终极使用方案"><span class="nav-number">84.</span> <span class="nav-text">P8406-(掌握)Vue的终极使用方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8507-掌握-webpack-横幅Plugin的使用"><span class="nav-number">85.</span> <span class="nav-text">P8507-(掌握)webpack-横幅Plugin的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8608-掌握-webpack-HtmlWebpackPlugin的使用"><span class="nav-number">86.</span> <span class="nav-text">P8608-(掌握)webpack-HtmlWebpackPlugin的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8709-掌握-webpack-UglifyjsWebpackPlugin的使用"><span class="nav-number">87.</span> <span class="nav-text">P8709-(掌握)webpack-UglifyjsWebpackPlugin的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8810-掌握-webpack-dev-server搭建本地服务器"><span class="nav-number">88.</span> <span class="nav-text">P8810-(掌握)webpack-dev-server搭建本地服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8911-掌握-webpack-配置文件的分离"><span class="nav-number">89.</span> <span class="nav-text">P8911-(掌握)webpack-配置文件的分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9012-理解-vuecli-脚手架的介绍和安装"><span class="nav-number">90.</span> <span class="nav-text">P9012-(理解)vuecli-脚手架的介绍和安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9113-掌握-vuecli-CLI2初始化项目过程"><span class="nav-number">91.</span> <span class="nav-text">P9113-(掌握)vuecli-CLI2初始化项目过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9214-理解-vuecli-CLI2的目录结构解析"><span class="nav-number">92.</span> <span class="nav-text">P9214-(理解)vuecli-CLI2的目录结构解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9315-了解-知识回顾"><span class="nav-number">93.</span> <span class="nav-text">P9315-(了解)知识回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9401-掌握-安装CLI错误和ESLint规范"><span class="nav-number">94.</span> <span class="nav-text">P9401-(掌握)安装CLI错误和ESLint规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9502-理解-runtime-compiler和runtime-only的区别"><span class="nav-number">95.</span> <span class="nav-text">P9502-(理解)runtime-compiler和runtime-only的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9603-掌握-VueCLI3创建项目和目录结构"><span class="nav-number">96.</span> <span class="nav-text">P9603-(掌握)VueCLI3创建项目和目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9704-掌握-VueCLI3配置文件的查看和修改"><span class="nav-number">97.</span> <span class="nav-text">P9704-(掌握)VueCLI3配置文件的查看和修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9805-掌握-箭头函数的使用和this指向"><span class="nav-number">98.</span> <span class="nav-text">P9805-(掌握)箭头函数的使用和this指向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P9906-理解-什么是路由和其中映射关系"><span class="nav-number">99.</span> <span class="nav-text">P9906-(理解)什么是路由和其中映射关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10007-理解-前端渲染后端渲染和前端路由后端路由"><span class="nav-number">100.</span> <span class="nav-text">P10007-(理解)前端渲染后端渲染和前端路由后端路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10108-掌握-url的hash和HTML5的history"><span class="nav-number">101.</span> <span class="nav-text">P10108-(掌握)url的hash和HTML5的history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10209-掌握-vue-router-安装和配置方式"><span class="nav-number">102.</span> <span class="nav-text">P10209-(掌握)vue-router-安装和配置方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10310-掌握-路由映射配置和呈现出来"><span class="nav-number">103.</span> <span class="nav-text">P10310-(掌握)路由映射配置和呈现出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10411-掌握-路由的默认值和修改为history模式"><span class="nav-number">104.</span> <span class="nav-text">P10411-(掌握)路由的默认值和修改为history模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10512-掌握-router-link的其他属性补充"><span class="nav-number">105.</span> <span class="nav-text">P10512-(掌握)router-link的其他属性补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10613-掌握-通过代码跳转路由"><span class="nav-number">106.</span> <span class="nav-text">P10613-(掌握)通过代码跳转路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10701-掌握-vue-router-动态路由的使用"><span class="nav-number">107.</span> <span class="nav-text">P10701-(掌握)vue-router-动态路由的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10802-掌握-vue-router-打包文件的解析"><span class="nav-number">108.</span> <span class="nav-text">P10802-(掌握)vue-router-打包文件的解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P10903-掌握-vue-router-路由懒加载的使用"><span class="nav-number">109.</span> <span class="nav-text">P10903-(掌握)vue-router-路由懒加载的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11004-掌握-vue-router-路由的嵌套使用"><span class="nav-number">110.</span> <span class="nav-text">P11004-(掌握)vue-router-路由的嵌套使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11105-掌握-vue-router-参数传递-一"><span class="nav-number">111.</span> <span class="nav-text">P11105-(掌握)vue-router-参数传递(一)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11206-掌握-vue-router-参数传递-二"><span class="nav-number">112.</span> <span class="nav-text">P11206-(掌握)vue-router-参数传递(二)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11307-理解-vue-router-router和route的由来"><span class="nav-number">113.</span> <span class="nav-text">P11307-(理解)vue-router-router和route的由来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11408-掌握-vue-router-全局导航守卫"><span class="nav-number">114.</span> <span class="nav-text">P11408-(掌握)vue-router-全局导航守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11509-理解-vue-router-导航守卫的补充"><span class="nav-number">115.</span> <span class="nav-text">P11509-(理解)vue-router-导航守卫的补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11610-掌握-vue-router-keep-alive及其他问题"><span class="nav-number">116.</span> <span class="nav-text">P11610-(掌握)vue-router-keep-alive及其他问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11711-掌握-vue-router-keep-alive属性介绍"><span class="nav-number">117.</span> <span class="nav-text">P11711-(掌握)vue-router-keep-alive属性介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11812-掌握-tabbar-基本结构的搭建"><span class="nav-number">118.</span> <span class="nav-text">P11812-(掌握)tabbar-基本结构的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P11913-掌握-tabbar-TabBar和TabBarItem组件封装"><span class="nav-number">119.</span> <span class="nav-text">P11913-(掌握)tabbar-TabBar和TabBarItem组件封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12014-掌握-tabbar-给TabBarItem传入active图片"><span class="nav-number">120.</span> <span class="nav-text">P12014-(掌握)tabbar-给TabBarItem传入active图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12115-掌握-tabbar-TabBarItem和路由结合效果"><span class="nav-number">121.</span> <span class="nav-text">P12115-(掌握)tabbar-TabBarItem和路由结合效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12216-掌握-tabbar-TabBarItem的颜色动态控制"><span class="nav-number">122.</span> <span class="nav-text">P12216-(掌握)tabbar-TabBarItem的颜色动态控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12317-了解-知识回顾"><span class="nav-number">123.</span> <span class="nav-text">P12317-(了解)知识回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12401-掌握-tabbar-文件路径的引用问题"><span class="nav-number">124.</span> <span class="nav-text">P12401-(掌握)tabbar-文件路径的引用问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12502-掌握-Promise-Promise的介绍和基本使用"><span class="nav-number">125.</span> <span class="nav-text">P12502-(掌握)Promise-Promise的介绍和基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12603-掌握-Promise-Promise的三种状态和另外处理方式"><span class="nav-number">126.</span> <span class="nav-text">P12603-(掌握)Promise-Promise的三种状态和另外处理方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12704-掌握-Promise-Promise的链式调用"><span class="nav-number">127.</span> <span class="nav-text">P12704-(掌握)Promise-Promise的链式调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12805-掌握-Promise-Promise的all方法使用"><span class="nav-number">128.</span> <span class="nav-text">P12805-(掌握)Promise-Promise的all方法使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12906-掌握-vuex-Vuex概念和作用解析"><span class="nav-number">129.</span> <span class="nav-text">P12906-(掌握)vuex-Vuex概念和作用解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13007-掌握-vuex-单界面到多界面状态管理切换"><span class="nav-number">130.</span> <span class="nav-text">P13007-(掌握)vuex-单界面到多界面状态管理切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13108-掌握-vuex-devtools和mutations"><span class="nav-number">131.</span> <span class="nav-text">P13108-(掌握)vuex-devtools和mutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13209-掌握-vuex-state单一状态树的理解"><span class="nav-number">132.</span> <span class="nav-text">P13209-(掌握)vuex-state单一状态树的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13310-掌握-vuex-getters的使用详解"><span class="nav-number">133.</span> <span class="nav-text">P13310-(掌握)vuex-getters的使用详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13411-掌握-vuex-mutations的携带参数"><span class="nav-number">134.</span> <span class="nav-text">P13411-(掌握)vuex-mutations的携带参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13512-掌握-vuex-mutations的提交风格"><span class="nav-number">135.</span> <span class="nav-text">P13512-(掌握)vuex-mutations的提交风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13613-掌握-vuex-数据的响应式原理"><span class="nav-number">136.</span> <span class="nav-text">P13613-(掌握)vuex-数据的响应式原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13714-掌握-vuex-mutations的类型常量"><span class="nav-number">137.</span> <span class="nav-text">P13714-(掌握)vuex-mutations的类型常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13815-掌握-vuex-actions的使用详解"><span class="nav-number">138.</span> <span class="nav-text">P13815-(掌握)vuex-actions的使用详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13916-掌握-vuex-modules的使用详解"><span class="nav-number">139.</span> <span class="nav-text">P13916-(掌握)vuex-modules的使用详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14017-掌握-vuex-store文件夹的目录组织"><span class="nav-number">140.</span> <span class="nav-text">P14017-(掌握)vuex-store文件夹的目录组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14101-了解-网络请求模块的选择-axios"><span class="nav-number">141.</span> <span class="nav-text">P14101-(了解)网络请求模块的选择-axios</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14202-掌握-axios框架的基本使用"><span class="nav-number">142.</span> <span class="nav-text">P14202-(掌握)axios框架的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14303-掌握-axios发送并发请求"><span class="nav-number">143.</span> <span class="nav-text">P14303-(掌握)axios发送并发请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14404-掌握-axios的配置信息相关"><span class="nav-number">144.</span> <span class="nav-text">P14404-(掌握)axios的配置信息相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14505-掌握-axios的实例和模块封装"><span class="nav-number">145.</span> <span class="nav-text">P14505-(掌握)axios的实例和模块封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14606-掌握-axios的拦截器的使用"><span class="nav-number">146.</span> <span class="nav-text">P14606-(掌握)axios的拦截器的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14707-掌握-项目开发-项目创建和GitHub托管"><span class="nav-number">147.</span> <span class="nav-text">P14707-(掌握)项目开发-项目创建和GitHub托管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14808-掌握-项目开发-划分目录结构"><span class="nav-number">148.</span> <span class="nav-text">P14808-(掌握)项目开发-划分目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14909-掌握-项目开发-css文件的引入"><span class="nav-number">149.</span> <span class="nav-text">P14909-(掌握)项目开发-css文件的引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15010-掌握-项目开发-vue-config和editorconfig"><span class="nav-number">150.</span> <span class="nav-text">P15010-(掌握)项目开发-vue.config和editorconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15111-掌握-项目开发-tabbar引入和项目模块划分"><span class="nav-number">151.</span> <span class="nav-text">P15111-(掌握)项目开发-tabbar引入和项目模块划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15212-理解-项目开发-小图标的修改以及路径问题"><span class="nav-number">152.</span> <span class="nav-text">P15212-(理解)项目开发-小图标的修改以及路径问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15313-掌握-首页开发-首页导航栏的封装和使用"><span class="nav-number">153.</span> <span class="nav-text">P15313-(掌握)首页开发-首页导航栏的封装和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15414-掌握-首页开发-请求首页的多个数据"><span class="nav-number">154.</span> <span class="nav-text">P15414-(掌握)首页开发-请求首页的多个数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15515-掌握-首页开发-轮播图的展示"><span class="nav-number">155.</span> <span class="nav-text">P15515-(掌握)首页开发-轮播图的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15616-掌握-首页开发-推荐信息的展示"><span class="nav-number">156.</span> <span class="nav-text">P15616-(掌握)首页开发-推荐信息的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15717-了解-知识回顾2"><span class="nav-number">157.</span> <span class="nav-text">P15717-(了解)知识回顾2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15801-掌握-首页开发-FeatureView的封装"><span class="nav-number">158.</span> <span class="nav-text">P15801-(掌握)首页开发-FeatureView的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15902-掌握-首页开发-TabControl的封装"><span class="nav-number">159.</span> <span class="nav-text">P15902-(掌握)首页开发-TabControl的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16003-掌握-首页开发-保存商品的数据结构设计"><span class="nav-number">160.</span> <span class="nav-text">P16003-(掌握)首页开发-保存商品的数据结构设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16104-掌握-首页开发-首页数据的请求和保存"><span class="nav-number">161.</span> <span class="nav-text">P16104-(掌握)首页开发-首页数据的请求和保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16205-掌握-首页开发-首页商品数据的展示"><span class="nav-number">162.</span> <span class="nav-text">P16205-(掌握)首页开发-首页商品数据的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16306-掌握-首页开发-TabControl点击切换商品"><span class="nav-number">163.</span> <span class="nav-text">P16306-(掌握)首页开发-TabControl点击切换商品</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16407-掌握-Better-Scroll的安装和使用"><span class="nav-number">164.</span> <span class="nav-text">P16407-(掌握)Better-Scroll的安装和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16508-掌握-Better-scroll的基本使用解析"><span class="nav-number">165.</span> <span class="nav-text">P16508-(掌握)Better-scroll的基本使用解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16609-掌握-Better-Scroll在Vue项目中使用过程"><span class="nav-number">166.</span> <span class="nav-text">P16609-(掌握)Better-Scroll在Vue项目中使用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16710-掌握-首页开发-BScroll的封装以及使用"><span class="nav-number">167.</span> <span class="nav-text">P16710-(掌握)首页开发-BScroll的封装以及使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16811-掌握-首页开发-BackTop组件的封装和使用"><span class="nav-number">168.</span> <span class="nav-text">P16811-(掌握)首页开发-BackTop组件的封装和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16912-掌握-首页开发-BackTop的显示和隐藏"><span class="nav-number">169.</span> <span class="nav-text">P16912-(掌握)首页开发-BackTop的显示和隐藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17013-掌握-首页开发-完成上拉加载更多"><span class="nav-number">170.</span> <span class="nav-text">P17013-(掌握)首页开发-完成上拉加载更多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17101-掌握-对昨天内容的回顾"><span class="nav-number">171.</span> <span class="nav-text">P17101-(掌握)对昨天内容的回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17202-掌握-首页开发-滚动区域的Bug分析和解决"><span class="nav-number">172.</span> <span class="nav-text">P17202-(掌握)首页开发-滚动区域的Bug分析和解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17303-掌握-refresh函数找不到的bug处理"><span class="nav-number">173.</span> <span class="nav-text">P17303-(掌握)refresh函数找不到的bug处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17404-掌握-刷新频繁的防抖函数处理"><span class="nav-number">174.</span> <span class="nav-text">P17404-(掌握)刷新频繁的防抖函数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17505-掌握-上拉加载更多的完成"><span class="nav-number">175.</span> <span class="nav-text">P17505-(掌握)上拉加载更多的完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17606-掌握-tabControl的offsetTop获取分析"><span class="nav-number">176.</span> <span class="nav-text">P17606-(掌握)tabControl的offsetTop获取分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17707-掌握-TabControl的吸顶效果完成"><span class="nav-number">177.</span> <span class="nav-text">P17707-(掌握)TabControl的吸顶效果完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17808-掌握-Home离开时记录状态和位置"><span class="nav-number">178.</span> <span class="nav-text">P17808-(掌握)Home离开时记录状态和位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17909-掌握-跳转到详情页并且携带iid"><span class="nav-number">179.</span> <span class="nav-text">P17909-(掌握)跳转到详情页并且携带iid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18010-掌握-详情页-导航栏的封装"><span class="nav-number">180.</span> <span class="nav-text">P18010-(掌握)详情页-导航栏的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18111-掌握-详情页-数据请求以及轮播图展示"><span class="nav-number">181.</span> <span class="nav-text">P18111-(掌握)详情页-数据请求以及轮播图展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18213-掌握-详情页-店铺信息的解析和展示"><span class="nav-number">182.</span> <span class="nav-text">P18213-(掌握)详情页-店铺信息的解析和展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18312-掌握-详情页-商品基本信息的展示"><span class="nav-number">183.</span> <span class="nav-text">P18312-(掌握)详情页-商品基本信息的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18414-掌握-详情页-加入滚动的效果Scroll"><span class="nav-number">184.</span> <span class="nav-text">P18414-(掌握)详情页-加入滚动的效果Scroll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18515-掌握-详情页-商品详情数据展示"><span class="nav-number">185.</span> <span class="nav-text">P18515-(掌握)详情页-商品详情数据展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18616-掌握-详情页-商品参数信息的展示"><span class="nav-number">186.</span> <span class="nav-text">P18616-(掌握)详情页-商品参数信息的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18717-了解-内容的回顾3"><span class="nav-number">187.</span> <span class="nav-text">P18717-(了解)内容的回顾3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18801-掌握-详情页-从首页跳转详情页-iid"><span class="nav-number">188.</span> <span class="nav-text">P18801-(掌握)详情页-从首页跳转详情页-iid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18902-掌握-详情页-首页位置的保持"><span class="nav-number">189.</span> <span class="nav-text">P18902-(掌握)详情页-首页位置的保持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19003-掌握-详情页-详情页导航栏的实现"><span class="nav-number">190.</span> <span class="nav-text">P19003-(掌握)详情页-详情页导航栏的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19104-理解-Better-Scroll的scrollto函数的Bug"><span class="nav-number">191.</span> <span class="nav-text">P19104-(理解)Better-Scroll的scrollto函数的Bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19205-掌握-详情页-根据iid详情页数据的请求"><span class="nav-number">192.</span> <span class="nav-text">P19205-(掌握)详情页-根据iid详情页数据的请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19306-掌握-详情页-顶部轮播图的展示"><span class="nav-number">193.</span> <span class="nav-text">P19306-(掌握)详情页-顶部轮播图的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19407-掌握-详情页-商品的基本信息展示"><span class="nav-number">194.</span> <span class="nav-text">P19407-(掌握)详情页-商品的基本信息展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19508-掌握-详情页-滚动问题处理和TabBar隐藏"><span class="nav-number">195.</span> <span class="nav-text">P19508-(掌握)详情页-滚动问题处理和TabBar隐藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19609-掌握-详情页-详情页店铺信息展示"><span class="nav-number">196.</span> <span class="nav-text">P19609-(掌握)详情页-详情页店铺信息展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19710-掌握-详情页-详情页商品图片信息展示"><span class="nav-number">197.</span> <span class="nav-text">P19710-(掌握)详情页-详情页商品图片信息展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19811-掌握-详情页-商品参数信息的展示"><span class="nav-number">198.</span> <span class="nav-text">P19811-(掌握)详情页-商品参数信息的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19912-掌握-详情页-商品评论信息的展示"><span class="nav-number">199.</span> <span class="nav-text">P19912-(掌握)详情页-商品评论信息的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20013-掌握-详情页-商品推荐数据的展示"><span class="nav-number">200.</span> <span class="nav-text">P20013-(掌握)详情页-商品推荐数据的展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20114-掌握-详情页-首页和详情页监听全局事件和mixin的使用"><span class="nav-number">201.</span> <span class="nav-text">P20114-(掌握)详情页-首页和详情页监听全局事件和mixin的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20215-了解-课堂内容回顾"><span class="nav-number">202.</span> <span class="nav-text">P20215-(了解)课堂内容回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20301-掌握-bug处理-首页TabControl不一致的问题"><span class="nav-number">203.</span> <span class="nav-text">P20301-(掌握)bug处理-首页TabControl不一致的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20402-掌握-bug处理-详情页不能滚动的bug处理"><span class="nav-number">204.</span> <span class="nav-text">P20402-(掌握)bug处理-详情页不能滚动的bug处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20503-掌握-详情页-点击标题滚到对应内容"><span class="nav-number">205.</span> <span class="nav-text">P20503-(掌握)详情页-点击标题滚到对应内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20604-掌握-详情页-滚动内容显示对应标题"><span class="nav-number">206.</span> <span class="nav-text">P20604-(掌握)详情页-滚动内容显示对应标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20705-掌握-详情页-对复杂判断条件分析和优化"><span class="nav-number">207.</span> <span class="nav-text">P20705-(掌握)详情页-对复杂判断条件分析和优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20806-掌握-详情页-底部工具栏的封装"><span class="nav-number">208.</span> <span class="nav-text">P20806-(掌握)详情页-底部工具栏的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20907-掌握-详情页-BackTop的混入封装"><span class="nav-number">209.</span> <span class="nav-text">P20907-(掌握)详情页-BackTop的混入封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21008-掌握-详情页-将商品添加到购物车中"><span class="nav-number">210.</span> <span class="nav-text">P21008-(掌握)详情页-将商品添加到购物车中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21109-掌握-详情页-将商品添加到store中"><span class="nav-number">211.</span> <span class="nav-text">P21109-(掌握)详情页-将商品添加到store中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21210-掌握-详情页-Vuex中代码的重构"><span class="nav-number">212.</span> <span class="nav-text">P21210-(掌握)详情页-Vuex中代码的重构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21311-掌握-购物车-导航栏实现-Vuex知识点"><span class="nav-number">213.</span> <span class="nav-text">P21311-(掌握)购物车-导航栏实现-Vuex知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21412-掌握-购物车-购物车商品列表展示"><span class="nav-number">214.</span> <span class="nav-text">P21412-(掌握)购物车-购物车商品列表展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21513-掌握-购物车-购物车列表的Item展示"><span class="nav-number">215.</span> <span class="nav-text">P21513-(掌握)购物车-购物车列表的Item展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21614-掌握-购物车-Item选中和不选中的切换"><span class="nav-number">216.</span> <span class="nav-text">P21614-(掌握)购物车-Item选中和不选中的切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21715-掌握-购物车-顶部工具的封装和应用"><span class="nav-number">217.</span> <span class="nav-text">P21715-(掌握)购物车-顶部工具的封装和应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21816-了解-内容回顾"><span class="nav-number">218.</span> <span class="nav-text">P21816-(了解)内容回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P21901-掌握-购物车-全选按钮的状态显示"><span class="nav-number">219.</span> <span class="nav-text">P21901-(掌握)购物车-全选按钮的状态显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22002-掌握-购物车-全选按钮的点击效果"><span class="nav-number">220.</span> <span class="nav-text">P22002-(掌握)购物车-全选按钮的点击效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22103-掌握-Vuex-actions返回Promise-mapActions"><span class="nav-number">221.</span> <span class="nav-text">P22103-(掌握)Vuex-actions返回Promise-mapActions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22204-掌握-Toast封装-普通方式的封装"><span class="nav-number">222.</span> <span class="nav-text">P22204-(掌握)Toast封装-普通方式的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22305-掌握-Toast封装-插件方式的封装"><span class="nav-number">223.</span> <span class="nav-text">P22305-(掌握)Toast封装-插件方式的封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22406-掌握-fastclick-解决移动端300ms延迟"><span class="nav-number">224.</span> <span class="nav-text">P22406-(掌握)fastclick-解决移动端300ms延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22507-掌握-图片懒加载-vue-lazyload框架"><span class="nav-number">225.</span> <span class="nav-text">P22507-(掌握)图片懒加载-vue-lazyload框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22608-掌握-px2vw-css单位转化插件"><span class="nav-number">226.</span> <span class="nav-text">P22608-(掌握)px2vw-css单位转化插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22709-理解-nginx-项目在window下的部署"><span class="nav-number">227.</span> <span class="nav-text">P22709-(理解)nginx-项目在window下的部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22810-理解-nginx-项目在远程linux下的部署"><span class="nav-number">228.</span> <span class="nav-text">P22810-(理解)nginx-项目在远程linux下的部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P22911-理解-响应式原理-依赖技术的分析和学习"><span class="nav-number">229.</span> <span class="nav-text">P22911-(理解)响应式原理-依赖技术的分析和学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P23012-理解-响应式原理-通过图解理解过程"><span class="nav-number">230.</span> <span class="nav-text">P23012-(理解)响应式原理-通过图解理解过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P23113-理解-响应式原理-对应的代码"><span class="nav-number">231.</span> <span class="nav-text">P23113-(理解)响应式原理-对应的代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">johch3n611u</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">johch3n611u</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">總字數：</span>
+    <span title="總字數">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">所需總閱讀時間 &asymp;</span>
+    <span title="所需總閱讀時間">NaN:aN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : '' || 'https://disqus.com/api/',
+      apikey    : '61a1M4GxNQpZifWvB4bzXMA9mPFM9ERdMRIdX2r5cXriFqqK1hPusSrqUs4qz527',
+      shortname : 'johch3n6-11u',
+      url       : "https://johch3n611u.github.io/2020/05/23/VueBilibili%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/",
+      identifier: "2020/05/23/VueBilibili教學筆記/",
+      title     : "VueBilibili教學筆記",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>
