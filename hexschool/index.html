@@ -14,7 +14,7 @@
             <ul>
                 <li>
                     <details>
-                        <summary>批改建議</summary>
+                        <summary>批改建議 擷取重點</summary>
                         <h2>HTML</h2>
                         <p>1. 在 class 的命名上會建議同學採用慣例上的小駝峰命名法 (lower camel case) ，讓第一個單字以小寫字母開始，而第二個單字的首字母大寫來提升程式碼的可讀性</p>
                         <p>2. 建議不要使用行內樣式 style 標籤以及 style= "..." 屬性來指定樣式，由於 inline style 的權重較高，樣式較難覆蓋，會提高日後在維護上的難度。建議可新建一個 .css 檔案將整份作業的樣式放置至此並於 HTML 以 link:src 來引入</p>
@@ -97,7 +97,7 @@
                 </li>
                 <li>
                     <details>
-                        <summary>批改建議</summary>
+                        <summary>批改建議 擷取重點</summary>
                     </details>
                 </li>
             </ul>
@@ -116,7 +116,7 @@
                 </li>
                 <li>
                     <details>
-                        <summary>批改建議</summary>
+                        <summary>批改建議 擷取重點</summary>
                     </details>
                 </li>
             </ul>
@@ -128,12 +128,12 @@
                 <li>
                     <details>
                         <summary>作業程度</summary>
+                        <ul>
+                            <li>LV1：至少做兩頁，其中一頁必須為首頁</li>
+                            <li>LV2：全部頁面都做，不需做 jQ 與 BS4 JS 效果</li>
+                            <li>LV3：全部效果都做</li>
+                        </ul>
                     </details>
-                    <ol>
-                        <li>LV1：至少做兩頁，其中一頁必須為首頁</li>
-                        <li>LV2：全部頁面都做，不需做 jQ 與 BS4 JS 效果</li>
-                        <li>LV3：全部效果都做</li>
-                    </ol>
                 </li>
                 <li>重點整理
                     <ul>
@@ -151,12 +151,84 @@
                         <li>
                             @mixin 名稱(參數) { 屬性 } ( CSS 的複用庫搭配 @include 名稱，剛 )
                         </li>
-                    </ul>
-                </li>
+                        <li>
+                            <a href="https://ithelp.ithome.com.tw/articles/10156850">Sass教學 (11) - @content</a>
+                            <details>
+                                <summary>RWD 使用 @mixin + @content 對於語意化與複用非常方便</summary>
+                                <pre>
+@mixin Desktop{
+       @media (max-width: 1023px){
+               @content
+       }
+}
 
+@mixin Tablet{
+       @media (max-width: 768px){
+               @content
+       }
+}
+
+@mixin Mobile{
+       @media (max-width: 568px){
+               @content
+       }
+}
+
+.head{
+    font-size: 20px;
+
+    @include Tablet{
+        font-size: 15px;
+    }
+
+     @include Mobile{
+        font-size: 12px;
+    }
+
+    a {
+        background: #000;
+
+        @include Mobile{
+            background: #fff;
+        }
+    }
+}
+                                </pre>
+                            </details>
+                        </li>
+
+                    </ul>
+                    <li>
+                        <a href="https://cythilya.github.io/2018/06/05/css-methodologies/">樣式模組化 OOCSS etc... </a>
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary>結構與樣式分離、容器與內容分離，使用 class 撰寫樣式，每個 class 有其各自用途</summary>
+                                    <pre>
+h1 class="red mt10 text-right"
+
+style
+
+.red{
+       color:#EA0000;
+}
+
+.mt10{
+       margin:10rem;
+}
+
+.text-right{
+       text-align
+}
+                                        </pre>
+                                </details>
+                            </li>
+                        </ul>
+                    </li>
+                </li>
             </ul>
             <li>
-                <a href="todolist/index.html">JStodolist  </a>
+                <a href="todolist/index.html">JStodolist</a>
             </li>
             <!-- https://hexschool.github.io/js-todo/ -->
             <ul>
@@ -168,8 +240,11 @@
                 </li>
                 <li>
                     <details>
-                        <summary>批改建議</summary>
+                        <summary>批改建議 擷取重點</summary>
                     </details>
+                </li>
+                <li>
+                    Whimsical 流程圖工具
                 </li>
             </ul>
             <li>
