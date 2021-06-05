@@ -77,6 +77,7 @@
         .DessertCard {
             width: 300px;
             margin-left: 20px;
+            position: relative;
         }
         
         .PageChangeButton {
@@ -185,13 +186,45 @@
             color: #3F5D45;
             margin-bottom: 42px;
         }
+        
+        .Logo {
+            background-image: url(logo-all-dark.svg);
+            height: 40px;
+            width: 215px;
+            text-indent: 101%;
+            white-space: nowrap;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+        
+        .CardTag {
+            position: absolute;
+            writing-mode: vertical-rl;
+            text-align: left;
+            font: normal normal normal 16px/20px PingFang TC;
+            letter-spacing: 0px;
+            color: #EAF0ED;
+            background-color: #3F5D45;
+            padding: 10px;
+            margin-left: 20px;
+        }
+        
+        .LoveIcon {
+            background-image: url("favorite_border.png");
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div style="width: 1024px;margin: auto;">
         <div style="display:flex;width: 940px;justify-content: space-between;margin:30px auto;">
-            <img src="logo-all-dark.svg" style="height: 40px;width: auto;">
+            <h1 class="Logo" src="logo-all-dark.svg">Sweetaste</h1>
             <div style="display: flex;">
                 <ul style="display: flex;">
                     <li class="NavigationItem">首頁</li>
@@ -215,7 +248,7 @@
             <div>
                 <div style="display: flex;flex-wrap: wrap;">
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
                         <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
@@ -225,9 +258,9 @@
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
-                        <img src="p-2.png" class="CardImg">
+                        <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
                             <div class="DessertName">焦糖瑪卡龍</div>
                             <div class="DessertPrice">NT$ 450</div>
@@ -235,9 +268,9 @@
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
-                        <img src="p-2.png" class="CardImg">
+                        <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
                             <div class="DessertName">焦糖瑪卡龍</div>
                             <div class="DessertPrice">NT$ 450</div>
@@ -245,9 +278,9 @@
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
-                        <img src="p-2.png" class="CardImg">
+                        <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
                             <div class="DessertName">焦糖瑪卡龍</div>
                             <div class="DessertPrice">NT$ 450</div>
@@ -255,9 +288,9 @@
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
-                        <img src="p-2.png" class="CardImg">
+                        <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
                             <div class="DessertName">焦糖瑪卡龍</div>
                             <div class="DessertPrice">NT$ 450</div>
@@ -265,16 +298,15 @@
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
                     <div class="DessertCard">
-                        <div class="CardTag"></div>
+                        <div class="CardTag">本日精選</div>
                         <div class="LoveIcon"></div>
-                        <img src="p-2.png" class="CardImg">
+                        <img src="p-1.png" class="CardImg">
                         <div style="display: flex;">
                             <div class="DessertName">焦糖瑪卡龍</div>
                             <div class="DessertPrice">NT$ 450</div>
                         </div>
                         <div class="AddShoppingCart">加入購物車</div>
                     </div>
-
                 </div>
                 <ul style="display: flex;justify-content:flex-end;align-items: center;margin-bottom: 60px;">
                     <li><img class="PageChangeButton" src="arrow_left.png"></li>
