@@ -6,7 +6,10 @@
 
 .FlexMenu {
     display: flex;
+    align-items: center;
     li {
+        display: flex;
+        align-items: center;
         margin-left: 30px;
         text-align: left;
         font: normal normal normal 20px/30px SF Pro Text;
