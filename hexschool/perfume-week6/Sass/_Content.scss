@@ -1,0 +1,16 @@
+.FlexLogo {
+    background-image: url("d’Perfume.png");
+    height: 38px;
+    width: 128px;
+}
+
+.FlexMenu {
+    display: flex;
+    li {
+        margin-left: 30px;
+        text-align: left;
+        font: normal normal normal 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #8D8D8D;
+    }
+}
