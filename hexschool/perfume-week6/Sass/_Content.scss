@@ -1,3 +1,17 @@
+$BaseTextColor:#FFFFFF;
+$ToggleTextColor:#000;
+@mixin FakeButton($Color) {
+    cursor: pointer;
+    &:hover {
+        color: $ToggleTextColor;
+        background-color: $Color;
+    }
+    &:active {
+        color: $ToggleTextColor;
+        background-color: rgba($color: $Color, $alpha: 0.8);
+    }
+}
+
 .FlexLogo {
     background-image: url("d’Perfume.png");
     height: 38px;
@@ -8,19 +22,158 @@
     display: flex;
     align-items: center;
     li {
+        border: 2px solid #FFFFFF;
+        border-radius: 30px;
+        padding: 3px 15px;
         display: flex;
         align-items: center;
-        margin-left: 30px;
         text-align: left;
         font: normal normal normal 20px/30px SF Pro Text;
         letter-spacing: 0px;
         color: #8D8D8D;
+        @include FakeButton(#E8E8E8);
     }
 }
 
-.FullImage {
+.FlexFullWidthBanner {
     background: url('index1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.BannerBox {
+    margin-left: 57%;
+    * {
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.3);
+    }
+    h3 {
+        text-align: left;
+        font: normal normal bold 40px/60px SF Pro Text;
+        letter-spacing: 0px;
+        color: $BaseTextColor;
+    }
+    p {
+        text-align: left;
+        font: normal normal normal 24px/36px SF Pro Text;
+        letter-spacing: 0px;
+        color: $BaseTextColor;
+        max-width: 445px;
+    }
+    button {
+        border: 2px solid #FFFFFF;
+        border-radius: 30px;
+        font: normal normal normal 24px/36px SF Pro Text;
+        letter-spacing: 0px;
+        color: $BaseTextColor;
+        background-color: transparent;
+        max-width: 350px;
+        max-height: 60px;
+        width: 100%;
+        @include FakeButton(#FFFFFF);
+    }
+}
+
+.GridFlagshipProduct {
+    li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        div {
+            max-width: 350px;
+            margin: 0 auto;
+        }
+    }
+    li:nth-child(odd)>div {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+    }
+    li:nth-child(odd)>img {
+        grid-column-start: 3;
+    }
+    li:nth-child(even)>img {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+    li:nth-child(even)>div {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    img {
+        width: 555px;
+        height: 555px;
+        background-image: url("index3.png");
+    }
+    h2 {
+        text-align: left;
+        font: normal normal bold 32px/48px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    p {
+        text-align: left;
+        font: normal normal 300 20px/30px PingFang TC;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    a {
+        text-align: left;
+        font: normal normal 600 16px/24px PingFang TC;
+        letter-spacing: 0px;
+        color: #AC8A46;
+        @include FakeButton(#FFFFFF)
+    }
+}
+
+.MaintenanceSteps {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    img {
+        width: 555px;
+        height: 1080px;
+        background-image: url("index5.jpg");
+        background-position: center;
+        background-size: cover;
+        grid-column: span 1;
+    }
+    div {
+        max-width: 350px;
+        margin: 0 auto;
+        grid-column: span 1;
+        ul {
+            padding-top: 92px;
+        }
+        h3 {
+            text-align: left;
+            font: normal normal 600 24px/36px SF Pro Text;
+            letter-spacing: 0px;
+            color: #000000;
+            grid-column: span 2;
+        }
+        p {
+            text-align: left;
+            font: normal normal 300 16px/24px SF Pro Text;
+            letter-spacing: 0px;
+            color: #000000;
+            grid-column: span 2;
+        }
+        li {
+            margin-bottom: 70px;
+        }
+        button {
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #000000;
+            border-radius: 30px;
+            text-align: center;
+            font: normal normal normal 20px/30px SF Pro Text;
+            letter-spacing: 0px;
+            color: #000000;
+            height: 60px;
+            grid-column: span 2;
+            @include FakeButton(#E8E8E8)
+        }
+    }
 }

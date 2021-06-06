@@ -12,7 +12,18 @@ $DesktopWidth:1110px;
     justify-content: space-between;
 }
 
-.FullWidthBanner {
-    width: 100vw;
+.FlexFullWidthBanner {
     height: 94vh;
+    display: flex;
+    align-items: center;
+}
+
+.GridFlagshipProduct {
+    display: grid;
+    grid-template-columns: 1fr $DesktopWidth 1fr;
+    ul {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        padding: 60px 0 0 0;
+    }
 }
