@@ -2,9 +2,9 @@
     "version": 3,
     "mappings": "ACKA,AAAA,WAAW,AAAC,CACR,KAAK,CANK,MAAM,CAOhB,MAAM,CAAE,IAAI,CACZ,MAAM,CAAE,MAAM,CACd,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,eAAe,CAAE,aAAa,CACjC,AAED,AAAA,gBAAgB,AAAC,CACb,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,IAAI,CACf,ACjBD,AAAA,SAAS,AAAC,CACN,gBAAgB,CAAE,qBAAqB,CACvC,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,KAAK,CACf,AAED,AAAA,SAAS,AAAC,CACN,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CAUtB,AAZD,AAGI,SAHK,CAGL,EAAE,AAAC,CACC,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,WAAW,CAAE,IAAI,CACjB,UAAU,CAAE,IAAI,CAChB,IAAI,CAAE,0CAA0C,CAChD,cAAc,CAAE,GAAG,CACnB,KAAK,CAAE,OAAO,CACjB,AAGL,AAAA,UAAU,AAAC,CACP,UAAU,CAAE,iBAAiB,CAC7B,iBAAiB,CAAE,SAAS,CAC5B,eAAe,CAAE,KAAK,CACtB,mBAAmB,CAAE,MAAM,CAC9B",
     "sources": [
-        "Sass/All.scss",
-        "Sass/_Container.scss",
-        "Sass/_Content.scss"
+        "../hexschool/perfume-week6/Sass/All.scss",
+        "../hexschool/perfume-week6/Sass/_Container.scss",
+        "../hexschool/perfume-week6/Sass/_Content.scss"
     ],
     "names": [],
     "file": "All.min.css"
