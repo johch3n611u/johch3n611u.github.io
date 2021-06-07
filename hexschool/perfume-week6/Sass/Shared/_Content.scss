@@ -113,3 +113,23 @@ $ToggleTextColor:#000;
         @include FakeButton(#E8E8E8);
     }
 }
+
+.FlexCategoryMenu {
+    background-color: #916000;
+    ul {
+        height: 52px;
+    }
+    li {
+        border: 2px solid #916000;
+        border-radius: 30px;
+        padding: 3px 15px;
+        text-align: left;
+        font: normal normal normal 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        @include FakeButton(#E8E8E8)
+    }
+    li:not(:first-child) {
+        margin-left: 28px;
+    }
+}

@@ -1,0 +1,4 @@
+.GridProductsList {
+    display: grid;
+    grid-template-columns: 1fr $DesktopWidth 1fr;
+}

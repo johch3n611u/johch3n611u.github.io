@@ -22,3 +22,12 @@ $DesktopWidth:1110px;
         align-items: center;
     }
 }
+
+.FlexCategoryMenu {
+    ul {
+        align-items: center;
+        display: flex;
+        margin: 0 auto;
+        width: $DesktopWidth;
+    }
+}
