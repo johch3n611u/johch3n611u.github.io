@@ -76,6 +76,10 @@ $ToggleTextColor:#000;
         52,
         0.5))
     }
+    @include Mobile {
+        top: unset;
+        left: unset;
+    }
 }
 
 .FlexFooter {
@@ -114,6 +118,9 @@ $ToggleTextColor:#000;
         letter-spacing: 0px;
         color: #FFFFFF;
         @include FakeButton(#E8E8E8);
+    }
+    @include Mobile {
+        display: none;
     }
 }
 

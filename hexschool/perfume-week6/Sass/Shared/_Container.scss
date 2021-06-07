@@ -1,49 +1,54 @@
-$DesktopWidth:1110px;
-@mixin BgColor($Color) {
-    background-color: $Color;
-}
-
-@mixin Mobile {
-    @media (max-width: 568px) {
-        @content
+    $DesktopWidth:1110px;
+    @mixin BgColor($Color) {
+        background-color: $Color;
     }
-}
-
-.FlexHeader {
-    width: $DesktopWidth;
-    height: 56px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @include Mobile {
-        width: 100%;
+    
+    @mixin Mobile {
+        @media (max-width: 568px) {
+            @content
+        }
     }
-}
-
-.FlexFooter {
-    >div {
+    
+    .FlexHeader {
         width: $DesktopWidth;
+        height: 56px;
         margin: 0 auto;
-        height: 80px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: center;
+        @include Mobile {
+            width: 100%;
+        }
     }
-}
-
-.FlexCategoryMenu {
-    ul {
-        align-items: center;
-        display: flex;
-        margin: 0 auto;
-        width: $DesktopWidth;
+    
+    .FlexFooter {
+        >div {
+            width: $DesktopWidth;
+            margin: 0 auto;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @include Mobile {
+            >div {
+                width: 100%;
+            }
+        }
     }
-}
-
-.HamburgerMenu {
-    display: none;
-    @include Mobile {
-        display: inline-block;
+    
+    .FlexCategoryMenu {
+        ul {
+            align-items: center;
+            display: flex;
+            margin: 0 auto;
+            width: $DesktopWidth;
+        }
     }
-}
+    
+    .HamburgerMenu {
+        display: none;
+        @include Mobile {
+            display: inline-block;
+        }
+    }
