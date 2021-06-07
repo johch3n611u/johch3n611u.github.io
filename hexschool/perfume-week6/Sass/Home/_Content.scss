@@ -1,8 +1,9 @@
-.FlexFullWidthBanner {
+.BannerBg {
     background: url('index1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 94vh;
 }
 
 .BannerBox {
@@ -90,6 +91,7 @@
 }
 
 .MaintenanceSteps {
+    margin-bottom: 60px;
     grid-column-start: 2;
     grid-column-end: 3;
     display: grid;
@@ -146,6 +148,9 @@
     grid-column-end: 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    li {
+        position: relative;
+    }
     img {
         width: 350px;
         height: 540px;
@@ -177,4 +182,62 @@
     }
 }
 
-.SoldOut {}
+.SoldOutBg {
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.SoldOutText {
+    position: absolute;
+    left: 9rem;
+    top: 15rem;
+    text-align: center !important;
+    font: normal normal 600 24px/36px SF Pro Text !important;
+    letter-spacing: 0px !important;
+    color: #FFFFFF !important;
+}
+
+.StrongestProduct {
+    padding: 60px 0;
+    grid-template-columns: 1fr $DesktopWidth/3 $DesktopWidth/3 $DesktopWidth/3 1fr;
+    img {
+        width: 720px;
+        height: 520px;
+        background-image: url('index9.jpg');
+        background-position: center;
+        background-size: cover;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    div {
+        margin: 27% 0;
+        width: 350px;
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+    h3 {
+        text-align: left;
+        font: normal normal bold 32px/48px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    h4 {
+        text-align: left;
+        font: normal normal 300 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    p {
+        text-align: left;
+        font: normal normal 300 16px/24px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    a {
+        text-align: left;
+        font: normal normal 600 16px/24px PingFang TC;
+        letter-spacing: 0px;
+        color: #AC8A46;
+        @include FakeButton(#FFFFFF)
+    }
+}

@@ -11,3 +11,14 @@ $DesktopWidth:1110px;
     align-items: center;
     justify-content: space-between;
 }
+
+.FlexFooter {
+    >div {
+        width: $DesktopWidth;
+        margin: 0 auto;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
