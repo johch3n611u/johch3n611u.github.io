@@ -4,12 +4,17 @@
     align-items: center;
 }
 
-.GridFlagshipProduct {
+.GridProducts {
     display: grid;
     grid-template-columns: 1fr $DesktopWidth 1fr;
-    ul {
+    >ul {
         grid-column-start: 2;
         grid-column-end: 3;
         padding: 60px 0 0 0;
     }
+}
+
+.GreyBg {
+    height: 728px;
+    background-color: #E0E0E0;
 }

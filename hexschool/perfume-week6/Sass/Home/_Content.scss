@@ -10,20 +10,20 @@
     * {
         text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.3);
     }
-    h3 {
+    >h3 {
         text-align: left;
         font: normal normal bold 40px/60px SF Pro Text;
         letter-spacing: 0px;
         color: $BaseTextColor;
     }
-    p {
+    >div>p {
         text-align: left;
         font: normal normal normal 24px/36px SF Pro Text;
         letter-spacing: 0px;
         color: $BaseTextColor;
         max-width: 445px;
     }
-    button {
+    >div>button {
         border: 2px solid #FFFFFF;
         border-radius: 30px;
         font: normal normal normal 24px/36px SF Pro Text;
@@ -37,29 +37,29 @@
     }
 }
 
-.GridFlagshipProduct {
-    li {
+.FlagshipProducts {
+    >li {
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        div {
+        >div {
             max-width: 350px;
             margin: 0 auto;
         }
     }
-    li:nth-child(odd)>div {
+    >li:nth-child(odd)>div {
         grid-column-start: 1;
         grid-column-end: 3;
         grid-row-start: 1;
     }
-    li:nth-child(odd)>img {
+    >li:nth-child(odd)>img {
         grid-column-start: 3;
     }
-    li:nth-child(even)>img {
+    >li:nth-child(even)>img {
         grid-column-start: 1;
         grid-row-start: 1;
     }
-    li:nth-child(even)>div {
+    >li:nth-child(even)>div {
         grid-column-start: 2;
         grid-column-end: 4;
     }
@@ -140,3 +140,41 @@
         }
     }
 }
+
+.HotProducts {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    img {
+        width: 350px;
+        height: 540px;
+        background-image: url("index6.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    h2 {
+        text-align: left;
+        font: normal normal 600 24px/36px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    p {
+        text-align: left;
+        font: normal normal 300 16px/24px SF Pro Text;
+        letter-spacing: 0px;
+        color: #000000;
+        line-height: 35px;
+        margin-top: 10px;
+    }
+    span {
+        text-align: left;
+        text-decoration: line-through;
+        font: normal normal 300 16px/24px SF Pro Text;
+        letter-spacing: 0px;
+        color: #8D8D8D;
+        margin-left: 8px;
+    }
+}
+
+.SoldOut {}
