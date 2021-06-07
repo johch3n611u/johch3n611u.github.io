@@ -1,115 +1,115 @@
-        $BaseTextColor:#FFFFFF;
-        $ToggleTextColor:#000;
-        @mixin FakeButton($Color) {
-            cursor: pointer;
-            &:hover {
-                color: $ToggleTextColor;
-                background-color: $Color;
-            }
-            &:active {
-                color: $ToggleTextColor;
-                background-color: rgba($color: $Color, $alpha: 0.8);
-            }
+$BaseTextColor:#FFFFFF;
+$ToggleTextColor:#000;
+@mixin FakeButton($Color) {
+    cursor: pointer;
+    &:hover {
+        color: $ToggleTextColor;
+        background-color: $Color;
+    }
+    &:active {
+        color: $ToggleTextColor;
+        background-color: rgba($color: $Color, $alpha: 0.8);
+    }
+}
+
+.FlexLogo {
+    background-image: url("d’Perfume.png");
+    height: 38px;
+    width: 128px;
+}
+
+.FlexMenu {
+    display: flex;
+    align-items: center;
+    li {
+        border: 2px solid #FFFFFF;
+        border-radius: 30px;
+        padding: 3px 15px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font: normal normal normal 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #8D8D8D;
+        @include FakeButton(#E8E8E8);
+    }
+}
+
+.FooterAdvertising {
+    background: url('index10.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    position: relative;
+}
+
+.AdvertisingBox {
+    position: absolute;
+    top: 312px;
+    left: 400px;
+    p {
+        text-align: left;
+        font: normal normal 600 32px/48px PingFang TC;
+        letter-spacing: 0px;
+        color: #8D8D8D;
+        margin-bottom: 16px;
+    }
+    input {
+        border: 2px solid #916000;
+        border-radius: 4px 0px 0px 4px;
+        height: 44px;
+        padding: 0 20px;
+    }
+    button {
+        border: 2px solid #916000;
+        border-radius: 0px 4px 4px 0px;
+        height: 48px;
+        background-color: #916000;
+        color: #FFFFFF;
+        width: 131px;
+        @include FakeButton(rgba(250,
+        148,
+        52,
+        0.5))
+    }
+}
+
+.FlexFooter {
+    background-color: #916000;
+    >div {
+        >div {
+            display: flex;
+            align-items: center;
         }
-        
-        .FlexLogo {
-            background-image: url("d’Perfume.png");
-            height: 38px;
+        img {
             width: 128px;
+            height: 38px;
+            background-image: url('d’Perfumewhite.png');
         }
-        
-        .FlexMenu {
-            display: flex;
-            align-items: center;
-            li {
-                border: 2px solid #FFFFFF;
-                border-radius: 30px;
-                padding: 3px 15px;
-                display: flex;
-                align-items: center;
-                text-align: left;
-                font: normal normal normal 20px/30px SF Pro Text;
-                letter-spacing: 0px;
-                color: #8D8D8D;
-                @include FakeButton(#E8E8E8);
-            }
+        p {
+            margin-left: 20px;
+            text-align: left;
+            font: normal normal normal 14px/21px SF Pro Text;
+            letter-spacing: 0px;
+            color: #FFFFFF;
         }
-        
-        .FooterAdvertising {
-            background: url('index10.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 600px;
-            position: relative;
-        }
-        
-        .AdvertisingBox {
-            position: absolute;
-            top: 312px;
-            left: 400px;
-            p {
-                text-align: left;
-                font: normal normal 600 32px/48px PingFang TC;
-                letter-spacing: 0px;
-                color: #8D8D8D;
-                margin-bottom: 16px;
-            }
-            input {
-                border: 2px solid #916000;
-                border-radius: 4px 0px 0px 4px;
-                height: 44px;
-                padding: 0 20px;
-            }
-            button {
-                border: 2px solid #916000;
-                border-radius: 0px 4px 4px 0px;
-                height: 48px;
-                background-color: #916000;
-                color: #FFFFFF;
-                width: 131px;
-                @include FakeButton(rgba(250,
-                148,
-                52,
-                0.5))
-            }
-        }
-        
-        .FlexFooter {
-            background-color: #916000;
-            >div {
-                >div {
-                    display: flex;
-                    align-items: center;
-                }
-                img {
-                    width: 128px;
-                    height: 38px;
-                    background-image: url('d’Perfumewhite.png');
-                }
-                p {
-                    margin-left: 20px;
-                    text-align: left;
-                    font: normal normal normal 14px/21px SF Pro Text;
-                    letter-spacing: 0px;
-                    color: #FFFFFF;
-                }
-            }
-        }
-        
-        .FlexFooterMenu {
-            display: flex;
-            align-items: center;
-            li {
-                border: 2px solid #916000;
-                border-radius: 30px;
-                padding: 3px 15px;
-                display: flex;
-                align-items: center;
-                text-align: left;
-                font: normal normal normal 20px/30px SF Pro Text;
-                letter-spacing: 0px;
-                color: #FFFFFF;
-                @include FakeButton(#E8E8E8);
-            }
-        }
+    }
+}
+
+.FlexFooterMenu {
+    display: flex;
+    align-items: center;
+    li {
+        border: 2px solid #916000;
+        border-radius: 30px;
+        padding: 3px 15px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font: normal normal normal 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        @include FakeButton(#E8E8E8);
+    }
+}
