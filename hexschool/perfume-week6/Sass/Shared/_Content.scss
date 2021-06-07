@@ -19,6 +19,9 @@ $ToggleTextColor:#000;
 }
 
 .FlexMenu {
+    @include Mobile {
+        display: none;
+    }
     display: flex;
     align-items: center;
     li {
@@ -132,4 +135,8 @@ $ToggleTextColor:#000;
     li:not(:first-child) {
         margin-left: 28px;
     }
+}
+
+.HamburgerMenu {
+    @include FakeButton(#E8E8E8)
 }

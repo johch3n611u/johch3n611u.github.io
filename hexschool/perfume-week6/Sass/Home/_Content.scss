@@ -39,6 +39,25 @@
 }
 
 .FlagshipProducts {
+    @include Mobile {
+        img {
+            width: 345px;
+            height: 350px;
+        }
+        >li {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+        }
+        >li>div {
+            grid-column-start: unset;
+            grid-column-end: unset;
+        }
+        >li>img {
+            grid-column-start: unset;
+            grid-column-end: unset;
+        }
+    }
     >li {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -191,10 +210,10 @@
     position: absolute;
     left: 9rem;
     top: 15rem;
-    text-align: center !important;
-    font: normal normal 600 24px/36px SF Pro Text !important;
-    letter-spacing: 0px !important;
-    color: #FFFFFF !important;
+    text-align: center;
+    font: normal normal 600 24px/36px SF Pro Text;
+    letter-spacing: 0px;
+    color: #FFFFFF;
 }
 
 .StrongestProduct {

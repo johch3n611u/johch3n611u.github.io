@@ -4,6 +4,14 @@
 }
 
 .GridProducts {
+    @include Mobile {
+        grid-template-columns: 1fr;
+        >ul {
+            grid-column-start: 1;
+            grid-column-end: 1;
+            padding: 40px 0 0 0;
+        }
+    }
     display: grid;
     grid-template-columns: 1fr $DesktopWidth 1fr;
     >ul {

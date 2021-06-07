@@ -3,7 +3,16 @@ $DesktopWidth:1110px;
     background-color: $Color;
 }
 
+@mixin Mobile {
+    @media (max-width: 568px) {
+        @content
+    }
+}
+
 .FlexHeader {
+    @include Mobile {
+        width: 100%;
+    }
     width: $DesktopWidth;
     height: 56px;
     margin: 0 auto;
@@ -30,4 +39,11 @@ $DesktopWidth:1110px;
         margin: 0 auto;
         width: $DesktopWidth;
     }
+}
+
+.HamburgerMenu {
+    @include Mobile {
+        display: inline-block;
+    }
+    display: none;
 }
