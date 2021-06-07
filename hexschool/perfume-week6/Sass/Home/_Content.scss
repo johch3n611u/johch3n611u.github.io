@@ -137,7 +137,7 @@
             letter-spacing: 0px;
             color: #000000;
             height: 60px;
-            grid-column: span 2;
+            width: 100%;
             @include FakeButton(#E8E8E8)
         }
     }
