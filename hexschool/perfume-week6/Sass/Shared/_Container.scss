@@ -10,15 +10,15 @@ $DesktopWidth:1110px;
 }
 
 .FlexHeader {
-    @include Mobile {
-        width: 100%;
-    }
     width: $DesktopWidth;
     height: 56px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include Mobile {
+        width: 100%;
+    }
 }
 
 .FlexFooter {
@@ -42,8 +42,8 @@ $DesktopWidth:1110px;
 }
 
 .HamburgerMenu {
+    display: none;
     @include Mobile {
         display: inline-block;
     }
-    display: none;
 }

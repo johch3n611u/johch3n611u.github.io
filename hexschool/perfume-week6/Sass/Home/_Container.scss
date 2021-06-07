@@ -4,24 +4,23 @@
 }
 
 .GridProducts {
-    @include Mobile {
-        grid-template-columns: 1fr;
-        >ul {
-            grid-column-start: 1;
-            grid-column-end: 1;
-            padding: 40px 0 0 0;
-        }
-    }
     display: grid;
     grid-template-columns: 1fr $DesktopWidth 1fr;
     >ul {
         grid-column-start: 2;
         grid-column-end: 3;
-        padding: 60px 0 0 0;
+        padding: 60px 0;
+    }
+    @include Mobile {
+        grid-template-columns: 1fr;
+        >ul {
+            grid-column-start: unset;
+            grid-column-end: unset;
+            padding: 40px 0 0 0;
+        }
     }
 }
 
 .GreyBg {
-    height: 750px;
     background-color: #E0E0E0;
 }
