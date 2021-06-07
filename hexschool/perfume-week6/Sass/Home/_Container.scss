@@ -1,17 +1,3 @@
-$DesktopWidth:1110px;
-@mixin BgColor($Color) {
-    background-color: $Color;
-}
-
-.FlexHeader {
-    width: $DesktopWidth;
-    height: 56px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .FlexFullWidthBanner {
     height: 94vh;
     display: flex;

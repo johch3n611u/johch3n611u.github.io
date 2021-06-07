@@ -1,0 +1,36 @@
+$BaseTextColor:#FFFFFF;
+$ToggleTextColor:#000;
+@mixin FakeButton($Color) {
+    cursor: pointer;
+    &:hover {
+        color: $ToggleTextColor;
+        background-color: $Color;
+    }
+    &:active {
+        color: $ToggleTextColor;
+        background-color: rgba($color: $Color, $alpha: 0.8);
+    }
+}
+
+.FlexLogo {
+    background-image: url("d’Perfume.png");
+    height: 38px;
+    width: 128px;
+}
+
+.FlexMenu {
+    display: flex;
+    align-items: center;
+    li {
+        border: 2px solid #FFFFFF;
+        border-radius: 30px;
+        padding: 3px 15px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font: normal normal normal 20px/30px SF Pro Text;
+        letter-spacing: 0px;
+        color: #8D8D8D;
+        @include FakeButton(#E8E8E8);
+    }
+}
