@@ -36,9 +36,14 @@
             width: 100%;
             @include FakeButton(#FFFFFF);
         }
+        @include Mobile {
+            margin-left: unset;
+            margin: 0 15px;
+        }
     }
     
     .FlagshipProducts {
+        padding: 60px 0 0 0;
         >li {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -97,6 +102,7 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 align-items: center;
+                margin-bottom: 32px;
             }
             >li:nth-child(odd)>div {
                 grid-column-start: unset;
@@ -172,9 +178,19 @@
             grid-column-start: unset;
             grid-column-end: unset;
             grid-template-columns: 1fr;
+            margin: 0 15px;
             img {
                 width: 345px;
                 height: 680px;
+            }
+            div>ul {
+                padding-top: unset;
+            }
+            ul>li {
+                margin-bottom: 20px;
+            }
+            div {
+                margin-bottom: 25px;
             }
         }
     }
@@ -284,6 +300,8 @@
         }
         @include Mobile {
             grid-template-columns: 1fr;
+            margin: 40px 15px 0 15px;
+            padding: unset;
             img {
                 width: 345px;
                 height: 520px;
@@ -293,6 +311,7 @@
             div {
                 grid-column-start: unset;
                 grid-column-end: unset;
+                margin: 0 0 40px 0;
             }
         }
     }

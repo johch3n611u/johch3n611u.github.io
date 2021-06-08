@@ -18,6 +18,9 @@
         justify-content: space-between;
         @include Mobile {
             width: 100%;
+            h1 {
+                margin-left: 14px;
+            }
         }
     }
     
@@ -47,6 +50,7 @@
     }
     
     .HamburgerMenu {
+        margin-right: 14px;
         display: none;
         @include Mobile {
             display: inline-block;

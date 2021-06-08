@@ -9,14 +9,16 @@
     >ul {
         grid-column-start: 2;
         grid-column-end: 3;
-        padding: 60px 0;
     }
     @include Mobile {
         grid-template-columns: 1fr;
         >ul {
             grid-column-start: unset;
             grid-column-end: unset;
-            padding: 40px 0 0 0;
+            margin: 32px 15px 0 15px;
+            li {
+                margin-bottom: 36px;
+            }
         }
     }
 }

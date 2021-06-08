@@ -79,6 +79,8 @@ $ToggleTextColor:#000;
     @include Mobile {
         top: unset;
         left: unset;
+        position: unset;
+        margin: 215px auto 0 auto;
     }
 }
 
@@ -100,6 +102,13 @@ $ToggleTextColor:#000;
             font: normal normal normal 14px/21px SF Pro Text;
             letter-spacing: 0px;
             color: #FFFFFF;
+        }
+    }
+    @include Mobile {
+        >div>div {
+            justify-content: space-between;
+            width: 100%;
+            margin: 0 14px;
         }
     }
 }
@@ -142,8 +151,14 @@ $ToggleTextColor:#000;
     li:not(:first-child) {
         margin-left: 28px;
     }
+    @include Mobile {
+        display: none;
+    }
 }
 
-.HamburgerMenu {
+.HamburgerButton {
+    border-radius: 58%;
+    border: 1px;
+    padding: 5px;
     @include FakeButton(#E8E8E8)
 }

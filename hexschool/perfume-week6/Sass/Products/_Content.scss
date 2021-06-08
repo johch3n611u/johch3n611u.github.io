@@ -1,5 +1,5 @@
 .ProductsList {
-    padding: 0;
+    padding: 60px 0 0 0;
     display: grid;
     grid-column-start: 2;
     grid-column-end: 3;
@@ -41,12 +41,28 @@
             cursor: pointer;
         }
     }
+    @include Mobile {
+        grid-column-start: unset;
+        grid-column-end: unset;
+        grid-template-columns: 1fr 1fr;
+        margin: 0 auto;
+        >li {
+            img {
+                width: 165px;
+                height: 165px;
+            }
+        }
+        li:nth-child(even) {
+            margin-left: 10px;
+        }
+    }
 }
 
 .FlexPaginationTool {
     display: flex;
     justify-content: center;
     padding: 0;
+    margin-bottom: 60px;
     li {
         text-align: center;
         font: normal normal normal 20px/30px SF Pro Text;
