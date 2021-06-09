@@ -161,6 +161,7 @@ let Todolist =
                 }
             },
             ClearAllDoneTodos: function() {
+                if(confirm('確定要刪除所有完成項目嗎？')){
                 let TempContainer = [];
                 this.TodosData.forEach((Item) => {
                     if (!Item.TaskComplete) {
@@ -170,6 +171,7 @@ let Todolist =
                 this.TodosData = TempContainer;
                 this.LocalSave();
                 this.Render();
+                }
             },
             ChangeTodosType: function(Type) {
                 this.TodosType = Type;
