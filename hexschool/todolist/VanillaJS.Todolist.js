@@ -1,5 +1,5 @@
 let Todolist =
-    function() {
+    function(NickName) {
         return {
             BaseDOM: document.getElementById('Todolist'),
             TaskDOM: {},
@@ -7,9 +7,11 @@ let Todolist =
             TodosData: [],
             InitList: function() {
 
+                console.log(this);
+
                 this.BaseDOM.innerHTML = `
                 <input id="Task">
-                <button onclick="Todolist.AddTodo()">Add</button>
+                <button onclick="${NickName}.AddTodo()">Add</button>
                 <ol id="Todos"></ol>
                 `;
 
@@ -25,12 +27,11 @@ let Todolist =
             Render: function() {
                 let TempContainer = "";
                 this.TodosData.forEach((Item, Index) => {
-                    let Template = `<li><input type="checkbox" onclick="Todolist.TaskComplete(@Index)" checked><span id="Content_@Index" style="@Complete">@Value</span><button onclick="Todolist.TaskDelete(@Index)">X</button></li>`;
+                    let Template = `<li><input type="checkbox" onclick="${NickName}.TaskComplete(@Index)" checked><span id="Content_@Index" style="@Complete">@Value</span><button onclick="${NickName}.TaskDelete(@Index)">X</button></li>`;
                     Template = Template.replace('@Value', Item.Value);
                     Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
-                    console.log('Item.TaskComplete', Item.TaskComplete);
                     if (Item.TaskComplete) {
                         Template = Template.replace('@Complete', 'text-decoration:line-through');
                     } else {
