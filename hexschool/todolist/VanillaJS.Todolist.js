@@ -135,7 +135,6 @@ let Todolist =
                 // }
 
                 let Content = document.getElementById(`Content_${Index}`);
-                console.log('Content', Content);
                 if (this.TodosData[Index].TaskComplete) {
                     Content.style = 'text-decoration:none;'
                     this.TodosData[Index].TaskComplete = false;
