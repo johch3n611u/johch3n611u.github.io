@@ -5,6 +5,7 @@ let Todolist =
             BaseDOM: document.getElementById('Todolist'),
             TaskDOM: {},
             TodosDOM: {},
+            SortBtnBoxDOM: {},
             TodosData: [],
             TodosType: "All",
             InitList: function() {
@@ -18,18 +19,15 @@ let Todolist =
                     <input id="Task">
                     <button id="AddButton" onclick="${NickName}.AddTodo()">+</button>
                 </div>
-                <div>
-                    <div>
-                        <button onclick="${NickName}.ChangeTodosType('All')">全部</button>
-                        <button onclick="${NickName}.ChangeTodosType('Done')">已完成</button>
-                        <button onclick="${NickName}.ChangeTodosType('Undone')">未完成</button>
-                    </div>
+                <div id="TodosBox">
+                    <div id="SortBtnBox"></div>
                     <ol id="Todos"></ol>
                 </div>
                 `;
 
                 this.TodosDOM = document.getElementById('Todos');
                 this.TaskDOM = document.getElementById('Task');
+                this.SortBtnBoxDOM = document.getElementById('SortBtnBox');
 
                 let LocalTodos = localStorage.getItem('LocalTodos');
                 if (LocalTodos != null) {
@@ -63,8 +61,16 @@ let Todolist =
 
                 let TempContainer = "";
                 TempDodos.forEach((Item, Index) => {
-                    let Template = `<li><input type="checkbox" onclick="${NickName}.TaskComplete(@Index)" checked><span id="Content_@Index" style="@Complete">@Value</span><button onclick="${NickName}.TaskDelete(@Index)">X</button></li>`;
+                    let Template = `
+                    <li>
+                    <input id="CBtn_@Index" type="checkbox" onclick="${NickName}.TaskComplete(@Index)" checked>
+                    <label for="CBtn_@Index"></label>
+                    <span id="Content_@Index" style="@Complete">@Value</span>
+                    <button onclick="${NickName}.TaskDelete(@Index)">X</button>
+                    </li>`;
                     Template = Template.replace('@Value', Item.Value);
+                    Template = Template.replace('@Index', Index.toString());
+                    Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
@@ -77,27 +83,52 @@ let Todolist =
                     TempContainer += Template;
                 });
 
-                TempContainer += `
-                <div>
-                   <span>${TempDodos.length}個項目</span>
-                   <button onclick="${NickName}.ClearAllDoneTodos()">清除已完成項目</button>
-                </div>`;
+                if (this.TodosData.length > 0) {
 
+                    this.SortBtnBoxDOM.innerHTML = `
+                        <button onclick="${NickName}.ChangeTodosType('All')">全部</button>
+                        <button onclick="${NickName}.ChangeTodosType('Done')">已完成</button>
+                        <button onclick="${NickName}.ChangeTodosType('Undone')">未完成</button>
+                    `;
+
+                    TempContainer += `
+                    <div id="FooterToolBar">
+                        <span>${TempDodos.length}個項目</span>
+                        <button onclick="${NickName}.ClearAllDoneTodos()">清除已完成項目</button>
+                    </div>`;
+
+                } else {
+                    this.SortBtnBoxDOM.innerHTML = "";
+                }
+
+                this.ClearTask();
                 this.TodosDOM.innerHTML = TempContainer;
             },
             LocalSave: function() {
                 localStorage.setItem('LocalTodos', JSON.stringify(this.TodosData));
             },
             TaskComplete: function(Index) {
+
+                // let Content = document.getElementById(`Content_${Index}`);
+                // let StyleValue = Content.style['text-decoration'];
+                // if (StyleValue == '' || StyleValue == 'none') {
+                //     Content.style = 'text-decoration:line-through'
+                //     this.TodosData[Index].TaskComplete = true;
+                // } else if (StyleValue == 'line-through') {
+                //     Content.style = 'text-decoration:none;'
+                //     this.TodosData[Index].TaskComplete = false;
+                // }
+
                 let Content = document.getElementById(`Content_${Index}`);
-                let StyleValue = Content.style['text-decoration'];
-                if (StyleValue == '' || StyleValue == 'none') {
-                    Content.style = 'text-decoration:line-through'
-                    this.TodosData[Index].TaskComplete = true;
-                } else if (StyleValue == 'line-through') {
+                console.log('Content', Content);
+                if (this.TodosData[Index].TaskComplete) {
                     Content.style = 'text-decoration:none;'
                     this.TodosData[Index].TaskComplete = false;
+                } else {
+                    Content.style = 'text-decoration:line-through'
+                    this.TodosData[Index].TaskComplete = true;
                 }
+
                 this.LocalSave();
             },
             AddTodo: function() {
@@ -129,6 +160,9 @@ let Todolist =
             ChangeTodosType: function(Type) {
                 this.TodosType = Type;
                 this.Render();
+            },
+            ClearTask: function() {
+                this.TaskDOM.value = "";
             }
         };
     }
