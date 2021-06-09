@@ -161,15 +161,17 @@ let Todolist =
                 }
             },
             ClearAllDoneTodos: function() {
-                let TempContainer = [];
-                this.TodosData.forEach((Item) => {
-                    if (!Item.TaskComplete) {
-                        TempContainer.push(Item);
-                    }
-                })
-                this.TodosData = TempContainer;
-                this.LocalSave();
-                this.Render();
+                if (confirm(`確定要刪除全部已完成資料?`)) {
+                    let TempContainer = [];
+                    this.TodosData.forEach((Item) => {
+                        if (!Item.TaskComplete) {
+                            TempContainer.push(Item);
+                        }
+                    })
+                    this.TodosData = TempContainer;
+                    this.LocalSave();
+                    this.Render();
+                }
             },
             ChangeTodosType: function(Type) {
                 this.TodosType = Type;

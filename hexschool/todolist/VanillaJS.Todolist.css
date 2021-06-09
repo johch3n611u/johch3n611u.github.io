@@ -23,11 +23,12 @@ h1 {
 }
 
 #Task {
-    width: 95%;
+    width: 80%;
     border-radius: 10px;
     height: 48px;
     position: absolute;
     padding-left: 5%;
+    padding-right: 15%;
     border-color: #FFFFFF;
 }
 
@@ -160,7 +161,7 @@ input[type="checkbox"]:checked+label::before {
         padding: 0 1rem;
     }
     #Task {
-        width: 86%;
+        width: 70%;
     }
     #AddButton {
         right: 22px;
