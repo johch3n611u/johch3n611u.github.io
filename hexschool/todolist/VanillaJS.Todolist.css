@@ -94,6 +94,8 @@ li {
 
 li>span {
     font-size: 1.7rem;
+    overflow: hidden;
+    margin: 0 1.3rem;
 }
 
 li>button {
