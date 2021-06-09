@@ -1,0 +1,189 @@
+body {
+    background-image: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFFFFF 46%, #FFFFFF 100%, #E8E8E8 100%);
+    height: 100vh;
+}
+
+h1 {
+    font-family: BalooTamma2-Bold;
+    font-size: 48px;
+    color: #333333;
+    letter-spacing: 8.75px;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.Container {
+    margin: 0 auto;
+    max-width: 500px;
+    padding-top: 5%;
+}
+
+#Todolist {
+    position: relative;
+}
+
+#Task {
+    width: 95%;
+    border-radius: 10px;
+    height: 48px;
+    position: absolute;
+    padding-left: 5%;
+    border-color: #FFFFFF;
+}
+
+#AddButton {
+    background: #333333;
+    border-radius: 10px;
+    font-family: NotoSansCJKtc-Medium;
+    font-size: 32px;
+    color: #FFFFFF;
+    letter-spacing: 1.23px;
+    text-align: center;
+    padding: 1px;
+    width: 43px;
+    position: absolute;
+    right: 1px;
+    top: 5px;
+}
+
+#TodosBox {
+    width: 100%;
+    position: absolute;
+    margin: 15% 2px 0 2px;
+    background: #FFFFFF;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+#TodosBox>div {
+    display: flex;
+}
+
+#TodosBox>div>button:hover {
+    border-width: 3px;
+    border-bottom-style: solid;
+    border-color: black;
+}
+
+#TodosBox>div>button:focus {
+    border-width: 3px;
+    border-bottom-style: solid;
+    border-color: black;
+}
+
+#TodosBox>div>button {
+    background: transparent;
+    border: unset;
+    flex: 1;
+    border-radius: 10px 10px 0 0;
+    padding: 20px 50px;
+    border-width: 3px;
+    border-bottom-style: solid;
+    border-color: rgb(219, 219, 219);
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-color: rgb(219, 219, 219);
+    align-items: center;
+}
+
+li>span {
+    font-size: 1.7rem;
+}
+
+li>button {
+    border: unset;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+
+li>input {
+    width: 25px;
+    height: 25px;
+}
+
+#FooterToolBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+#FooterToolBar>button {
+    border: unset;
+    background: transparent;
+}
+
+#FooterToolBar>button {
+    color: grey;
+}
+
+button {
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]+label::before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    background-size: contain;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    border-radius: 6px;
+}
+
+input[type="checkbox"]:checked+label::before {
+    content: "✔";
+    color: #FFD370;
+    border-color: transparent;
+    font-size: 1.8rem;
+}
+
+@media (max-width:500px) {
+    h1 {
+        font-size: 30px;
+    }
+    #Console {
+        padding: 0 1rem;
+    }
+    #Task {
+        width: 86%;
+    }
+    #AddButton {
+        right: 22px;
+    }
+    #TodosBox {
+        width: 95%;
+        margin: 18% 10px 0 10px;
+    }
+    #TodosBox>div>button {
+        padding: 15px 35px;
+    }
+    input[type="checkbox"]+label::before {
+        width: 20px;
+        height: 20px;
+    }
+    input[type="checkbox"]:checked+label::before {
+        font-size: 1.2rem;
+    }
+    li>span {
+        font-size: 1.2rem;
+    }
+    li>button {
+        font-size: 1.2rem;
+    }
+    #FooterToolBar {
+        padding: 1rem;
+    }
+}

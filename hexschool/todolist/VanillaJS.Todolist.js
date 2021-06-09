@@ -85,11 +85,26 @@ let Todolist =
 
                 if (this.TodosData.length > 0) {
 
-                    this.SortBtnBoxDOM.innerHTML = `
-                        <button onclick="${NickName}.ChangeTodosType('All')">全部</button>
-                        <button onclick="${NickName}.ChangeTodosType('Done')">已完成</button>
-                        <button onclick="${NickName}.ChangeTodosType('Undone')">未完成</button>
+                    let SortTemp = `
+                        <button @All onclick="${NickName}.ChangeTodosType('All')">全部</button>
+                        <button @Done onclick="${NickName}.ChangeTodosType('Done')">已完成</button>
+                        <button @Undone onclick="${NickName}.ChangeTodosType('Undone')">未完成</button>
                     `;
+
+                    const BlackBorder = `style="border-color: black;"`;
+                    switch (this.TodosType) {
+                        case 'Done':
+                            SortTemp = SortTemp.replace('@Done', BlackBorder);
+                            break;
+                        case 'Undone':
+                            SortTemp = SortTemp.replace('@Undone', BlackBorder);
+                            break;
+                        default:
+                            SortTemp = SortTemp.replace('@All', BlackBorder);
+                            break;
+                    }
+
+                    this.SortBtnBoxDOM.innerHTML = SortTemp;
 
                     TempContainer += `
                     <div id="FooterToolBar">
