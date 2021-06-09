@@ -1,18 +1,31 @@
 let Todolist =
-    function(NickName) {
+    function(NickName, Config) {
         return {
+            PreConfig: { Todo: "SomeSetting" },
             BaseDOM: document.getElementById('Todolist'),
             TaskDOM: {},
             TodosDOM: {},
             TodosData: [],
+            TodosType: "All",
             InitList: function() {
 
-                console.log(this);
+                if (Config != undefined) {
+                    this.PreConfig = Config;
+                }
 
                 this.BaseDOM.innerHTML = `
-                <input id="Task">
-                <button onclick="${NickName}.AddTodo()">Add</button>
-                <ol id="Todos"></ol>
+                <div id="Console">
+                    <input id="Task">
+                    <button id="AddButton" onclick="${NickName}.AddTodo()">+</button>
+                </div>
+                <div>
+                    <div>
+                        <button onclick="${NickName}.ChangeTodosType('All')">全部</button>
+                        <button onclick="${NickName}.ChangeTodosType('Done')">已完成</button>
+                        <button onclick="${NickName}.ChangeTodosType('Undone')">未完成</button>
+                    </div>
+                    <ol id="Todos"></ol>
+                </div>
                 `;
 
                 this.TodosDOM = document.getElementById('Todos');
@@ -25,8 +38,31 @@ let Todolist =
                 }
             },
             Render: function() {
+
+                let TempDodos = [];
+
+                switch (this.TodosType) {
+                    case 'Done':
+                        this.TodosData.forEach((Item) => {
+                            if (Item.TaskComplete) {
+                                TempDodos.push(Item);
+                            }
+                        });
+                        break;
+                    case 'Undone':
+                        this.TodosData.forEach((Item) => {
+                            if (!Item.TaskComplete) {
+                                TempDodos.push(Item);
+                            }
+                        });
+                        break;
+                    default:
+                        TempDodos = this.TodosData;
+                        break;
+                }
+
                 let TempContainer = "";
-                this.TodosData.forEach((Item, Index) => {
+                TempDodos.forEach((Item, Index) => {
                     let Template = `<li><input type="checkbox" onclick="${NickName}.TaskComplete(@Index)" checked><span id="Content_@Index" style="@Complete">@Value</span><button onclick="${NickName}.TaskDelete(@Index)">X</button></li>`;
                     Template = Template.replace('@Value', Item.Value);
                     Template = Template.replace('@Index', Index.toString());
@@ -40,6 +76,13 @@ let Todolist =
                     }
                     TempContainer += Template;
                 });
+
+                TempContainer += `
+                <div>
+                   <span>${TempDodos.length}個項目</span>
+                   <button onclick="${NickName}.ClearAllDoneTodos()">清除已完成項目</button>
+                </div>`;
+
                 this.TodosDOM.innerHTML = TempContainer;
             },
             LocalSave: function() {
@@ -71,7 +114,21 @@ let Todolist =
                     this.LocalSave();
                     this.Render();
                 }
+            },
+            ClearAllDoneTodos: function() {
+                let TempContainer = [];
+                this.TodosData.forEach((Item) => {
+                    if (!Item.TaskComplete) {
+                        TempContainer.push(Item);
+                    }
+                })
+                this.TodosData = TempContainer;
+                this.LocalSave();
+                this.Render();
+            },
+            ChangeTodosType: function(Type) {
+                this.TodosType = Type;
+                this.Render();
             }
-
         };
     }
