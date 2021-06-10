@@ -144,6 +144,7 @@ let Todolist =
                 }
 
                 this.LocalSave();
+                this.Render();
             },
             AddTodo: function() {
                 this.TodosData.push({
