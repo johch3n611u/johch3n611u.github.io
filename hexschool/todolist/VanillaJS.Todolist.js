@@ -38,36 +38,28 @@ let Todolist =
             Render: function() {
 
                 let TempDodos = [];
-
-                switch (this.TodosType) {
-                    case 'Done':
-                        this.TodosData.forEach((Item) => {
-                            if (Item.TaskComplete) {
-                                TempDodos.push(Item);
-                            }
-                        });
-                        break;
-                    case 'Undone':
-                        this.TodosData.forEach((Item) => {
-                            if (!Item.TaskComplete) {
-                                TempDodos.push(Item);
-                            }
-                        });
-                        break;
-                    default:
-                        TempDodos = this.TodosData;
-                        break;
-                }
-
                 let TempContainer = "";
-                TempDodos.forEach((Item, Index) => {
+                this.TodosData.forEach((Item, Index) => {
                     let Template = `
-                    <li>
+                    <li style="@display">
                     <input id="CBtn_@Index" type="checkbox" onclick="${NickName}.TaskComplete(@Index)" checked>
                     <label for="CBtn_@Index"></label>
                     <span id="Content_@Index" style="@Complete">@Value</span>
                     <button onclick="${NickName}.TaskDelete(@Index)">X</button>
                     </li>`;
+
+                    if (this.TodosType != 'All') {
+                        if (Item.TaskComplete && this.TodosType == 'Done') {
+                            Template = Template.replace('@display', '');
+                        } else if (!Item.TaskComplete && this.TodosType == 'Undone') {
+                            Template = Template.replace('@display', '');
+                        } else if (!Item.TaskComplete && this.TodosType == 'Done') {
+                            Template = Template.replace('@display', 'display:none;');
+                        } else if (Item.TaskComplete && this.TodosType == 'Undone') {
+                            Template = Template.replace('@display', 'display:none;');
+                        }
+                    }
+
                     Template = Template.replace('@Value', Item.Value);
                     Template = Template.replace('@Index', Index.toString());
                     Template = Template.replace('@Index', Index.toString());
