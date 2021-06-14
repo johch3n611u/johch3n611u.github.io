@@ -152,7 +152,7 @@ let Todolist =
                 }
             },
             ClearAllDoneTodos: function() {
-                if (confirm(`確定要刪除全部已完成資料?`)) {
+                if (confirm(`確定要刪除全部已完成資料 ?`)) {
                     let TempContainer = [];
                     this.TodosData.forEach((Item) => {
                         if (!Item.TaskComplete) {
