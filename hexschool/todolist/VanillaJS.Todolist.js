@@ -61,11 +61,7 @@ let Todolist =
                     }
 
                     Template = Template.replace('@Value', Item.Value);
-                    Template = Template.replace('@Index', Index.toString());
-                    Template = Template.replace('@Index', Index.toString());
-                    Template = Template.replace('@Index', Index.toString());
-                    Template = Template.replace('@Index', Index.toString());
-                    Template = Template.replace('@Index', Index.toString());
+                    Template = Template.replaceAll('@Index', Index.toString());
                     if (Item.TaskComplete) {
                         Template = Template.replace('@Complete', 'text-decoration:line-through');
                     } else {
@@ -139,8 +135,10 @@ let Todolist =
                 this.Render();
             },
             AddTodo: function() {
+                let Value = this.TaskDOM.value.replaceAll('<script>', '');
+                Value = Value.replaceAll('</script>', '');
                 this.TodosData.push({
-                    Value: this.TaskDOM.value,
+                    Value: Value,
                     TaskComplete: false
                 });
                 this.LocalSave();
