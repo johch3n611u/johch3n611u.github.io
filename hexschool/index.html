@@ -304,6 +304,78 @@ style
                             img 灰色預設外邊框的去除
                         </a>
                     </li>
+                    <li>
+                        <details>
+                            <summary>批改建議</summary>
+                            <pre>
+                                SCSS :
+
+all.scss 中載入路徑可調整為 @import "../Shared/Container";
+圖片、css 可另外使用資料夾來統整，日後維護上會比較方便喔 !
+.BannerBox 內沒有特別的需求可不加直屬選擇器 > 的符號，例如 .BannerBox 內的 h3 可調整為
+.BannerBox{
+  h3{
+   ....
+  }
+  .... 以此類推
+}
+可以嘗試使用 OOCSS 的概念，把結構與樣式、內容與容器做分離，可增加 CSS 的複用性與維護性。可回顧課程中 " Sass / CSS 設計模式 - 教您最實用的網頁收納術 " 章節的影音。
+
+
+另外提供 OOCSS 相關資訊供同學參考 :
+
+OOCSS 結構與樣式、容器與內容
+OOCSS容器與內容分離 影片
+
+
+如果程式碼數量不多的話，可把 scss 檔案拆分為 : mixin.scss、variable.scss ( 變數類 )、base.scss ( 全站設定，例 : font-size、font-family .. )。
+承上，像同學 Shared 資料夾中的 $DesktopWidth 、 $BaseTextColor 可統整於 variable.scss，字型設定、顏色等可統整於 base.scss。
+
+
+
+
+index.html :
+
+建議使用 OOCSS 概念把 .FlexHeader 內的 flex 設定拆開寫，這樣 .FlexHeader 就不會被設定的 flex 綁死，.FlexHeader 與 flex 的相關設定就可拆開於其他區塊複用，活用度較高。
+承上，設計稿中，中間容器寬度為 1110px ，.FlexFullWidthBanner .BannerBg 子層的內容可使用 .FlexHeader 賦予中間容器寬度，.FlexFullWidthBanner 的 justify-content 調整為 flex-end ，.BannerBox 就會靠右對齊 ( .BannerBox 不建議使用 margin-left 做大範圍的推擠。)
+.FlexHeader 與 .FlexFooter 大部分的設定都相同，可命名同一個 class 做複用即可。
+.FlexHeader 不建議寫死高度，可使用 padding 去推擠出四周的空間，日後內容增加就不需再另外調整，使用上會比較有彈性。
+.FlexHeader 的寬度可調整為 max-width。
+D'PERFUME LOGO 的結構可調整為 h1 > a，可嘗試使用圖片取代文字的技巧。提供助教久遠的筆記 >< 給同學參考 " HTML&CSS|logo圖片取代文字技巧&選單中加入logo "
+.BannerBox div p 、.MaintenanceSteps 內的標題與文字本來就靠左， text-align: left; 可刪除。
+shop nows 的按鈕不建議 max-width 與 width 交叉使用，也不建議寫死高度，可使用 padding 推擠出上下空間。
+.GridProducts 內的查看更多的 a 標籤，可移出 p 標籤。文字本來就靠左 text-align: left; 可刪除。
+banner 圖片下方的 Gabrielle CHANEL ~ CHANEL N°5 商品為同性質資訊，可嘗試使用 ul > li 結構。
+" Plan a free online training " 按鈕請移出 ul > li 結構。
+.GridProducts .GreyBg 可嘗試增加上下 padding ，可另外寫一個 padding 的 class 做複用。
+商品背景圖可加上 no-repeat 避免重覆 → background:url('logo圖片路徑') no-repeat;
+商品中「Poppy & Barley 、Body Wash、Apple Cider Vinegar Capsule」商品名稱可使用標題標籤，另外商品價錢調整為 p 或 span 標籤。
+p 段落與 a 標籤中間不需使用 <br>，可刪除。
+.FooterAdvertising 的高度可調整為 min-height。
+「 記得訂閱以獲得更多資訊 」區塊 .AdvertisingBox 也可嘗試於父層加上上方建議調整的設計稿的中間容器寬度 .FlexHeader，並搭配 flex 設定讓它靠左，就可以不使用 position 絕對與相對定位。
+.FlexFooter 中的 D'PERFUME LOGO 一般點選都可回到首頁，也可調整為 h3 > a 的結構 ( 標題標籤可自己依重要性做調整 )。
+.FlexFooterMenu 內的選單一般都可做點選。可於 li 加上 a 連結。
+有練習使用 grid 還不錯，但要注意 grid 的響應式使用，像是像是 1110px 到 568px 就會出現 x 軸，grid 部分也可嘗試使用 flex 排版看看。
+
+
+
+
+products.html :
+
+.FlexCategoryMenu ul 不建議寫死高度，可使用 padding 去推擠上下空間，使用上會比較有彈性。另外這些選單一般都可以做點選，可於 li 加上 a 連結。
+一個頁面只會有一個 h1 標題標籤，一般都使用於公司 logo 或重要資訊上。可把產品名稱替換為其它標題標籤。
+商品內香水名稱 Jo Malone 與價錢請分開寫。商品價錢可使用 p 或 span 標籤。
+商品價錢 NT$1,380 原價與折扣價的部份可使用 flex 設定。
+favorite、checkroom 的 icon 可使用 a 標籤包覆。
+一般點選頁碼，會有變動的都是上方產品區塊，所以可把 .FlexPaginationTool 頁碼移出 .GridProducts 區塊。
+.FlexPaginationTool 頁碼的 li 內請加上 a 連結。
+「 記得訂閱以獲得更多資訊 」區塊不建議使用 margin 做大範圍的推擠，可參考 index.html 的建議嘗試調整看看。
+footer 部分的助教有另外寫一個 codpen ，同學可參考看看結構。
+@media (max-width: 568px) 的 .GridProducts>ul 的 margin-left 與 margin-right 可使用 auto 讓區塊水平置中。
+有練習使用 grid 還不錯，但要注意 grid 的響應式使用，像是像是 1110px 到 568px 就會出現 x 軸，grid 部分也可嘗試使用 flex 排版看看。
+                            </pre>
+                        </details>
+                    </li>
                 </li>
             </ul>
             <li>
@@ -320,6 +392,23 @@ style
                 <li>
                     <details>
                         <summary>批改建議</summary>
+                        <pre>
+1. JS 第 40 行的 TempDodos 沒有用到，可以移除
+
+2. JS 第 99 行因為沒有資料所以長度永遠為 0，可以再調整看看
+
+3. #SortBtnBox 可以改成一開始就渲染好，預設沒有資料的時候也可以代入文字，例如：這裡還沒有任何資料，快來增加你的待辦事項吧，之類的，看起來比較不會突兀
+
+4. #SortBtnBox 切換可以改成加上樣式，並觸發某個函式把資料算好，再一次呼叫 Render 渲染
+
+5. Render 函式可以專注於渲染資料就好，資料過濾可以寫在別的函式
+
+6. ol 裡面只能是 li，ol 可以改用 ul，#FooterToolBar 的 HTML 位置可以再調整看看
+
+整體功能和邏輯沒有太大的問題
+
+可以參考建議再思考看看如何修改
+                        </pre>
                     </details>
                 </li>
                 <li>
