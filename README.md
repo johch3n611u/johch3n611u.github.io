@@ -1,39 +1,34 @@
-# Hexo 部屬與版控流程
+# Hexo: A Static Site Generator Built on Node.js
 
-<https://hexo.io/zh-tw/>
+Hexo is a static site generator developed using Node.js. Compared to Jekyll (RubyGem) and Hugo (GoLang), 
 
-## Basic
+Its template engine primarily focuses on parsing templating languages, so the core difference isn’t significant. 
 
-參考： <https://raychiutw.github.io/2019/Static-Site-Generator-Comparison/>
+The key distinctions lie in its larger Chinese-speaking community and available plugin resources.
 
-參考： <https://stackshare.io/stackups/hexo-vs-hugo-vs-jekyll/>
+Additionally, Hexo relies on command-line operations (Cmd) rather than a GUI, making it less beginner-friendly. 
 
-Hexo 是一種基於 Node.js 所開發的靜態網站生成器，相較於 Jekyll (RubyGem) 、Hugo (Golong)，解析引擎也只是解析模板語言，應該差異不大，主要差別應該是較多的 "中文" 社群、套件資源，再來是通常都要藉由 Cmd 操作，而不是普通人能直接接受的 Gui 操作，所以此專案只是解決一些靜態網站需求所生的簡易使用 Hexo Demo。
+This project serves as a simple Hexo demo to address basic static site needs.
 
-## 環境需求
+## Environment Requirements
 
-Hexo version 5.0+
+* Hexo version: 5.0+
+* Minimum Node.js version: 10.13.0
 
-Minimum Node.js version 10.13.0
+## Basic Commands
 
-## Command
+```
+npm install -g hexo-cli // Installation
 
-安裝
+hexo init <project-name> // Create a New Project
+cd <project-name>
+npm install
 
-> npm install -g hexo-cli
+hexo new [layout] "<title>" // Create a New Post
+```
 
-開新專案
+## Refer
 
-> hexo init <folder>
->
-> cd <folder>
->
-> npm install
-
-新增文章
-
-> hexo new [layout] <title>
-
-## Other
-
-上述大概就是簡易使用時會用到的指令，其餘功能網路上資源蠻多的。
+1. https://hexo.io/zh-tw/
+2. https://raychiutw.github.io/2019/Static-Site-Generator-Comparison/
+3. https://stackshare.io/stackups/hexo-vs-hugo-vs-jekyll/
